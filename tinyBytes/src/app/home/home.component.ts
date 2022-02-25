@@ -4,7 +4,6 @@ import { IRecipe } from '../interface/recipe';
 import { RecipeService } from '../service/recipe.service';
 
 @Component({
-  selector: 'home',
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit, OnDestroy {

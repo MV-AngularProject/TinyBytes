@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  templateUrl: './categories.component.html'
+  selector: 'Header',
+  templateUrl: './header.component.html'
 })
-export class CategoriesComponent {
+export class HeaderComponent {
   public pageTitle = 'Category page';
 }

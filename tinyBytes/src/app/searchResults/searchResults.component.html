@@ -1,1 +1,28 @@
-<h1>Search Results</h1>
+<h1>Search Results: {{query}}</h1>
+
+
+<!-- <div *ngFor= 'let result of results' class="card" style="width: 18rem;">
+    <img src="results['image']" class="card-img-top" alt="...">
+    <div class="card-body">
+      <p class="card-text">"results['title']"</p>
+    </div>
+  </div> -->
+
+  <!-- <div class="row">
+    <div *ngFor="let result of results" class="col-2 card">
+        <img class="card-img-top" [src]={{results.image}} alt="Card image cap"/>
+        <div class="card-block">
+            <p [innerHTML]={{results.title}}></p>
+        </div>
+    </div>
+</div> -->
+
+  <div class="row">
+    <div *ngFor="let result of results.results" class="col-2 card">
+        <img class="card-img-top" [src]="result.image" alt="Card image cap"/>
+         <p>{{result.title}}</p>
+        <div class="card-block">
+            <!-- <p {{result.title}}></p> -->
+        </div>
+    </div>
+</div>

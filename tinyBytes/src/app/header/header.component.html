@@ -1,2 +1,21 @@
-<a routerLink= "">Home</a>
-<a routerLink= "categories">Categories</a>
+<div class="logo">
+    <img src ="./assets/tinyBytesLogo.jpeg" width=275>
+</div>
+<hr size="5" width="100%" background-color="black"> 
+<nav class="navbar navbar-light bg-light ">
+    <div class="container-fluid">
+        <a class="fs-4 text-dark" routerLink= "">Home</a>
+        <a class="fs-4 text-dark" routerLink= "categories">Cuisines</a>
+        <a class="fs-4 text-dark" routerLink= "searchResults">Search</a>
+      <form class="d-flex">
+        <input id="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" (click)="loadSearch();" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+  <hr size="5" width="100%" > 
+
+
+  <div *ngIf="loadComponent" ng-cloak>
+    <Search ></Search>
+</div>

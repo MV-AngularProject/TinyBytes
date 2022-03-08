@@ -1,6 +1,6 @@
 <main>
     <h1>HELLLOOOOOO</h1>
-    <div *ngIf='recipes.results.length>1'>
+    <div *ngIf='mostPopular.results.length>1'>
       <h2>i can read the length</h2>
 
     </div>
@@ -20,7 +20,7 @@
               </div>
             </div>
           </div>
-          <div class="card mb-3" style="max-width: 540px;" *ngFor='let recipe of recipes.results'>
+          <!-- <div class="card mb-3" style="max-width: 540px;" *ngFor='let recipe of recipes.results'>
             <div class="row g-0">
               <div class="col-md-4">
                 <img [src]='recipe.image' class="img-fluid rounded-start" alt="photo of food">
@@ -33,7 +33,21 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
+          <!-- <div *ngFor='let recipe of recipes.results'>
+            <div>
+              <div>
+                <img [src]='recipe.image' alt="photo of food">
+              </div>
+              <div>
+                <div>
+                  <h5>{{recipe.title}}</h5>
+                  <p >This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p ><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+              </div>
+            </div>
+          </div> -->
 
     </section>
     <!-- <section class="randomCarousel">
@@ -82,9 +96,31 @@
 
     </section>
     <section>
-        trending
+        <h3>Super Delicious</h3>
+        <div class='food-preview'>
+          <div *ngFor='let popular of mostPopular.results'>
+          <div class="card" style="width: 18rem;">
+          <div class='img-zoom'>
+            <img [src]='popular.image' class="card-img-top" alt="photo of popular dish">
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{popular.title}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
     </section>
     <section>
-        sweet tooth
+        <h3>Sweet Tooth</h3>
+        <div class='food-preview'>
+          <div *ngFor='let dessert of desserts.results'> 
+            <div class="card" style="width: 18rem;">
+            <img [src]="dessert.image" class="card-img-top" alt="photo of dessert">
+            <div class="card-body">
+              <p class="card-text">{{dessert.title}}</p>
+          </div>
+        </div>
+        </div>
+      </div>
     </section>
 </main>

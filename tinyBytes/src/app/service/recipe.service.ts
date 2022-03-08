@@ -2,7 +2,6 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { tap, catchError } from "rxjs/operators";
-import { IRecipe } from "../interface/recipe";
 import { Root } from "../interface/root";
 
 @Injectable({
@@ -10,11 +9,25 @@ import { Root } from "../interface/root";
 })
 export class RecipeService{
     constructor(private http : HttpClient){}
-    apiKey ='&apiKey=dd0d974a8e534716a3175c56ecd0bde5'
+    //apiKey ='&apiKey=dd0d974a8e534716a3175c56ecd0bde5'
+    apiKey ='&apiKey=db3f5aecd2e84a9ea1773b57ca6373f7'
 
     getRecipes(): Observable<Root>{
         return this.http.get<Root>(`https://api.spoonacular.com/recipes/complexSearch?sort=random&number=3${this.apiKey}`).pipe(
             tap(data => console.log('all', JSON.stringify(data.results))),
+            catchError(this.handleError)
+        )
+    }
+
+    getDesserts(): Observable<Root>{
+        return this.http.get<Root>(`https://api.spoonacular.com/recipes/complexSearch?type=dessert&number=3${this.apiKey}`).pipe(
+            tap(data => console.log('all', JSON.stringify(data.results))),
+            catchError(this.handleError)
+        )
+    }
+    getMostPopular(): Observable<Root>{
+        return this.http.get<Root>(`https://api.spoonacular.com/recipes/complexSearch?sort=popularity&number=3${this.apiKey}`).pipe(
+            tap(data => console.log('all', JSON.stringify(data))),
             catchError(this.handleError)
         )
     }

@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
 import { CategoriesComponent } from './categories/categories.component';
 import { HomeComponent } from './home/home.component';
 import { AppComponent } from './app.component';
-import { SearchResultsComponent } from './searchResults/searchResults.component';
 import { SingleRecipeComponent } from './singleRecipe/singleRecipe.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
@@ -21,7 +20,6 @@ import { HeaderComponent } from './header/header.component';
     HomeComponent,
     FooterComponent,
     HeaderComponent,
-    SearchResultsComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +31,6 @@ import { HeaderComponent } from './header/header.component';
         { path: '', component: HomeComponent },
         { path: 'categories', component: CategoriesComponent},
         { path: 'singleRecipe', component: SingleRecipeComponent },
-        { path: 'searchResults', component: SearchResultsComponent }
       ]
     )
   ],

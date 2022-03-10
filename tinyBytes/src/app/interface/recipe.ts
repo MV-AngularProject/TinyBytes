@@ -1,5 +1,5 @@
 export interface IRecipe{
-    id: number
+  id: number
   title: string
   calories: number
   carbs: string

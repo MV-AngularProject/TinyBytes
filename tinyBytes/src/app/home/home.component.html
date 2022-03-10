@@ -1,7 +1,7 @@
 <main>
     <h1>HELLLOOOOOO</h1>
-    <div *ngIf='mostPopular.results.length>1'>
-      <h2>i can read the length</h2>
+    <div *ngIf='!mostPopular.results.length>1'>
+      <h2>Sorry there was a problem loading the page please try again later</h2>
 
     </div>
 
@@ -115,7 +115,9 @@
         <div class='food-preview'>
           <div *ngFor='let dessert of desserts.results'> 
             <div class="card" style="width: 18rem;">
-            <img [src]="dessert.image" class="card-img-top" alt="photo of dessert">
+            </div class='img-zoom'>
+              <img [src]="dessert.image" class="card-img-top" alt="photo of dessert">
+            </div>
             <div class="card-body">
               <p class="card-text">{{dessert.title}}</p>
           </div>

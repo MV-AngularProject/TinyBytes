@@ -9,10 +9,10 @@ main{
 }
 .img-zoom img{
     transform-origin: 0 0;
-    transition: transform .25s, visibility .25s ease-in;
+    transition: transform .25s, visibility .25s ease-in-out;
 }
 .img-zoom:hover img {
-    transform: scale(2);
+    transform: scale(1.1);
   }
 .img-zoom{
     overflow: hidden;

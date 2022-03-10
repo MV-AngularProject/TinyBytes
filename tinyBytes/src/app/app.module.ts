@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { SingleRecipeComponent } from './singleRecipe/singleRecipe.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -32,7 +33,8 @@ import { HeaderComponent } from './header/header.component';
         { path: 'categories', component: CategoriesComponent},
         { path: 'singleRecipe', component: SingleRecipeComponent },
       ]
-    )
+    ),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

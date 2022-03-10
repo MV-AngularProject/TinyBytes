@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { IRecipe } from '../interface/recipe';
+import { Root } from '../interface/root';
 import { RecipeService } from '../service/recipe.service';
 
 @Component({
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
   errorMessage: string ='';
@@ -12,12 +13,22 @@ export class HomeComponent implements OnInit, OnDestroy {
   
   constructor(private recipeService: RecipeService){}
 
-  recipes : IRecipe[] =[];
+  recipes!: Root;
+  desserts!: Root;
+  mostPopular!: Root;
 
   ngOnInit(): void {
       this.recipeService.getRecipes().subscribe({
-        next: recipes => this.recipes =recipes,
-        error: err => this.errorMessage =err
+        next: recipes => this.recipes = recipes,
+        error: err => this.errorMessage = err
+      });
+      this.recipeService.getDesserts().subscribe({
+        next: desserts => this.desserts = desserts,
+        error: err => this.errorMessage = err
+      });
+      this.recipeService.getMostPopular().subscribe({
+        next: mostPopular => this.mostPopular = mostPopular,
+        error: err => this.errorMessage = err
       });
   }
 

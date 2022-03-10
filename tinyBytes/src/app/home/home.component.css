@@ -1,0 +1,19 @@
+main{
+    margin-left: 300px;
+    margin-right: 300px;
+}
+.food-preview{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.img-zoom img{
+    transform-origin: 0 0;
+    transition: transform .25s, visibility .25s ease-in-out;
+}
+.img-zoom:hover img {
+    transform: scale(1.1);
+  }
+.img-zoom{
+    overflow: hidden;
+}

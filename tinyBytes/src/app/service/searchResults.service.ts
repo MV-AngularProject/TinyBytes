@@ -11,7 +11,7 @@ export class SearchService{
     constructor(private http : HttpClient){}
 
     search(query:string): Observable<ISearchResults>{
-        return this.http.get<ISearchResults>(`https://api.spoonacular.com/recipes/complexSearch?apiKey=b989a147ccb6450e920e8fa5355c632c&query=${query}&number=4`).pipe(
+        return this.http.get<ISearchResults>(`https://api.spoonacular.com/recipes/complexSearch?apiKey=b989a147ccb6450e920e8fa5355c632c&query=${query}&number=8`).pipe(
             tap(data => console.log('All', JSON.stringify(data.results), "value", (document.getElementById('form-control me-2')as HTMLInputElement).value)),
             catchError(this.handleError)
         )

@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import { CategoriesComponent } from './categories/categories.component';
-import { HomeComponent } from './home/home.component';
+// import { HomeComponent } from './home/home.component';
 import { AppComponent } from './app.component';
 import { SingleRecipeComponent } from './singleRecipe/singleRecipe.component';
 import { FooterComponent } from './footer/footer.component';
@@ -18,7 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    // HomeComponent,
     FooterComponent,
     HeaderComponent,
   ],
@@ -29,7 +29,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     RouterModule.forRoot(
       [
-        { path: '', component: HomeComponent },
+        // { path: '', component: HomeComponent },
         { path: 'categories', component: CategoriesComponent},
         { path: 'singleRecipe', component: SingleRecipeComponent },
       ]

@@ -1,3 +1,7 @@
+*{
+    font-family: sans-serif;
+}
+
 .logo{
     display: flex;
     justify-content: center;
@@ -5,4 +9,19 @@
 
 hr{
     color:orange;
+}
+
+.resultTitle:hover{
+    color:orange;
+}
+
+#resultImg{
+transition: 1s ease;
+}
+
+#resultImg:hover{
+  -ms-transform: scale(1.1); /* IE 9 */
+  -webkit-transform: scale(1.1); /* Safari 3-8 */
+  transform: scale(1.1);
+transition: 1s ease;
 }

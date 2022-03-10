@@ -4,24 +4,27 @@
 <hr size="5" width="100%" background-color="black"> 
 <nav class="navbar navbar-light bg-light ">
     <div class="container-fluid">
-        <a class="fs-4 text-dark" routerLink= "">Home</a>
-        <a class="fs-4 text-dark" routerLink= "categories">Cuisines</a>
-        <a class="fs-4 text-dark" routerLink= "searchResults">Search</a>
+        <a class="fs-3 text-dark" routerLink= "">Home</a>
+        <a class="fs-3 text-dark" routerLink= "categories">Cuisines</a>
       <form class="d-flex">
         <input id="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" (click)="startSearch();" type="submit">Search</button>
       </form>
     </div>
   </nav>
-  <hr size="5" width="100%" > 
+  <hr size="5" width="100%" style="margin-bottom: 1%;"> 
 
-
-  <div *ngIf="loadComponent">
-    <h3>Search Results:</h3>
-    <div class="row">
-      <div *ngFor="let result of results.results" class="col-2 card">
-          <img class="card-img-top" [src]="result.image" alt="Card image cap"/>
-           <p>{{result.title}}</p>
-      </div>
-  </div> 
-</div>
+<section>
+  <div id="searchHeader" class="d-flex justify-content-between" style="padding-bottom: 1%;" *ngIf="loadComponent">
+    <h3>Search results</h3>
+    <h5>({{results.totalResults}} Recipes)</h5>
+  </div>  
+  <div id="resultCard" class="row row-cols-5 hd-grid gap-5 d-flex justify-content-between .h-100">
+    <div *ngFor="let result of results.results" class="card" style="border: none;"> 
+      <a routerLink= "singleRecipe">
+        <img id="resultImg" class="card-img-top" style="margin-bottom: 4%;" [src]="result.image" alt="A Recipe"/>
+      </a>
+      <p class="resultTitle" style="font-size: 20px; font-weight: 500;">{{result.title}}</p>
+    </div>
+  </div>
+</section>

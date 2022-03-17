@@ -3,13 +3,15 @@
 // import { Root } from '../interface/root';
 // import { RecipeService } from '../service/recipe.service';
 
-// @Component({
-//   templateUrl: './home.component.html',
-//   styleUrls: ['./home.component.css']
-// })
-// export class HomeComponent implements OnInit, OnDestroy {
-//   errorMessage: string ='';
-//   sub!: Subscription;
+@Component({
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
+})
+export class HomeComponent implements OnInit, OnDestroy {
+  errorMessage: string ='';
+  randomSub!: Subscription;
+  dessertSub!: Subscription;
+  popularSub!: Subscription;
   
 //   constructor(private recipeService: RecipeService){}
 
@@ -32,7 +34,9 @@
   //     });
   // }
 
-//   ngOnDestroy() {
-//       this.sub.unsubscribe();
-//   }
-// }
+  ngOnDestroy() {
+      this.randomSub.unsubscribe();
+      this.popularSub.unsubscribe();
+      this.dessertSub.unsubscribe();
+  }
+}

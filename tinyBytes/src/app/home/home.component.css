@@ -1,6 +1,9 @@
 main{
-    margin-left: 300px;
-    margin-right: 300px;
+    margin-left: 20%;
+    margin-right: 20%;
+    display: flex;
+    flex-direction: column;
+    max-width: 1350px;
 }
 .food-preview{
     display: flex;
@@ -17,3 +20,16 @@ main{
 .img-zoom{
     overflow: hidden;
 }
+.card{
+    display: flex;
+    flex-direction: column;
+}
+.card:hover{
+    color: #f4642d;
+}
+@media screen and (max-width: 500px) {
+    .food-preview {
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }

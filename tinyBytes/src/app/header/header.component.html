@@ -1,28 +1,38 @@
 <div class="logo">
     <img src ="./assets/tinyBytesLogo.jpeg" width=275>
 </div>
-<hr size="5" width="100%" background-color="black"> 
-<nav class="navbar navbar-light bg-light ">
-    <div class="container-fluid">
-        <a class="fs-3 text-dark" routerLink= "">Home</a>
-        <a class="fs-3 text-dark" routerLink= "categories">Cuisines</a>
-      <form class="d-flex">
-        <input id="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" (click)="startSearch();" type="submit">Search</button>
-      </form>
+<hr size="5" width="100%"> 
+  <nav class="uk-navbar-container uk-margin " uk-navbar>
+  <div class="container-fluid uk-background-default" >
+    <div id="navbar-left" class="nav-overlay uk-navbar-left">
+      <a class="fs-3 text-dark" routerLink= "">Home</a>
+      <a class="fs-3 text-dark" routerLink= "categories">Cuisines</a>
     </div>
-  </nav>
+    <div class="nav-overlay uk-navbar-right">
+        <a class="uk-navbar-toggle" uk-search-icon="ratio:2" uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
+    </div>
+    <div class="nav-overlay uk-navbar-left uk-flex-1" hidden>
+        <div class="uk-navbar-item uk-width-expand">
+            <form class="uk-search uk-search-large uk-width-1-1" (ngSubmit)="startSearch();" >
+                <input id="form-control me-2" class="uk-search-input" type="search" placeholder="Search..." autofocus>
+            </form>
+        </div>
+        <a class="uk-navbar-toggle" uk-close="ratio:2" uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
+    </div>
+  </div> 
+
+ </nav> 
   <hr size="5" width="100%" style="margin-bottom: 1%;"> 
 
 <section>
-  <div id="searchHeader" class="d-flex justify-content-between" style="padding-bottom: 1%;" *ngIf="loadComponent">
-    <h3>Search results</h3>
-    <h5>({{results.totalResults}} Recipes)</h5>
+  <div id="searchHeader" class="d-flex justify-content-between" style="padding-bottom: 1%;" *ngIf="loadComponent" ng-cloak>
+    <h1>Search Results</h1>
+    <h4>({{results.totalResults}} Recipes)</h4>
   </div>  
   <div id="resultCard" class="row row-cols-5 hd-grid gap-5 d-flex justify-content-between .h-100">
     <div *ngFor="let result of results.results" class="card" style="border: none;"> 
       <a routerLink= "singleRecipe">
-        <img id="resultImg" class="card-img-top" style="margin-bottom: 4%;" [src]="result.image" alt="A Recipe"/>
+        <img id="resultImg" class="card-img-top rounded img-fluid" style="margin-bottom: 4%;" [src]="result.image" alt="A Recipe"/>
       </a>
       <p class="resultTitle" style="font-size: 20px; font-weight: 500;">{{result.title}}</p>
     </div>

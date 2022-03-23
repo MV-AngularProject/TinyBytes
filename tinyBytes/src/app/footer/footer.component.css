@@ -1,0 +1,11 @@
+.footerContent{
+    display: inline-flex;
+    justify-content: space-between ;
+    width: 100%;
+}
+
+.footerIcons{
+    width: 14%;
+    display: inline-flex;
+    justify-content: space-between ;
+}

@@ -21,6 +21,7 @@ import { HeaderComponent } from './header/header.component';
     // HomeComponent,
     FooterComponent,
     HeaderComponent,
+    RecipeComponent,
   ],
   imports: [
     BrowserModule,

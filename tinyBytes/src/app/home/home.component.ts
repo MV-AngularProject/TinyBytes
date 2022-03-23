@@ -1,7 +1,7 @@
-// import { Component, OnDestroy, OnInit } from '@angular/core';
-// import { Subscription } from 'rxjs';
-// import { Root } from '../interface/root';
-// import { RecipeService } from '../service/recipe.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Root } from '../interface/root';
+import { RecipeService } from '../service/recipe.service';
 
 @Component({
   templateUrl: './home.component.html',
@@ -13,26 +13,26 @@ export class HomeComponent implements OnInit, OnDestroy {
   dessertSub!: Subscription;
   popularSub!: Subscription;
   
-//   constructor(private recipeService: RecipeService){}
+  constructor(private recipeService: RecipeService){}
 
-//   recipes!: Root;
-//   desserts!: Root;
-//   mostPopular!: Root;
+  recipes!: Root;
+  desserts!: Root;
+  mostPopular!: Root;
 
-  // ngOnInit(): void {
-  //     this.recipeService.getRecipes().subscribe({
-  //       next: recipes => this.recipes = recipes,
-  //       error: err => this.errorMessage = err
-  //     });
-  //     this.recipeService.getDesserts().subscribe({
-  //       next: desserts => this.desserts = desserts,
-  //       error: err => this.errorMessage = err
-  //     });
-  //     this.recipeService.getMostPopular().subscribe({
-  //       next: mostPopular => this.mostPopular = mostPopular,
-  //       error: err => this.errorMessage = err
-  //     });
-  // }
+  ngOnInit(): void {
+      this.recipeService.getRecipes().subscribe({
+        next: recipes => this.recipes = recipes,
+        error: err => this.errorMessage = err
+      });
+      this.recipeService.getDesserts().subscribe({
+        next: desserts => this.desserts = desserts,
+        error: err => this.errorMessage = err
+      });
+      this.recipeService.getMostPopular().subscribe({
+        next: mostPopular => this.mostPopular = mostPopular,
+        error: err => this.errorMessage = err
+      });
+  }
 
   ngOnDestroy() {
       this.randomSub.unsubscribe();

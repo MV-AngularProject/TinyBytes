@@ -1,26 +1,26 @@
-<main>
+<!-- <main>
     <h1>HELLLOOOOOO</h1>
-    <!-- <div *ngIf='!mostPopular.results.length>1'> -->
-      <h2>Sorry there was a problem loading the page please try again later</h2>
-
-    <!-- </div> -->
+    
 
     <section class='headerImage'>
         <div class="card mb-3" style="max-width: 540px;">
+<main>
+    <section class='headerImage'*ngFor='let recipe of recipes.results'>
+        <div class="card mb-3">
             <div class="row g-0">
               <div class="col-md-4">
-                <img src="https://images.spoonacular.com/file/wximages/423186-90x90.png" class="img-fluid rounded-start" alt="photo of food">
+                <img src="https://spoonacular.com/recipeImages/{{recipe.id}}-636x393.jpg" class="img-fluid rounded-start" alt="photo of food">
               </div>
               <div class="col-md-8">
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <h5 class="card-title">Try Something New!</h5>
+                  <p class="card-text">{{recipe.title}}</p>
                   <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
               </div>
             </div>
           </div>
-          <!-- <div class="card mb-3" style="max-width: 540px;" *ngFor='let recipe of recipes.results'>
+           <div class="card mb-3" style="max-width: 540px;" *ngFor='let recipe of recipes.results'>
             <div class="row g-0">
               <div class="col-md-4">
                 <img [src]='recipe.image' class="img-fluid rounded-start" alt="photo of food">
@@ -48,6 +48,7 @@
               </div>
             </div>
           </div> -->
+          <img src="https://spoonacular.com/recipeImages/{{recipe.id}}-636x393.jpg" alt="photo of food">
 
     </section>
     <!-- <section class="randomCarousel">
@@ -91,7 +92,7 @@
           </div>
 
     </section> -->
-    <section>
+    <!-- <section>
         category carosol
 
     </section>
@@ -125,4 +126,4 @@
         </div>
       </div>
     </section>
-</main>
+</main>  -->

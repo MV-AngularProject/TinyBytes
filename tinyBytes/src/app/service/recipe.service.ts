@@ -13,24 +13,24 @@ export class RecipeService{
     apiKey ='&apiKey=db3f5aecd2e84a9ea1773b57ca6373f7'
 
     getRecipes(): Observable<Root>{
-        return this.http.get<Root>(`https://api.spoonacular.com/recipes/complexSearch?sort=random&number=3${this.apiKey}`).pipe(
+        return this.http.get<Root>(`https://api.spoonacular.com/recipes/complexSearch?sort=random&number=1${this.apiKey}`).pipe(
             tap(data => console.log('all', JSON.stringify(data.results))),
             catchError(this.handleError)
         )
     }
 
-    getDesserts(): Observable<Root>{
-        return this.http.get<Root>(`https://api.spoonacular.com/recipes/complexSearch?type=dessert&number=3${this.apiKey}`).pipe(
-            tap(data => console.log('all', JSON.stringify(data.results))),
-            catchError(this.handleError)
-        )
-    }
-    getMostPopular(): Observable<Root>{
-        return this.http.get<Root>(`https://api.spoonacular.com/recipes/complexSearch?sort=popularity&number=3${this.apiKey}`).pipe(
-            tap(data => console.log('all', JSON.stringify(data))),
-            catchError(this.handleError)
-        )
-    }
+    // getDesserts(): Observable<Root>{
+    //     return this.http.get<Root>(`https://api.spoonacular.com/recipes/complexSearch?type=dessert&number=3${this.apiKey}`).pipe(
+    //         tap(data => console.log('all', JSON.stringify(data.results))),
+    //         catchError(this.handleError)
+    //     )
+    // }
+    // getMostPopular(): Observable<Root>{
+    //     return this.http.get<Root>(`https://api.spoonacular.com/recipes/complexSearch?sort=popularity&number=3${this.apiKey}`).pipe(
+    //         tap(data => console.log('all', JSON.stringify(data))),
+    //         catchError(this.handleError)
+    //     )
+    // }
 
     private handleError(err:HttpErrorResponse){
         let errorMessage='';

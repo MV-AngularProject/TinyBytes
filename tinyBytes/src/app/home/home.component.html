@@ -1,4 +1,4 @@
- <main>
+ <section class='main'>
   <div class="row g-0"*ngFor='let recipe of recipes.results'>
     <div class="col-lg-7" >
       <img src="https://spoonacular.com/recipeImages/{{recipe.id}}-636x393.jpg" class="w-100" alt="photo of food">
@@ -43,10 +43,10 @@
               <img [src]="dessert.image" class="card-img-top" alt="photo of dessert">
             </div>
             <div class="card-body">
-              <p class="card-text">{{dessert.title}}</p>
+              <a class="card-text" [routerLink]="['/recipe/{{dessert.id}}']">{{dessert.title}}</a>
           </div>
         </div>
         </div>
       </div>
     </section>
-</main> 
+  </section> 

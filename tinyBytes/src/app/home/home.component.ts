@@ -20,15 +20,15 @@ export class HomeComponent implements OnInit, OnDestroy {
   mostPopular!: Root;
 
   ngOnInit(): void {
-      this.recipeService.getRecipes().subscribe({
+      this.randomSub = this.recipeService.getRecipes().subscribe({
         next: recipes => this.recipes = recipes,
         error: err => this.errorMessage = err
       });
-      this.recipeService.getDesserts().subscribe({
+      this.dessertSub = this.recipeService.getDesserts().subscribe({
         next: desserts => this.desserts = desserts,
         error: err => this.errorMessage = err
       });
-      this.recipeService.getMostPopular().subscribe({
+      this.popularSub = this.recipeService.getMostPopular().subscribe({
         next: mostPopular => this.mostPopular = mostPopular,
         error: err => this.errorMessage = err
       });

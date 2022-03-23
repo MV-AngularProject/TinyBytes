@@ -1,0 +1,51 @@
+<section>
+  <header>
+    <div class="headerOptions">
+      <img src=''/>X
+      <img src=''/>X
+    </div>
+    <h1 class="pageTitle">
+      {{ details.title }}
+    </h1>
+    <div class="recipeMetaData">
+      <p>Author</p>
+      <p>Date</p>
+      <p>Stars</p>
+    </div>
+  </header>
+  <div class="recipeIntroductionContainer">
+    <div class='description'>
+      {{ details.summary }}
+    </div>
+    <img [src]='details.image'>
+    <div class='servingTime'>
+      <p>Cook Time: <span>{{details.readyInMinutes}} minutes</span></p>
+      <p>Serving Size: <span>{{details.servings}} people</span></p>
+    </div>
+  </div>
+  <div class="recipeDetailsContainer">
+    <div class="ingredientsNutritionContainer">
+      <div class="ingredientsContainer">
+        <h3>Ingredients</h3>
+        <ul>
+          <li *ngFor='let ingredient of details.extendedIngredients'>
+            {{ingredient.original}}
+          </li>
+        </ul>
+      </div>
+      <div class="nutritionContainer">
+        <img [src]="nutrition">
+      </div>
+    </div>
+    <div class="instructionsContainer">
+      <h3>Instructions</h3>
+      <ul *ngFor='let instructionItem of instructions'> 
+        <!-- <p class="instructionTitle" *ngIfElse='instructions.name'>Main Dish</p> -->
+        <p class="instructionTitle">{{ instructionItem.name }}</p>
+        <li *ngFor='let stepDetails of instructionItem.steps'> {{ stepDetails.step }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</section>

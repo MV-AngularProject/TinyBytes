@@ -1,0 +1,64 @@
+
+/* Header Container */
+header {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid gray;
+}
+
+.pageTitle {
+  font-weight: bold;
+}
+
+.headerOptions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.headerOptions img  {
+  margin-right: 20px;
+}
+
+.recipeMetaData {
+  display: flex;
+  flex-direction: row;
+}
+
+.recipeMetaData p {
+  margin-right: 20px;
+}
+
+/* Introduction Container */
+
+.recipeIntroductionContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.servingTime {
+  display: flex;
+}
+
+.servingTime p {
+  margin-right: 20px;
+}
+
+.servingTime span {
+  display: block;
+}
+
+/* Recipe Details Container */
+
+.recipeDetailsContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.instructionsContainer, .ingredientsNutritionContainer {
+  width: 50%;
+}
+
+.instructionTitle {
+  font-weight: bold;
+}

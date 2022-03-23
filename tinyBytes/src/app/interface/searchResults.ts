@@ -1,6 +1,7 @@
 export interface Search{
   image: string; 
   title: string;
+  id: number;
 }
 
 export interface ISearchResults{

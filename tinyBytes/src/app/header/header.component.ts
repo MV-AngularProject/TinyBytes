@@ -1,8 +1,10 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import {Router } from '@angular/router';
-// import { ISearchResults } from '../interface/searchResults';
-// import { SearchService } from '../service/searchResults.service';
+import { ISearchResults } from '../interface/searchResults';
+import { SearchService } from '../service/searchResults.service';
+
+import { SearchComponent } from '../search/search.component';
 
 @Component({
   selector: 'Header',
@@ -29,8 +31,9 @@ export class HeaderComponent {
 
   startSearch() {
     this.query = ((document.getElementById('form-control me-2') as HTMLInputElement).value);
-    this.router.navigate(['/search/', this.query]),
-      console.log("Query: ", this.query)
+    // this.router.navigate(['/search', this.query]),
+    this.router.navigate(['/search', { query: this.query }]),
+      console.log("Query:", this.query)
   }
 
 }

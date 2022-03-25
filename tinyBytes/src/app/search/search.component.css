@@ -1,0 +1,27 @@
+*{
+    font-family: sans-serif;
+}
+
+.resultTitle:hover{
+    color:orange;
+}
+
+#resultImg{
+transition: 1s ease;
+}
+
+#resultImg:hover{
+  -ms-transform: scale(1.1); /* IE 9 */
+  -webkit-transform: scale(1.1); /* Safari 3-8 */
+  transform: scale(1.1);
+transition: 1s ease;
+}
+
+@media screen and (max-width:800px){
+    .card{
+        width:100%;
+        display: flex;
+        flex-direction: column;  
+        justify-content: center;  
+    }
+}

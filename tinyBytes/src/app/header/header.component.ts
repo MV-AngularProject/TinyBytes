@@ -1,33 +1,36 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ISearchResults } from '../interface/searchResults';
-import { SearchService } from '../service/searchResults.service';
+import {Router } from '@angular/router';
+// import { ISearchResults } from '../interface/searchResults';
+// import { SearchService } from '../service/searchResults.service';
 
 @Component({
   selector: 'Header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnDestroy{
-  searchSub!: Subscription;
-  public loadComponent: boolean = false;
-  errorMessage: string = '';
+export class HeaderComponent {
   
-  constructor(private searchService: SearchService){}
+  constructor(private router: Router) { }
+  
+  query!: any;
 
-  results!: ISearchResults;
+  // results!: ISearchResults;
 
-  startSearch(): void {
-    this.loadComponent = true;
-    this.searchSub =this.searchService.search((document.getElementById('form-control me-2')as HTMLInputElement).value).subscribe({
-      next: results => this.results = results,
-      error: err => this.errorMessage = err,
-    }
+  // startSearch(): void {
+  //   this.loadComponent = true;
+  //   this.searchSub =this.searchService.search((document.getElementById('form-control me-2')as HTMLInputElement).value).subscribe({
+  //     next: results => this.results = results,
+  //     error: err => this.errorMessage = err,
+  //   }
       
-    );
+  //   );
+  // }
+
+  startSearch() {
+    this.query = ((document.getElementById('form-control me-2') as HTMLInputElement).value);
+    this.router.navigate(['/search/', this.query]),
+      console.log("Query: ", this.query)
   }
 
-  ngOnDestroy() {
-    this.searchSub.unsubscribe();
-  }
 }

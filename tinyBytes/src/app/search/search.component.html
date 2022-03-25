@@ -1,0 +1,14 @@
+<section>
+    <div id="searchHeader" class="d-flex justify-content-between" style="padding-bottom: 1%;" >
+      <h1>Search Results</h1>
+      <h4>({{results.totalResults}} Recipes)</h4>
+    </div>  
+    <div id="resultCard" class="row row-cols-5 hd-grid gap-5 d-flex justify-content-between .h-100">
+      <div *ngFor="let result of results.results" class="card" style="border: none;"> 
+        <a [routerLink]="['/recipe', result.id]">
+          <img id="resultImg" class="card-img-top rounded img-fluid" style="margin-bottom: 4%;" [src]="result.image" alt="A Recipe"/>
+        </a>
+        <p class="resultTitle" style="font-size: 20px; font-weight: 500;">{{result.title}}</p>
+      </div>
+    </div>
+  </section>

@@ -31,9 +31,8 @@ export class HeaderComponent {
 
   startSearch() {
     this.query = ((document.getElementById('form-control me-2') as HTMLInputElement).value);
-    // this.router.navigate(['/search', this.query]),
-    this.router.navigate(['/search', { query: this.query }]),
+    this.router.navigate(['/search', this.query]),
+    // this.router.navigate(['/search', { query: this.query }]),
       console.log("Query:", this.query)
   }
-
 }

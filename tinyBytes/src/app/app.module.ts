@@ -35,8 +35,8 @@ import { SearchComponent } from './search/search.component';
          { path: '', component: HomeComponent },
         { path: 'categories', component: CategoriesComponent},
         { path: 'recipe/:recipeId', component: RecipeComponent },
-        { path: '**', redirectTo: '', pathMatch: 'full' }, 
-        { path: 'search/:query', component: SearchComponent} 
+        { path: 'search/:query', component: SearchComponent},
+        { path: '**', redirectTo: '', pathMatch: 'full' },
       ]
     ),
     NgbModule

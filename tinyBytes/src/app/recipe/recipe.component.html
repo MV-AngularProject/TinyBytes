@@ -1,8 +1,14 @@
 <section>
   <header>
     <div class="headerOptions">
-      <img src=''/>X
-      <img src=''/>X
+      <div>
+        <i class="fa-solid fa-share"></i>
+      </div>
+      <div>
+        <!-- If favorited, display solid, otherwise, regular -->
+        <i class="fa-regular fa-bookmark"></i>        
+        <i class="fa-solid fa-bookmark"></i>
+      </div>
     </div>
     <h1 class="pageTitle">
       {{ details.title }}
@@ -33,8 +39,7 @@
           </li>
         </ul>
       </div>
-      <div class="nutritionContainer">
-        <img [src]="nutrition">
+      <div class="nutritionContainer" #divNutritionHtml>
       </div>
     </div>
     <div class="instructionsContainer">

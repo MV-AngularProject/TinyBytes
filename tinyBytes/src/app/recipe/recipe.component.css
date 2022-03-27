@@ -1,9 +1,15 @@
+/* Reset CSS */
+
+ul {
+  padding: 0;
+  margin: 0;
+}
 
 /* Header Container */
 header {
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid dimgray;
 }
 
 .pageTitle {
@@ -23,10 +29,20 @@ header {
 .recipeMetaData {
   display: flex;
   flex-direction: row;
+  margin-bottom: 20px;
 }
 
 .recipeMetaData p {
+  margin: 0;
   margin-right: 20px;
+}
+
+.rating {
+  margin: 0;
+}
+
+.recipeMetaData .date {
+  margin-left: 10px;
 }
 
 /* Introduction Container */
@@ -34,31 +50,89 @@ header {
 .recipeIntroductionContainer {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
+}
+
+.description {
+  margin-bottom: 40px;
+}
+
+.recipeIntroductionContainer img {
+  width: 556px;
+  height: 370px;
+  align-self: center;
+  border-radius: 10%;
+  margin-bottom: 40px;
 }
 
 .servingTime {
   display: flex;
+  align-items: center;
+  margin-bottom: 40px;
 }
 
 .servingTime p {
+  margin: 0;
   margin-right: 20px;
+  color: dimgray;
 }
 
 .servingTime span {
   display: block;
+  color: black;
 }
 
 /* Recipe Details Container */
 
 .recipeDetailsContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.instructionsContainer, .ingredientsNutritionContainer {
-  width: 50%;
+.recipeDetailsContainer h3 {
+  font-weight: bold;
+}
+
+.recipeDetailsContainer h3 {
+  list-style-type: circle;
 }
 
 .instructionTitle {
   font-weight: bold;
+}
+
+.ingredientsInstructionContainer{
+  display: flex;
+  flex-direction:row;
+  justify-content: space-around;
+  margin-bottom: 40px;
+}
+
+.instructionsContainer, .ingredientsContainer {
+  width: 50%;
+}
+
+
+/* Responsive Design */
+
+@media only screen and (max-width: 500px) {
+  .ingredientsInstructionContainer{
+    flex-direction: column;
+  }
+  .servingTime {
+    justify-content: space-around;
+  }
+  h1, h3 {
+    text-align: center;
+  }
+  .recipeMetaData {
+    justify-content: space-around;
+  }
+  .recipeMetaData p {
+    margin: 0;
+  }
+  .instructionsContainer, .ingredientsContainer {
+    width: 100%;
+  }
 }

@@ -14,7 +14,6 @@ export class RecipeDetailsService {
   recipeDetailsUrl!: string;
   recipeInstructionsUrl!: string;
   recipeNutritionUrl!: any;
-
   apiInsert = '?apiKey=';
   // apiKey = 'dd0d974a8e534716a3175c56ecd0bde5';
   apiKey = '0550322f781e49199dd00666b1933e64';

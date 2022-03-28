@@ -25,6 +25,8 @@ import { SearchComponent } from './search/search.component';
     HeaderComponent,
     RecipeComponent,
     SearchComponent,
+    CategoryComponent,
+    CategoriesComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { ISearchResults } from '../interface/searchResults';
-import { SearchService } from '../service/searchResults.service';
+import { Component} from '@angular/core';
+import {Router } from '@angular/router';
 
 @Component({
   selector: 'Header',
@@ -8,20 +7,14 @@ import { SearchService } from '../service/searchResults.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  public loadComponent: boolean = false;
-  errorMessage: string = '';
   
-  constructor(private searchService: SearchService){}
+  constructor(private router: Router) { }
+  
+  query!: any;
 
-  results!: ISearchResults;
-
-  startSearch(): void {
-    this.loadComponent = true;
-    this.searchService.search((document.getElementById('form-control me-2')as HTMLInputElement).value).subscribe({
-      next: results => this.results = results,
-      error: err => this.errorMessage = err,
-    }
-      
-    );
+  startSearch() {
+    this.query = ((document.getElementById('form-control me-2') as HTMLInputElement).value);
+    console.log("Query:", this.query);
+    this.router.navigate(['/search', this.query])
   }
 }

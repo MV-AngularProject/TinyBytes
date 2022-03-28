@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { SearchComponent } from './search/search.component';
 
 
 
@@ -23,6 +24,7 @@ import { HeaderComponent } from './header/header.component';
     FooterComponent,
     HeaderComponent,
     RecipeComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { HeaderComponent } from './header/header.component';
         { path: 'categories', component: CategoriesComponent},
         { path: 'category/:id', component: CategoryComponent},
         { path: 'recipe/:recipeId', component: RecipeComponent },
-        { path: '**', redirectTo: '', pathMatch: 'full'} 
+        { path: 'search/:query', component: SearchComponent},
+        { path: '**', redirectTo: '', pathMatch: 'full' },
       ]
     ),
     NgbModule

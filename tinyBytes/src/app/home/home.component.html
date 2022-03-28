@@ -23,9 +23,9 @@
         <h3>Super Delicious</h3>
         <div class='food-preview border-white'>
           <div  *ngFor='let popular of mostPopular.results'>
-          <div class="card" style="width: 18rem; " >
-          <div class='img-zoom'style=>
-            <img [src]='popular.image' class="card-img-top" alt="photo of popular dish">
+          <div class="card" style="width: 18rem; border: none;" >
+          <div class='img-zoom'>
+            <img [src]='popular.image' class="card-img-top" alt="photo of popular dish" [routerLink]="['/recipe', popular.id]">
           </div>
           <div class="card-body">
             <p class="card-text">{{popular.title}}</p>
@@ -38,12 +38,12 @@
         <h3>Sweet Tooth</h3>
         <div class='food-preview'>
           <div *ngFor='let dessert of desserts.results'> 
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 18rem; border: none;">
             <div class='img-zoom'>
               <img [src]="dessert.image" class="card-img-top" alt="photo of dessert">
             </div>
             <div class="card-body">
-              <a class="card-text" [routerLink]="['/recipe/{{dessert.id}}']">{{dessert.title}}</a>
+              <a class="card-text" [routerLink]="['/recipe', dessert.id]">{{dessert.title}}</a>
           </div>
         </div>
         </div>

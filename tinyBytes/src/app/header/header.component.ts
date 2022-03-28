@@ -1,10 +1,5 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component} from '@angular/core';
 import {Router } from '@angular/router';
-import { ISearchResults } from '../interface/searchResults';
-import { SearchService } from '../service/searchResults.service';
-
-import { SearchComponent } from '../search/search.component';
 
 @Component({
   selector: 'Header',
@@ -17,22 +12,9 @@ export class HeaderComponent {
   
   query!: any;
 
-  // results!: ISearchResults;
-
-  // startSearch(): void {
-  //   this.loadComponent = true;
-  //   this.searchSub =this.searchService.search((document.getElementById('form-control me-2')as HTMLInputElement).value).subscribe({
-  //     next: results => this.results = results,
-  //     error: err => this.errorMessage = err,
-  //   }
-      
-  //   );
-  // }
-
   startSearch() {
     this.query = ((document.getElementById('form-control me-2') as HTMLInputElement).value);
-    this.router.navigate(['/search', this.query]),
-    // this.router.navigate(['/search', { query: this.query }]),
-      console.log("Query:", this.query)
+    console.log("Query:", this.query);
+    this.router.navigate(['/search', this.query])
   }
 }

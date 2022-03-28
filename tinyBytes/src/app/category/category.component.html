@@ -1,0 +1,9 @@
+<section>
+    <div id="searchCuisine" class="d-flex justify-content-between" style="padding-bottom: 1%;" ng-cloak>
+      <h1>Search Results</h1>
+      <h4>({{results.totalResults}} Recipes)</h4>
+    </div>  
+    <div *ngFor="let result of results.results">
+        <h1>{{results.results.title}}</h1>
+    </div>
+  </section>

@@ -4,5 +4,5 @@ import { Component } from '@angular/core';
   templateUrl: './categories.component.html'
 })
 export class CategoriesComponent {
-  public pageTitle = 'Category page';
+  public pageTitle = 'Categories page';
 }

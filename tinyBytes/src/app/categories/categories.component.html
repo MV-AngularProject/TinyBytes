@@ -1,10 +1,46 @@
+<!-- TODO - Make this div display all the categrory dinamically, so make it a function, make it DRY-->
 <div class="container">
+
+    <!-- TODO - the idea it's to have an array with all category to be display using array.map,
+    instead of creating individual links for each category-->
+    <script type = "text/typescript">
+        var categories:string[]; 
+        categories = [
+        "African"
+        "American"
+        "British"
+        "Cajun"
+        "Caribbean"
+        "Chinese"
+        "Eastern European"
+        "European"
+        "French"
+        "German"
+        "Greek"
+        "Indian"
+        "Irish"
+        "Italian"
+        "Japanese"
+        "Jewish"
+        "Korean"
+        "Latin American"
+        "Mediterranean"
+        "Mexican"
+        "Middle Eastern"
+        "Nordic"
+        "Southern"
+        "Spanish"
+        "Thai"
+        "Vietnamese"
+        ]
+    </script>
     <h1 class="d-flex justify-content-center">Categories</h1>
 
     <div class="d-flex justify-content-between">
         <div id="categories" class="col-lg-6">
             <img src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="rounded"/>
             <h1>Avocado Toast</h1>
+            <h1>mangu</h1>
         </div>
     </div>
 </div>

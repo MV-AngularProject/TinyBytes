@@ -109,6 +109,10 @@ header {
   margin-bottom: 40px;
 }
 
+.ingredientsInstructionContainer li {
+  list-style-type: circle;
+}
+
 .instructionsContainer, .ingredientsContainer {
   width: 50%;
 }
@@ -123,16 +127,24 @@ header {
   .servingTime {
     justify-content: space-around;
   }
+  .ingredientsContainer {
+    margin-bottom: 40px;
+  }
   h1, h3 {
     text-align: center;
   }
   .recipeMetaData {
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
   }
   .recipeMetaData p {
     margin: 0;
   }
   .instructionsContainer, .ingredientsContainer {
     width: 100%;
+  }
+  .nutritionContainer {
+    margin: auto;
+    margin-bottom: 40px;
   }
 }

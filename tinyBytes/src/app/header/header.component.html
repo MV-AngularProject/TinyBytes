@@ -1,26 +1,28 @@
 <div class="logo">
-    <img src ="./assets/tinyBytesLogo.jpeg" width=275>
+  <img src ="./assets/tinyBytesLogo.jpeg" width=275>
 </div>
 <hr size="5" width="100%" style="margin:0; margin-top: 20px;"> 
-  <nav id="navContainer" class="uk-navbar-container uk-margin " uk-navbar>
+<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+<nav id="navContainer" class="uk-navbar-container uk-margin " uk-navbar>
   <div class="container-fluid uk-background-default" >
     <div id="navbar-left" class="nav-overlay uk-navbar-left">
-      <a class="fs-3 text-dark" routerLink= "">Home</a>
-      <a class="fs-3 text-dark" routerLink= "categories">Cuisines</a>
-      <a class="fs-3 text-dark" >Favorites</a>
+      <a style="text-decoration:none" class="fs-3 text-dark" routerLink= "">Home</a>
+      <a style="text-decoration:none" class="fs-3 text-dark" routerLink= "categories">Cuisines</a>
+      <a style="text-decoration:none" class="fs-3 text-dark" >Favorites</a>
     </div>
     <div class="nav-overlay uk-navbar-right">
-        <a class="uk-navbar-toggle" uk-search-icon="ratio:2" uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
+      <a class="uk-navbar-toggle" uk-search-icon="ratio:2" uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
     </div>
     <div class="nav-overlay uk-navbar-left uk-flex-1" hidden>
-        <div class="uk-navbar-item uk-width-expand">
-            <form class="uk-search uk-search-large uk-width-1-1" (ngSubmit)="startSearch();" >
-                <input id="form-control me-2" class="uk-search-input" type="search" placeholder="Search..." autofocus>
-            </form>
-        </div>
-        <a class="uk-navbar-toggle" uk-close="ratio:2" uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
+      <div class="uk-navbar-item uk-width-expand">
+        <form class="uk-search uk-search-large uk-width-1-1" (ngSubmit)="startSearch();" >
+            <input id="form-control me-2" class="uk-search-input" type="search" placeholder="Search..." autofocus>
+        </form>
+      </div>
+      <a class="uk-navbar-toggle" uk-close="ratio:2" uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
     </div>
-  </div> 
+  </div>
+</nav> 
+</div>
+<hr size="5" width="100%" style="margin-top: 0%;"> 
 
- </nav> 
-  <hr size="5" width="100%" style="margin-top: 0%;"> 

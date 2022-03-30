@@ -9,7 +9,7 @@
     padding-top: 0%;
 }
 .resultTitle:hover{
-    color:orange;
+    color:#f4642d;
 }
 h4{
     margin-top: 0%;
@@ -20,7 +20,7 @@ h4{
   -webkit-transform: scale(1.1); /* Safari 3-8 */
   transform: scale(1.1);
   transition: 1s ease;
-  color:orange;
+  color:#f4642d;
 }
 
 @media screen and (max-width:450px){

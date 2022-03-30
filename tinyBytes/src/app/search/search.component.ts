@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit, OnDestroy{
     query!: any;
 
     ngOnInit(): void {
-        this.route.paramMap.subscribe(params => {
+        this.searchSub = this.route.paramMap.subscribe(params => {
             console.log(params);
             this.query = params.get('query');
             this.searchService

@@ -1,0 +1,12 @@
+img {
+    height: 316.95px;
+    width: 316.95px;
+}
+
+@media (max-width:767px){
+    img {
+      justify-content: center !important;
+      width: 200px; 
+      height: 200px; 
+    }
+}

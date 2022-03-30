@@ -40,7 +40,7 @@
   <div class="recipeIntroductionContainer">
     <div class='description' #divRecipeDescription>
     </div>
-    <img [src]='details.image'>
+    <img [src]='details.image' [alt]='details.title'>
     <div class='servingTime'>
       <p>Cook Time: <span>{{details.readyInMinutes}} minutes</span></p>
       <p>Serving Size: <span>{{details.servings}} people</span></p>
@@ -58,9 +58,9 @@
       </div>
       <div class="instructionsContainer">
         <h3>Instructions</h3>
-        <ul *ngFor='let instructionItem of instructions'> 
+        <ul *ngFor='let instructionItem of instructions'>
+          <!-- <li *ngIf='instructionItem.name' class="instructionTitle">  {{ instructionItem.name }}</li> -->
           <!-- <p class="instructionTitle" *ngIfElse='instructions.name'>Main Dish</p> -->
-          <p class="instructionTitle">{{ instructionItem.name }}</p>
           <li *ngFor='let stepDetails of instructionItem.steps'> {{ stepDetails.step }}
           </li>
         </ul>

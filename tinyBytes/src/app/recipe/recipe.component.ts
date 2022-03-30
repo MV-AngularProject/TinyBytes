@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { RecipeDetailsService } from './recipeDetails.service';
 import { IRecipeDetails, IInstructions } from '../interface/recipeDetails';
 import { IHttpError } from '../interface/error';
 import { IUserData } from '../interface/userData';
+import { RecipeDetailsService } from '../service/recipeDetails.service';
 
 @Component({
   templateUrl: './recipe.component.html',

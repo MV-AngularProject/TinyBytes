@@ -11,14 +11,14 @@ export class SearchService{
     constructor(private http: HttpClient) { }
     
     //apiKey=a42bca2f8c2f4c5194cd8aa86c365de7
-    //apiKey=b989a147ccb6450e920e8fa5355c632c
+  apiKey='b989a147ccb6450e920e8fa5355c632c';
     //apiKey = 'dd0d974a8e534716a3175c56ecd0bde5';
   // apiKey = '0550322f781e49199dd00666b1933e64';
   //apiKey = 'b989a147ccb6450e920e8fa5355c632c';
   // apiKey = "f082f3f33d8e400b8898966f7fcbc069";
 
     search(query:any): Observable<ISearchResults>{
-        return this.http.get<ISearchResults>(`https://api.spoonacular.com/recipes/complexSearch?apiKey=dd0d974a8e534716a3175c56ecd0bde5&query=${query}&number=8`).pipe(
+        return this.http.get<ISearchResults>(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${this.apiKey}&query=${query}&number=8`).pipe(
             tap(data => console.log('All', JSON.stringify(data.results), "value", query)),
             catchError(this.handleError)
         )

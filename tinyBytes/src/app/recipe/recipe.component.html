@@ -4,18 +4,21 @@
       <div>
         <i class="fa-solid fa-share"></i>
       </div>
-      <div (click)='printRecipe()'>
-        <i class="fa-solid fa-print"></i>      
+      <div (click)="printRecipe()">
+        <i class="fa-solid fa-print"></i>
       </div>
       <div>
         <i class="fa-brands fa-pinterest-p"></i>
       </div>
-      <div (click)='bookmarkRecipe()' *ngIf='userData.favorited; else notFavorited' >
+      <div
+        (click)="bookmarkRecipe()"
+        *ngIf="userData.favorited; else notFavorited"
+      >
         <i class="fa-solid fa-bookmark"></i>
       </div>
       <ng-template #notFavorited>
-        <div (click)='bookmarkRecipe()'>
-          <i class="fa-regular fa-bookmark"></i>        
+        <div (click)="bookmarkRecipe()">
+          <i class="fa-regular fa-bookmark"></i>
         </div>
       </ng-template>
     </div>
@@ -26,9 +29,9 @@
       <p>{{ author }}</p>
       <p>
         <i class="fa-regular fa-calendar-days"></i>
-        <span class='date'>Yesterday</span>
+        <span class="date">Yesterday</span>
       </p>
-      <p class='rating'>
+      <p class="rating">
         <i class="fa-solid fa-star"></i>
         <i class="fa-solid fa-star"></i>
         <i class="fa-solid fa-star"></i>
@@ -38,12 +41,15 @@
     </div>
   </header>
   <div class="recipeIntroductionContainer">
-    <div class='description' #divRecipeDescription>
-    </div>
-    <img [src]='details.image' [alt]='details.title'>
-    <div class='servingTime'>
-      <p>Cook Time: <span>{{details.readyInMinutes}} minutes</span></p>
-      <p>Serving Size: <span>{{details.servings}} people</span></p>
+    <div class="description" #divRecipeDescription></div>
+    <img [src]="details.image" [alt]="details.title" />
+    <div class="servingTime">
+      <p>
+        Cook Time: <span>{{ details.readyInMinutes }} minutes</span>
+      </p>
+      <p>
+        Serving Size: <span>{{ details.servings }} people</span>
+      </p>
     </div>
   </div>
   <div class="recipeDetailsContainer">
@@ -51,23 +57,22 @@
       <div class="ingredientsContainer">
         <h3>Ingredients</h3>
         <ul>
-          <li *ngFor='let ingredient of details.extendedIngredients'>
-            {{ingredient.original}}
+          <li *ngFor="let ingredient of details.extendedIngredients">
+            {{ ingredient.original }}
           </li>
         </ul>
       </div>
-      <div class="instructionsContainer">
+      <div *ngIf="instructions" class="instructionsContainer">
         <h3>Instructions</h3>
-        <ul *ngFor='let instructionItem of instructions'>
+        <ul *ngFor="let instructionItem of instructions">
           <!-- <li *ngIf='instructionItem.name' class="instructionTitle">  {{ instructionItem.name }}</li> -->
           <!-- <p class="instructionTitle" *ngIfElse='instructions.name'>Main Dish</p> -->
-          <li *ngFor='let stepDetails of instructionItem.steps'> {{ stepDetails.step }}
+          <li *ngFor="let stepDetails of instructionItem.steps">
+            {{ stepDetails.step }}
           </li>
         </ul>
       </div>
     </div>
-    <div *ngIf='nutrition' class="nutritionContainer" #divNutritionHtml>
-    </div>
+    <div *ngIf="nutrition" class="nutritionContainer" #divNutritionHtml></div>
   </div>
-
 </section>

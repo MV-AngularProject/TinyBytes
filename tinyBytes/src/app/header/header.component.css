@@ -46,4 +46,10 @@ hr{
     .uk-search-large .uk-search-input {
         font-size: 1.5rem;
     }
+    .container-fluid, .uk-background-default {
+      padding: 0;
+    }
+    .uk-search-large .uk-search-input {
+      font-size: 1.5rem;
+    }
 }

@@ -11,7 +11,7 @@ hr{
     background-color: black;
 }
 #navContainer {
-    margin-top: 0%;
+    margin-top: 0%!important;
     margin-bottom: 0%;
 }
 .container-fluid{
@@ -25,7 +25,15 @@ hr{
     justify-content: space-between;
 }
 
-@media screen and (max-width:800px){
+@media screen and (max-width:450px){
+    
+    #navbar-left{
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    a{
+        font-size: 18px!important;
+    }
     .card{
         width:100%;
         display: flex;

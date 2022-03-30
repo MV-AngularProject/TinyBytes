@@ -38,7 +38,7 @@ import { SearchComponent } from './search/search.component';
       [
          { path: '', component: HomeComponent },
         { path: 'categories', component: CategoriesComponent},
-        { path: 'category/:id', component: CategoryComponent},
+        { path: 'categories/:id', component: CategoryComponent},
         { path: 'recipe/:recipeId', component: RecipeComponent },
         { path: 'search/:query', component: SearchComponent},
         { path: '**', redirectTo: '', pathMatch: 'full' },

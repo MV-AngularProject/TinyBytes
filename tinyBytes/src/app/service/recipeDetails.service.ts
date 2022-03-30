@@ -13,7 +13,7 @@ export class RecipeDetailsService {
 
   recipeDetailsUrl!: string;
   recipeInstructionsUrl!: string;
-  recipeNutritionUrl!: any;
+  recipeNutritionUrl!: string;
   apiInsert = '?apiKey=';
   // apiKey = 'dd0d974a8e534716a3175c56ecd0bde5';
   // apiKey = '0550322f781e49199dd00666b1933e64';
@@ -26,18 +26,18 @@ export class RecipeDetailsService {
     return this.http
       .get<IRecipeDetails>(this.recipeDetailsUrl)
       .pipe(
-      //   map((details) => {
-      //     let container!: IRecipeDetails;
-      //     container.id = details.id;
-      //     container.title = details.title;
-      //     container.image = details.image;
-      //     container.servings = details.servings;
-      //     container.readyInMinutes = details.readyInMinutes;
-      //     container.summary = details.summary;
-      //     container.extendedIngredients = details.extendedIngredients;
-      //   return container;
+        // map((details) => {
+        //   let container!: IRecipeDetails;
+        //   container.id = details.id;
+        //   container.title = details.title;
+        //   container.image = details.image;
+        //   container.servings = details.servings;
+        //   container.readyInMinutes = details.readyInMinutes;
+        //   container.summary = details.summary;
+        //   container.extendedIngredients = details.extendedIngredients;
+        // return container;
       // }),
-        catchError((err)=> this.HttpErrorHandler(err))
+        catchError(this.HttpErrorHandler)
     );
   }
 
@@ -45,14 +45,14 @@ export class RecipeDetailsService {
     this.recipeInstructionsUrl = `https://api.spoonacular.com/recipes/${recipeId}/analyzedInstructions${this.apiInsert}${this.apiKey}`;
     return this.http
       .get<IInstructions[]>(this.recipeInstructionsUrl)
-      .pipe(catchError((err) => this.HttpErrorHandler(err)))
+      .pipe(catchError(this.HttpErrorHandler))
   }
 
   getHTMLNutritionFacts(recipeId: string | null): Observable<string | IHttpError> {
     this.recipeNutritionUrl = `https://api.spoonacular.com/recipes/${recipeId}/nutritionLabel/${this.apiInsert}${this.apiKey}`;
     return this.http
       .get(this.recipeNutritionUrl, { responseType: 'text' })
-      .pipe(catchError((err) => this.HttpErrorHandler(err)))
+      .pipe(catchError(this.HttpErrorHandler))
   }
 
   private HttpErrorHandler(err: HttpErrorResponse): Observable<IHttpError>{
@@ -62,7 +62,8 @@ export class RecipeDetailsService {
     customError.statusText = err.statusText; 
     customError.dataType = err.name;
     customError.componentMessage = err.error;
-    return throwError(()=> customError);
+    console.log('Error message: ', customError.detailedMessage)
+    return throwError(()=>customError);
   }
 
 }

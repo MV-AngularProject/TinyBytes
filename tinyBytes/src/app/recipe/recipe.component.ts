@@ -10,7 +10,6 @@ import { RecipeDetailsService } from '../service/recipeDetails.service';
   templateUrl: './recipe.component.html',
   styleUrls: ['recipe.component.css'],
 })
-
 export class RecipeComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     private route: ActivatedRoute,
@@ -67,7 +66,6 @@ export class RecipeComponent implements OnInit, OnDestroy, AfterViewInit {
         },
         // error: (err: IHttpError) => console.error(err.detailedMessage),
       });
-    // No instruction data for some recipeids, must have html response in those situations
     this.instructionsSub = this.recipeDetailsService
       .getRecipeInstructions(this.recipeId)
       .subscribe({
@@ -84,13 +82,13 @@ export class RecipeComponent implements OnInit, OnDestroy, AfterViewInit {
           console.log('Nutrition HTML: ', nutritionHtml);
           this.nutrition = <string>nutritionHtml;
         },
-        error: (err: IHttpError) => {
-          console.error('Status Code: ', err.statusCode)
-          console.error('Detailed Message: ', err.detailedMessage)
-          console.error('Component Message: ', err.componentMessage)
-          console.error('Status Text: ', err.statusText)
-          console.error('Data Type: ', err.dataType)
-        },
+        // error: (err: IHttpError) => {
+        //   console.error('Status Code: ', err.statusCode);
+        //   console.error('Detailed Message: ', err.detailedMessage);
+        //   console.error('Component Message: ', err.componentMessage);
+        //   console.error('Status Text: ', err.statusText);
+        //   console.error('Data Type: ', err.dataType);
+        // },
       });
   }
 

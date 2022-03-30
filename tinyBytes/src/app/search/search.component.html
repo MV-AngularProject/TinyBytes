@@ -4,7 +4,7 @@
       <h4>({{results.totalResults}} Recipes)</h4>
     </div>  
     <div id="resultCard" class="row row-cols-lg-5 row-cols-md-3 row-cols-md-2 hd-grid gap-4 d-flex justify-content-around .h-100">
-      <div *ngFor="let result of results.results" class="card" style="border: none;"> 
+      <div id="cardContainer"*ngFor="let result of results.results" class="card" style="border: none;"> 
         <a [routerLink]="['/recipe', result.id]">
           <img id="resultImg" class="card-img-top rounded img-fluid img-responsive" style="margin-bottom: 2%;" [src]="result.image" alt="A Recipe"/>
         </a>

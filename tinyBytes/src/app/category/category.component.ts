@@ -24,7 +24,6 @@ export class CategoryComponent implements OnInit {
     this.searchService.searchByCuisine(id).subscribe({
       next: results => {
         this.results = results
-        console.log("THIS IS THE RESULT: ",results.results)
       },
       error: err => this.errorMessage = err,
     }

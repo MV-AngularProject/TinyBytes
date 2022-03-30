@@ -1,46 +1,41 @@
 <!-- TODO - Make this div display all the categrory dinamically, so make it a function, make it DRY-->
 <div class="container">
 
-    <!-- TODO - the idea it's to have an array with all category to be display using array.map,
-    instead of creating individual links for each category-->
-    <script type = "text/typescript">
-        var categories:string[]; 
-        categories = [
-        "African"
-        "American"
-        "British"
-        "Cajun"
-        "Caribbean"
-        "Chinese"
-        "Eastern European"
-        "European"
-        "French"
-        "German"
-        "Greek"
-        "Indian"
-        "Irish"
-        "Italian"
-        "Japanese"
-        "Jewish"
-        "Korean"
-        "Latin American"
-        "Mediterranean"
-        "Mexican"
-        "Middle Eastern"
-        "Nordic"
-        "Southern"
-        "Spanish"
-        "Thai"
-        "Vietnamese"
-        ]
-    </script>
+   
     <h1 class="d-flex justify-content-center">Categories</h1>
 
-    <div class="d-flex justify-content-between">
-        <div id="categories" class="col-lg-6">
-            <img src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="rounded"/>
-            <h1>Avocado Toast</h1>
-            <h1>mangu</h1>
+    <div class="row d-flex justify-content-between">
+        <div id="African" class="col-3" [routerLink]="['/categories', id]">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Africa_%28orthographic_projection%29.svg/1200px-Africa_%28orthographic_projection%29.svg.png" class="rounded"/>
+            <h1 class="d-flex justify-content-center">African</h1>
+        </div>
+        <div id="American" class="col-3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/United_States_%28orthographic_projection%29.svg/2000px-United_States_%28orthographic_projection%29.svg.png" class="rounded"/>
+            <h1 class="d-flex justify-content-center">American</h1>
+        </div>
+        <div id="British" class="col-3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Europe-UK_%28orthographic_projection%29.svg/250px-Europe-UK_%28orthographic_projection%29.svg.png" class="rounded"/>
+            <h1 class="d-flex justify-content-center">British</h1>
+        </div>
+        <div id="Caribbean" class="col-3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Antillas_%28orthographic_projection%29.svg/800px-Antillas_%28orthographic_projection%29.svg.png" class="rounded"/>
+            <h1 class="d-flex justify-content-center">Caribbean</h1>
+        </div>
+        <div id="Chinese" class="col-3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/CHN_orthographic.svg/250px-CHN_orthographic.svg.png" class="rounded"/>
+            <h1 class="d-flex justify-content-center">Chinese</h1>
+        </div>
+        <div id="French" class="col-3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/EU-France_%28orthographic_projection%29.svg/250px-EU-France_%28orthographic_projection%29.svg.png" class="rounded"/>
+            <h1 class="d-flex justify-content-center">French</h1>
+        </div>
+        <div id="Korean" class="col-3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Korea_%28orthographic_projection%29.svg/250px-Korea_%28orthographic_projection%29.svg.png" class="rounded"/>
+            <h1 class="d-flex justify-content-center">Korean</h1>
+        </div>
+        <div id="Mexican" class="col-3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/MEX_orthographic.svg/260px-MEX_orthographic.svg.png" class="rounded"/>
+            <h1 class="d-flex justify-content-center">Mexican</h1>
         </div>
     </div>
 </div>

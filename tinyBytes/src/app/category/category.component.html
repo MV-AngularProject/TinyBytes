@@ -3,7 +3,8 @@
       <h1>Search Results</h1>
       <h4>({{results.totalResults}} Recipes)</h4>
     </div>  
-    <div *ngFor="let result of results.results">
+    <div *ngFor="let result of results.results" class="d-flex justify-content-between">
+        <img id="resultImg" class="card-img-top rounded img-fluid" style="margin-bottom: 4%;" [src]="result.image" alt={{result.title}}/>
         <h1>{{result.title}}</h1>
     </div>
   </section>

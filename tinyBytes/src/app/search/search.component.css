@@ -11,6 +11,9 @@
 .resultTitle:hover{
     color:orange;
 }
+h4{
+    margin-top: 0%;
+}
 
 #resultImg:hover{
   -ms-transform: scale(1.1); /* IE 9 */

@@ -10,22 +10,10 @@
 hr{
     background-color: black;
 }
-
-.resultTitle:hover{
-    color:orange;
+#navContainer {
+    margin-top: 0%;
+    margin-bottom: 0%;
 }
-
-#resultImg{
-transition: 1s ease;
-}
-
-#resultImg:hover{
-  -ms-transform: scale(1.1); /* IE 9 */
-  -webkit-transform: scale(1.1); /* Safari 3-8 */
-  transform: scale(1.1);
-transition: 1s ease;
-}
-
 .container-fluid{
     display: flex;
     justify-content: space-between;

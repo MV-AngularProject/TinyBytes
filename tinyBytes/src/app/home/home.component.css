@@ -5,6 +5,14 @@
     flex-direction: column;
     max-width: 1350px;
 }
+h3 {
+    font-family: Georgia, serif;
+    font-weight: bold;
+}
+.food-title{
+    font-weight: bold;
+    font-family: Gill Sans, sans-serif;
+}
 .food-preview{
     display: flex;
     flex-direction: row;

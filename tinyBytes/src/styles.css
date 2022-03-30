@@ -1,11 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 html {
-  max-width: 1200px;
+  max-width: 80%;
   margin: auto;
+  justify-self: center;
 }
-/* @media screen and (max-width:450px){
+@media screen and (max-width:450px){
   html{
     max-width: 80%;
     margin: auto;
+    padding-right: 0%;
   }
-} */
+}
+@media screen and (max-width:1024px){
+  html{
+    max-width: 80%;
+    margin: auto;
+    padding-right: 0%;
+  }
+}

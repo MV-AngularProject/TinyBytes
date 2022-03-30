@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CategoriesComponent } from './categories/categories.component';
-import { CategoryComponent } from './category/category.component';
 import { HomeComponent } from './home/home.component';
 import { AppComponent } from './app.component';
 import { RecipeComponent } from './recipe/recipe.component';
@@ -25,7 +24,6 @@ import { SearchComponent } from './search/search.component';
     HeaderComponent,
     RecipeComponent,
     SearchComponent,
-    CategoryComponent,
     CategoriesComponent,
   ],
   imports: [
@@ -38,7 +36,6 @@ import { SearchComponent } from './search/search.component';
       [
          { path: '', component: HomeComponent },
         { path: 'categories', component: CategoriesComponent},
-        { path: 'categories/:id', component: CategoryComponent},
         { path: 'recipe/:recipeId', component: RecipeComponent },
         { path: 'search/:query', component: SearchComponent},
         { path: '**', redirectTo: '', pathMatch: 'full' },

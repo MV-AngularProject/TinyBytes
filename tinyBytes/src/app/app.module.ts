@@ -13,6 +13,7 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './search/search.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -25,6 +26,7 @@ import { SearchComponent } from './search/search.component';
     RecipeComponent,
     SearchComponent,
     CategoriesComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { SearchComponent } from './search/search.component';
          { path: '', component: HomeComponent },
         { path: 'categories', component: CategoriesComponent},
         { path: 'recipe/:recipeId', component: RecipeComponent },
-        { path: 'search/:query', component: SearchComponent},
+        { path: 'search/:query', component: SearchComponent },
+        { path: 'login', component: LoginComponent},
         { path: '**', redirectTo: '', pathMatch: 'full' },
       ]
     ),

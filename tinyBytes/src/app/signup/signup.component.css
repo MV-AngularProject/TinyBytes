@@ -1,0 +1,92 @@
+
+
+#sign-up-container {
+  display: flex;
+  justify-content: center;
+}
+
+#sign-up-modal {
+  width: 425px;
+  padding: 30px 60px;
+  box-sizing: content-box;
+}
+
+#sign-up-modal span {
+  color: #4f3cc9;
+}
+
+h1 {
+  margin: 0;
+  font-size: 35px
+}
+
+form {
+  margin-top: 20px;
+}
+
+#entries {
+  display: flex;
+  flex-direction: column;
+}
+
+#entries > div {
+  margin-bottom: 20px;
+}
+
+.full-name {
+  display: flex;
+}
+
+.first-name {
+  margin-right: 20px;
+}
+
+.email {
+  display: flex;
+  flex-direction: column;
+}
+
+.password {
+  display: flex;
+  flex-direction: column;
+}
+
+.xmark-icon {
+  display: flex;
+  justify-content: flex-end;
+}
+
+input {
+  border-radius: 8px;
+  padding: 10px 16px;
+  box-sizing: border-box;
+  height:40px;
+  width: 100%;
+  border: 1px solid transparent;
+  background-color: #f3f3f4;
+  outline: none;
+}
+
+input:focus, input:hover {
+  border: 1px solid black;
+  background-color: white;
+}
+
+.terms {
+  margin-bottom: 20px;
+}
+
+.terms > input {
+  height: auto;
+  width: auto;
+}
+
+button {
+  border-radius: 8px;
+  padding: 10px 16px;
+}
+
+
+.policies {
+  font-size: .75rem;
+}

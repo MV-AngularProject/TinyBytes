@@ -13,6 +13,7 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './search/search.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 
@@ -25,6 +26,7 @@ import { SearchComponent } from './search/search.component';
     RecipeComponent,
     SearchComponent,
     CategoriesComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { SearchComponent } from './search/search.component';
     RouterModule,
     RouterModule.forRoot(
       [
-         { path: '', component: HomeComponent },
+        { path: '', component: HomeComponent },
+        { path: 'signup', component: SignupComponent },
         { path: 'categories', component: CategoriesComponent},
         { path: 'recipe/:recipeId', component: RecipeComponent },
         { path: 'search/:query', component: SearchComponent},

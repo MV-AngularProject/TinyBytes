@@ -1,0 +1,32 @@
+a{
+    color:#f4642d;
+    text-decoration:none; 
+}
+
+button{
+    color:whitesmoke;
+    border-style: none;
+    width: 400px;
+    height: 50px;
+    background-color: #f4642d;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 5%;
+    margin-top: 2%;
+}
+
+.loginPage{
+    display: flex;
+    flex-direction: row;
+    height: 150%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.loginImage{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 2%;
+    margin-right: 14%;
+}

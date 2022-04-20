@@ -14,7 +14,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './search/search.component';
 import { SignupComponent } from './signup/signup.component';
-
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -27,6 +27,7 @@ import { SignupComponent } from './signup/signup.component';
     SearchComponent,
     CategoriesComponent,
     SignupComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +41,8 @@ import { SignupComponent } from './signup/signup.component';
         { path: 'signup', component: SignupComponent },
         { path: 'categories', component: CategoriesComponent},
         { path: 'recipe/:recipeId', component: RecipeComponent },
-        { path: 'search/:query', component: SearchComponent},
+        { path: 'search/:query', component: SearchComponent },
+        { path: 'login', component: LoginComponent},
         { path: '**', redirectTo: '', pathMatch: 'full' },
       ]
     ),

@@ -13,8 +13,8 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './search/search.component';
+import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
-
 
 
 @NgModule({
@@ -26,6 +26,7 @@ import { LoginComponent } from './login/login.component';
     RecipeComponent,
     SearchComponent,
     CategoriesComponent,
+    SignupComponent,
     LoginComponent,
   ],
   imports: [
@@ -36,7 +37,8 @@ import { LoginComponent } from './login/login.component';
     RouterModule,
     RouterModule.forRoot(
       [
-         { path: '', component: HomeComponent },
+        { path: '', component: HomeComponent },
+        { path: 'signup', component: SignupComponent },
         { path: 'categories', component: CategoriesComponent},
         { path: 'recipe/:recipeId', component: RecipeComponent },
         { path: 'search/:query', component: SearchComponent },

@@ -1,0 +1,38 @@
+<div id="sign-up-container">
+  <div id="sign-up-modal">
+    <div class="xmark-icon">
+      <i class="fa-solid fa-xmark fa-lg"></i>
+    </div>
+    <h1>Sign up</h1>
+    <form method="POST" action="/chefs">
+      <div id="entries">
+        <div class="full-name">
+          <div class="first-name">
+            <label>First Name</label>
+            <input type="text" value="" name="first" />
+          </div>
+          <div class="last-name">
+            <label>Last Name</label>
+            <input type="text" value="" name="last" />
+          </div>
+        </div>
+        <div class="email">
+          <label><i class="fa-regular fa-envelope"></i> Email</label>
+          <input type="email" value="" name="email" />
+        </div>
+        <div class="password">
+          <label><i class="fa-solid fa-lock"></i> Password</label>
+          <input type="password" value="" name="password" placeholder="6+ characters"/>
+        </div>
+      </div>
+      <div class="terms">
+        <input type="checkbox" value="" name="agreement">
+        Creating an account means you're okay with our <span>Terms of Service, Privacy Policy,</span> and our default <span>Notification Settings</span>
+      </div>  
+      <button type="submit">Create Account</button>
+    </form>
+    <p class="policies">
+      This site is protected by reCAPTCHA and the Google <span>Privacy Policy</span> and <span>Terms of Service</span> apply.
+    </p>
+  </div>
+</div>

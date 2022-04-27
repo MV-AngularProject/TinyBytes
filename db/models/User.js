@@ -1,5 +1,6 @@
 //imports here
-const {db, DataTypes, Model} = require('../db');
+const db = require('../db');
+const {Model, DataTypes} = require('sequelize');
 
 class User extends Model {
   // add methods here
@@ -30,10 +31,15 @@ User.init(
       allowNull: false,
     },
     // 0= false 1=true
-    apiKey: {
+    developer: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
+      allowNull: false,
     },
+    apiKey: {
+      type: DataTypes.INTEGER,
+      unique: true,
+    }
   },
   {
     sequelize: db,

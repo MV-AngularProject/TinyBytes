@@ -1,35 +1,48 @@
 <main>
     <h2>Profile</h2>
     <section class="profile-user-info">
-        <form>
-            <div class="name">
-                <label>Full Name</label>
-                <input type="text" value="something fromt the db">
+        <div id="sign-up-container">
+            <div id="sign-up-modal">
+              <div class="xmark-icon">
+                <i class="fa-solid fa-xmark fa-lg"></i>
+              </div>
+              <form >
+                <div id="entries">
+                  <div class="full-name">
+                    <div class="first-name">
+                      <label>First Name</label>
+                      <input type="text" value="db populated" name="first" />
+                    </div>
+                    <div class="last-name">
+                      <label>Last Name</label>
+                      <input type="text" value="db populated" name="last" />
+                    </div>
+                  </div>
+                  <div class="email">
+                    <label><i class="fa-regular fa-envelope"></i> Email</label>
+                    <input type="email" value="db populated" name="email" />
+                  </div>
+                  <div class="password">
+                    <label><i class="fa-solid fa-lock"></i> Password</label>
+                    <input type="password" value="db populated" name="password" placeholder="6+ characters"/>
+                  </div>
+                </div>
+              </form>
             </div>
-            <div class="username">
-                <label>Username</label>
-                <input type="text" value="something fromt the db">
-            </div>
-            <div class="Email">
-                <label>Email</label>
-                <input type="email" value="something fromt the db">
-            </div>
-            <div class="password">
-                <label>Password</label>
-                <input type="password" value="something fromt the db">
-                <div class="update">Update Info</div>
-            </div>
-        </form>
+          </div>
     </section>
     <section class="newsletter">
-        <h4>Newsletter</h4>
+        <h3>Newsletter</h3>
     <div class='newsletter-content'>
         <p>You are currently subscribed to our newsletter</p>
         <button>Unsubscribe</button>
       </div>
     </section>
     <div class='sign-out-delete'>
-        <p>Sign out</p>
-        <p>Delete Account</p>
+      <div class="sign-out">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <p>Sign out</p> 
+      </div>
+      <p>Delete Account</p>
     </div>
 </main>

@@ -15,6 +15,7 @@ import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './search/search.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { LoginComponent } from './login/login.component';
     CategoriesComponent,
     SignupComponent,
     LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ import { LoginComponent } from './login/login.component';
         { path: 'recipe/:recipeId', component: RecipeComponent },
         { path: 'search/:query', component: SearchComponent },
         { path: 'login', component: LoginComponent},
+        { path: 'profile', component: ProfileComponent},
         { path: '**', redirectTo: '', pathMatch: 'full' },
       ]
     ),

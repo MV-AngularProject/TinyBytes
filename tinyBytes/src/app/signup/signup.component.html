@@ -9,26 +9,30 @@
         <div class="full-name">
           <div class="first-name">
             <label>First Name</label>
-            <input type="text" value="" name="first" />
+            <input type="text" value="" name="first" min=2 required/>
           </div>
           <div class="last-name">
             <label>Last Name</label>
-            <input type="text" value="" name="last" />
+            <input type="text" value="" name="last" min=2 required/>
           </div>
         </div>
         <div class="email">
           <label><i class="fa-regular fa-envelope"></i> Email</label>
-          <input type="email" value="" name="email" />
+          <input type="email" value="" name="email" required/>
         </div>
         <div class="password">
           <label><i class="fa-solid fa-lock"></i> Password</label>
-          <input type="password" value="" name="password" placeholder="6+ characters"/>
+          <input type="password" value="" name="password" placeholder="6+ characters" min=6 required/>
         </div>
       </div>
       <div class="terms">
-        <input type="checkbox" value="" name="agreement">
+        <input type="checkbox" value="" name="agreement" required>
         Creating an account means you're okay with our <span>Terms of Service, Privacy Policy,</span> and our default <span>Notification Settings</span>
-      </div>  
+      </div>
+      <div class="publicApi">
+        <input type="checkbox" value="" name="publicApi" required>
+        I am a developer that would like to have an API key to use the public facing API. 
+      </div>    
       <button type="submit">Create Account</button>
     </form>
     <p class="policies">

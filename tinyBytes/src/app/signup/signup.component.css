@@ -12,7 +12,7 @@
 }
 
 #sign-up-modal span {
-  color: #4f3cc9;
+  color: #f4642d;
 }
 
 h1 {
@@ -72,11 +72,12 @@ input:focus, input:hover {
   background-color: white;
 }
 
-.terms {
+.terms, .publicApi {
   margin-bottom: 20px;
+  font-size: .75rem;
 }
 
-.terms > input {
+.terms > input, .publicApi > input {
   height: auto;
   width: auto;
 }
@@ -84,6 +85,10 @@ input:focus, input:hover {
 button {
   border-radius: 8px;
   padding: 10px 16px;
+  background-color: #f4642d;
+  color: whitesmoke;
+  width: 100%;
+  border-style: none;
 }
 
 

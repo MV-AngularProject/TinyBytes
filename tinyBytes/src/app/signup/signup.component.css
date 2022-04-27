@@ -68,7 +68,7 @@ input {
 }
 
 input:focus, input:hover {
-  border: 1px solid black;
+  border: 1px solid #f4642d;
   background-color: white;
 }
 

@@ -31,10 +31,10 @@ class User extends Model {
         type:DataTypes.STRING,
         allowNull:false
     },
-
+// 0= false 1=true
     apiKey:{
-        type:DataTypes.BOOLEAN,
-        defaultValue: false,
+        type:DataTypes.INTEGER,
+        defaultValue: 0,
     }
     
   }, {

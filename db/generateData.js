@@ -24,6 +24,7 @@ const seedRecipe = async () => {
 const matchUserWithRecipes = async () => {};
 
 const generateData = async () => {
+  await db.sync()
   //Seed individual model data
   seedUser();
   // seedRecipe();

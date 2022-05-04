@@ -5,7 +5,7 @@ const db = require('./db');
 User.hasMany(Recipe);
 Recipe.belongsTo(User);
 
-// User.belongsToMany(Recipe, {through: 'Favorites'});
-// Recipe.belongsToMany(User, {through: 'Favorites'});
+User.belongsToMany(Recipe, {through: 'Favorites'});
+Recipe.belongsToMany(User, {through: 'Favorites'});
 
 module.exports = {db, User, Recipe};

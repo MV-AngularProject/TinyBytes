@@ -24,13 +24,16 @@ const seedRecipe = async () => {
 const matchUserWithRecipes = async () => {};
 
 const generateData = async () => {
-  await db.sync()
+  await db.sync({force: true})
+
   //Seed individual model data
   seedUser();
-  // seedRecipe();
+  seedRecipe();
 
   //Create relationships between individual model data
   // matchUserWithRecipes()
+  
+  console.log('Database seeded!')
 };
 
 generateData();

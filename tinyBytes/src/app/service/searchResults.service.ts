@@ -17,8 +17,8 @@ export class SearchService{
   //apiKey = 'b989a147ccb6450e920e8fa5355c632c';
   // apiKey = "f082f3f33d8e400b8898966f7fcbc069";
 
-    search(query:any): Observable<ISearchResults>{
-        return this.http.get<ISearchResults>(`https://api.spoonacular.com/recipes/complexSearch?apiKey=a42bca2f8c2f4c5194cd8aa86c365de7&query=${query}&number=8`).pipe(
+    search(query:string): Observable<ISearchResults>{
+        return this.http.get<ISearchResults>(`http://localhost:8080/search/${query}`).pipe(
 
             tap(data => console.log('All', JSON.stringify(data.results), "value", query)),
             catchError(this.handleError)

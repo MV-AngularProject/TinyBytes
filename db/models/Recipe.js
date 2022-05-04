@@ -1,4 +1,5 @@
-const {db, DataTypes, Model} = require('../db');
+const db = require('../db');
+const {Model, DataTypes} = require('sequelize');
 
 class Recipe extends Model {
   // add methods here

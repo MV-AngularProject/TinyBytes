@@ -1,6 +1,6 @@
 const User = require('./models/User');
 const Recipe = require('./models/Recipe');
-const {db} = require('./db');
+const db = require('./db');
 
 User.hasMany(Recipe);
 Recipe.belongsTo(User);

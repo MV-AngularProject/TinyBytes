@@ -25,6 +25,7 @@ router.get('/profile/:userId', async (req, res) => {
       };
       res.status(200).json(context);
     } else {
+      res.status(404).send(`No current user exist by this userId: ${req.params.userId}.`)
     }
   } catch (error) {
     res.status(500).send('Server error, please try again at a later time')

@@ -21,19 +21,40 @@ const seedRecipe = async () => {
   recipes.forEach(async (recipe) => await Recipe.create(recipe));
 };
 
-const matchUserWithRecipes = async () => {};
+const randNum = () => {
+  const recipiesLength = 8;
+  return Math.round(Math.random() * (recipiesLength - 1));
+};
+
+const matchUserWithRecipes = async () => {
+  const userInstances = await User.findAll();
+  const recipeInstances = await Recipe.findAll();
+  userInstances.forEach(async (user) => {
+    let recipeIds = [];
+    for (let i = 0; i < randNum() + 1; i += 1) {
+      let recipeId = randNum();
+      if (recipeIds.includes(recipeId)) {
+        do {
+          recipeId = randNum();
+        } while (recipeIds.includes(recipeId));
+      }
+      recipeIds.push(recipeId);
+      await user.addRecipe(recipeInstances[recipeId]);
+    }
+  });
+};
 
 const generateData = async () => {
-  await db.sync({force: true})
+  await db.sync({force: true});
 
   //Seed individual model data
-  seedUser();
-  seedRecipe();
+  await seedUser();
+  await seedRecipe();
 
   //Create relationships between individual model data
-  // matchUserWithRecipes()
-  
-  console.log('Database seeded!')
+  await matchUserWithRecipes();
+
+  console.log('Database seeded!');
 };
 
 generateData();

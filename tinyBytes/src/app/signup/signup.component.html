@@ -4,36 +4,36 @@
       <i class="fa-solid fa-xmark fa-lg"></i>
     </div>
     <h1>Sign up</h1>
-    <form method="POST" action="http://localhost:8080/chefs">
+    <form [formGroup]="signupForm">
       <div id="entries">
         <div class="full-name">
           <div class="first-name">
             <label>First Name</label>
-            <input type="text" value="" name="first" min=2 required/>
+            <input type="text" value="" name="first" min=2 required formControlName="firstName"/>
           </div>
           <div class="last-name">
             <label>Last Name</label>
-            <input type="text" value="" name="last" min=2 required/>
+            <input type="text" value="" name="last" min=2 required formControlName="lastName"/>
           </div>
         </div>
         <div class="email">
           <label><i class="fa-regular fa-envelope"></i> Email</label>
-          <input type="email" value="" name="email" required/>
+          <input type="email" value="" name="email" required formControlName="email"/>
         </div>
         <div class="password">
           <label><i class="fa-solid fa-lock"></i> Password</label>
-          <input type="password" value="" name="password" placeholder="6+ characters" min=6 required/>
+          <input type="password" value="" name="password" placeholder="6+ characters" min=6 required formControlName="password" />
         </div>
       </div>
       <div class="terms">
-        <input type="checkbox" value="" name="agreement" required>
+        <input type="checkbox" value="" name="agreement" required >
         Creating an account means you're okay with our <span>Terms of Service, Privacy Policy,</span> and our default <span>Notification Settings</span>
       </div>
       <div class="publicApi">
-        <input type="checkbox" value="" name="publicApi" required>
+        <input type="checkbox" value="" name="publicApi" required >
         I am a developer that would like to have an API key to use the public facing API. 
       </div>    
-      <button type="submit">Create Account</button>
+      <button type="submit" (click)="onSubmit()">Create Account</button>
     </form>
     <p class="policies">
       This site is protected by reCAPTCHA and the Google <span>Privacy Policy</span> and <span>Terms of Service</span> apply.

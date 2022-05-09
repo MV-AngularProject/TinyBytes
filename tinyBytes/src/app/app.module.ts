@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { CategoriesComponent } from './categories/categories.component';
 import { HomeComponent } from './home/home.component';
@@ -37,6 +38,7 @@ import { ProfileComponent } from './profile/profile.component';
     HttpClientModule,
     FormsModule,
     RouterModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       [
         { path: '', component: HomeComponent },

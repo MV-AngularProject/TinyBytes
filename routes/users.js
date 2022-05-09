@@ -11,7 +11,9 @@ router.post('/chefs', async (req,res)=>{
     // bcrypt.hash(req.body.password,SALT, async function(err, hash){
     //      await User.create({...req.body, 'password':hash})
     // })
-    
-    res.status(200).send({message: 'Successfully signed up'})
+    const newUSer = await User.create(req.body)
+    console.log('HEREREEEE', newUSer)
+    res.json({newUSer})
+    // res.status(200).send({message: 'Successfully signed up'})
 })
 module.exports= router;

@@ -15,16 +15,26 @@ User.init(
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate:{
+        isAlpha: true,
+      }
     },
     lastName: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate:{
+        isAlpha: true,
+      }
     },
 
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
+      validate:{
+        isEmail:true,
+
+      }
     },
     password: {
       type: DataTypes.STRING,
@@ -36,6 +46,7 @@ User.init(
       defaultValue: 0,
       allowNull: false,
     },
+    // maybe set up uuid for api key???
     apiKey: {
       type: DataTypes.STRING,
       unique: true,

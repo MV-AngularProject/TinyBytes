@@ -1,6 +1,9 @@
 //imports here
+const bcrypt = require('bcrypt');
 const db = require('../db');
 const {Model, DataTypes} = require('sequelize');
+
+const SALT_ROUNDS = 2;
 
 class User extends Model {
   // add methods here
@@ -58,3 +61,17 @@ User.init(
   }
 );
 module.exports = User;
+
+
+const hashPassword = async (user) => {
+  // in case the password has been changed, we want to encrypt it with bcrypt
+  if (user.changed('password')) {
+    user.password = await bcrypt.hash(user.password, SALT_ROUNDS);
+  }
+};
+
+User.beforeCreate(hashPassword);
+User.beforeUpdate(hashPassword);
+User.beforeBulkCreate((users) => {
+  users.forEach(hashPassword);
+});

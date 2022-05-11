@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { EnrollmentService } from '../service/enrollment.service';
-import { FormControl } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { User } from '../user';
 @Component({
   templateUrl: './signup.component.html',
@@ -9,10 +8,10 @@ import { User } from '../user';
 })
 export class SignupComponent{
   signupForm = this.formBuilder.group({
-    firstName:'',
-    lastName: '',
-    email: '',
-    password: ''
+    firstName:['', Validators.required],
+    lastName: ['', Validators.required],
+    email: ['', Validators.required, Validators.email],
+    password: ['', Validators.required]
   })
 
 newUser = new User;

@@ -22,9 +22,8 @@ export class RecipeDetailsService {
   apiKey = '893eb10e08cb49a79a8d5b39c01e8aec';
 
   getRecipeDetails(recipeId: string | null): Observable<IRecipeDetails | IHttpError> {
-    this.recipeDetailsUrl = `https://api.spoonacular.com/recipes/${recipeId}/information${this.apiInsert}${this.apiKey}`;
     return this.http
-      .get<IRecipeDetails>(this.recipeDetailsUrl)
+      .get<IRecipeDetails>(`http://localhost:8080/recipeDetails/${recipeId}`)
       .pipe(
         // map((details) => {
         //   let container!: IRecipeDetails;
@@ -42,16 +41,14 @@ export class RecipeDetailsService {
   }
 
   getRecipeInstructions(recipeId: string | null): Observable<IInstructions[] | IHttpError> {
-    this.recipeInstructionsUrl = `https://api.spoonacular.com/recipes/${recipeId}/analyzedInstructions${this.apiInsert}${this.apiKey}`;
     return this.http
-      .get<IInstructions[]>(this.recipeInstructionsUrl)
+      .get<IInstructions[]>(`http://localhost:8080/recipeInstructions/${recipeId}`)
       .pipe(catchError(this.HttpErrorHandler))
   }
 
   getHTMLNutritionFacts(recipeId: string | null): Observable<string | IHttpError> {
-    this.recipeNutritionUrl = `https://api.spoonacular.com/recipes/${recipeId}/nutritionLabel/${this.apiInsert}${this.apiKey}`;
     return this.http
-      .get(this.recipeNutritionUrl, { responseType: 'text' })
+      .get(`http://localhost:8080/HTMLNutritionFacts/${recipeId}`, { responseType: 'text' })
       .pipe(catchError(this.HttpErrorHandler))
   }
 

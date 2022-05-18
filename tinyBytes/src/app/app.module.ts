@@ -43,9 +43,9 @@ import { ProfileComponent } from './profile/profile.component';
         { path: 'signup', component: SignupComponent },
         { path: 'categories', component: CategoriesComponent},
         { path: 'recipe/:recipeId', component: RecipeComponent },
+        { path: 'profile/:userId', component: ProfileComponent },
         { path: 'search/:query', component: SearchComponent },
         { path: 'login', component: LoginComponent},
-        { path: 'profile', component: ProfileComponent},
         { path: '**', redirectTo: '', pathMatch: 'full' },
       ]
     ),

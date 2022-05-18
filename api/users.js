@@ -22,8 +22,10 @@ router.get('/profile/:userId', async (req, res) => {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
+        developer: user.developer,
+        apiKey: user.apiKey,
       };
-      res.status(200).json(context);
+      res.status(200).send(context);
     } else {
       res.status(404).send(`No current user exist by this userId: ${req.params.userId}.`)
     }

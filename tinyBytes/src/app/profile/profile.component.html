@@ -11,20 +11,20 @@
                   <div class="full-name">
                     <div class="first-name">
                       <label>First Name</label>
-                      <input type="text" value="db populated" name="first" />
+                      <input type="text" [value]="profile.firstName" name="first" />
                     </div>
                     <div class="last-name">
                       <label>Last Name</label>
-                      <input type="text" value="db populated" name="last" />
+                      <input type="text" [value]="profile.lastName" name="last" />
                     </div>
                   </div>
                   <div class="email">
                     <label><i class="fa-regular fa-envelope"></i> Email</label>
-                    <input type="email" value="db populated" name="email" />
+                    <input type="email" [value]="profile.email" name="email" />
                   </div>
                   <div class="password">
                     <label><i class="fa-solid fa-lock"></i> Password</label>
-                    <input type="password" value="db populated" name="password" placeholder="6+ characters"/>
+                    <input type="password" value="" name="password" placeholder="6+ characters"/>
                   </div>
                 </div>
               </form>

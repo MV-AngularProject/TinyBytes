@@ -46,9 +46,9 @@ import { FavoritesComponent } from './favorites/favorites.component';
         { path: 'categories', component: CategoriesComponent},
         { path: 'favorites', component: FavoritesComponent },
         { path: 'recipe/:recipeId', component: RecipeComponent },
+        { path: 'profile/:userId', component: ProfileComponent },
         { path: 'search/:query', component: SearchComponent },
         { path: 'login', component: LoginComponent},
-        { path: 'profile', component: ProfileComponent},
         { path: '**', redirectTo: '', pathMatch: 'full' },
       ]
     ),

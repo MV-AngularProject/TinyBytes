@@ -8,10 +8,15 @@ const SALT = 2;
 // sign up
 router.post('/chefs', async (req,res)=>{
     console.log('post hit')
-    // bcrypt.hash(req.body.password,SALT, async function(err, hash){
-    //      await User.create({...req.body, 'password':hash})
-    // })
+try {
+    const newUSer = await User.create(req.body)
+    console.log('HEREREEEE', newUSer)
+    res.json({newUSer})
     
-    res.status(200).send({message: 'Successfully signed up'})
+} catch (error) {
+    console.log(error)
+    
+}
+   
 })
 module.exports= router;

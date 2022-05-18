@@ -6,29 +6,10 @@ const cors = require('cors')
 
 app.use(cors())
 
-
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
-
-
-
-
-
-
-
-// app.use('/', require('./routes'))
-console.log('after')
-// app.post('/chefs', async (req,res)=>{
-//     bcrypt.hash(req.body.password,SALT, async function(err, hash){
-//          await User.create({...req.body, 'password':hash})
-//     })
-    
-//     res.status(200).send({message: 'Successfully signed up'})
-// })
-
-// app.use('/',require('./api'))
 
 //api keys
 apiKey = 'a42bca2f8c2f4c5194cd8aa86c365de7';
@@ -211,6 +192,9 @@ app.get('/HTMLNutritionFacts/:recipeId', async (req, res) => {
 
   app.use('/',require('./routes'))
 
+
+
+  
   app.listen(PORT, () => {
     console.log(`Server is listening on http://localhost:${PORT}`);
   });

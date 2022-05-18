@@ -33,11 +33,9 @@ const matchUserWithRecipes = async () => {
     let recipeIds = [];
     for (let i = 0; i < randNum() + 1; i += 1) {
       let recipeId = randNum();
-      if (recipeIds.includes(recipeId)) {
-        do {
-          recipeId = randNum();
-        } while (recipeIds.includes(recipeId));
-      }
+      do {
+        recipeId = randNum();
+      } while (recipeIds.includes(recipeId));
       recipeIds.push(recipeId);
       await user.addRecipe(recipeInstances[recipeId]);
     }

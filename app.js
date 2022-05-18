@@ -58,6 +58,7 @@ function callAPI(url, consoleWord) {
 //   let recipe = callAPI("https://api.spoonacular.com/recipes/complexSearch?sort=random&number=1",
 //     "Random").pipe(res)
 // });
+// homepage routes
 app.get('/randomRecipe', async (req, res) => {
   request({
     method: 'GET',
@@ -133,7 +134,70 @@ app.get('/search/:query', async (req, res) => {
       console.log("error with api call")
     }
     }). pipe(res)
-  });
+});
+  
+//single recipe page
+app.get('/recipeDetails/:recipeId', async (req, res) => {
+  request({
+    method: 'GET',
+    uri: `https://api.spoonacular.com/recipes/${req.params.recipeId}/information?apiKey=${apiKey}`,
+  }, function (error, response, body) {
+    if (error) {
+      console.log(error);
+      return;
+    }
+    const data = response.body;
+    const apiData = JSON.parse(data)
+    console.log('Returned: ', apiData)
+    if (response.statusCode == 200) {
+      console.log('success');
+    }
+    else {
+      console.log("error with api call")
+    }
+    }). pipe(res)
+});
+app.get('/recipeInstructions/:recipeId', async (req, res) => {
+  request({
+    method: 'GET',
+    uri: `https://api.spoonacular.com/recipes/${req.params.recipeId}/analyzedInstructions?apiKey=${apiKey}`,
+  }, function (error, response, body) {
+    if (error) {
+      console.log(error);
+      return;
+    }
+    const data = response.body;
+    const apiData = JSON.parse(data)
+    console.log('Returned: ', apiData)
+    if (response.statusCode == 200) {
+      console.log('success');
+    }
+    else {
+      console.log("error with api call")
+    }
+    }). pipe(res)
+});
+
+app.get('/HTMLNutritionFacts/:recipeId', async (req, res) => {
+  request({
+    method: 'GET',
+    uri: `https://api.spoonacular.com/recipes/${req.params.recipeId}/nutritionLabel?apiKey=${apiKey}`,
+  }, function (error, response, body) {
+    if (error) {
+      console.log(error);
+      return;
+    }
+    const data = response.body;
+    const apiData = JSON.parse(data)
+    console.log('Returned: ', apiData)
+    if (response.statusCode == 200) {
+      console.log('success');
+    }
+    else {
+      console.log("error with api call")
+    }
+    }). pipe(res)
+});
 
   app.listen(PORT, () => {
     console.log(`Server is listening on http://localhost:${PORT}`);

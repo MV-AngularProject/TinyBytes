@@ -16,12 +16,14 @@ import { SearchComponent } from './search/search.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    FavoritesComponent,
     FooterComponent,
     HeaderComponent,
     RecipeComponent,
@@ -42,6 +44,7 @@ import { ProfileComponent } from './profile/profile.component';
         { path: '', component: HomeComponent },
         { path: 'signup', component: SignupComponent },
         { path: 'categories', component: CategoriesComponent},
+        { path: 'favorites', component: FavoritesComponent },
         { path: 'recipe/:recipeId', component: RecipeComponent },
         { path: 'profile/:userId', component: ProfileComponent },
         { path: 'search/:query', component: SearchComponent },

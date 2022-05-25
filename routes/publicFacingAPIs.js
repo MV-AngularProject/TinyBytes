@@ -2,6 +2,7 @@ const router = require('express').Router();
 const {db, User, Recipe} = require('../db/associations');
 const {QueryTypes} = require('sequelize');
 
+//Returns top 5 most favorited recipes (spoonacular id, recipe name, favorited count)
 router.get('/topRecipies/:apiKey', async (req, res) => {
   const apiKey = req.params.apiKey;
   try {
@@ -26,7 +27,7 @@ router.get('/topRecipies/:apiKey', async (req, res) => {
   }
 });
 
-//Added in the last week?
+//Returns recipes favorited in the last week
 router.get('/latestFavorited/:apiKey', async (req, res) => {
   const apiKey = req.params.apiKey;
   try {

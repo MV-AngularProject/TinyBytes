@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const basicAuth = require('express-basic-auth');
 const {User, Recipe}= require('../db/associations');
 
 const bcrypt = require('bcrypt');

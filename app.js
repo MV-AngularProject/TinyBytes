@@ -3,6 +3,10 @@ const app = express();
 const request = require('request');
 const PORT = 8080;
 const cors = require('cors')
+const basicAuth = require('express-basic-auth');
+const bcrypt = require('bcrypt');
+const { User, Recipe } = require('./db/associations');
+const { use } = require("bcrypt/promises");
 
 app.use(cors())
 
@@ -12,10 +16,10 @@ app.use(express.json());
 
 
 //api keys
-apiKey = 'a42bca2f8c2f4c5194cd8aa86c365de7';
+// apiKey = 'a42bca2f8c2f4c5194cd8aa86c365de7';
 // apiKey='b989a147ccb6450e920e8fa5355c632c';
 // apiKey = 'dd0d974a8e534716a3175c56ecd0bde5';
-// apiKey = '0550322f781e49199dd00666b1933e64';
+apiKey = '0550322f781e49199dd00666b1933e64';
 // apiKey = 'b989a147ccb6450e920e8fa5355c632c';
 // apiKey = "f082f3f33d8e400b8898966f7fcbc069";
 
@@ -24,6 +28,27 @@ apiKey = 'a42bca2f8c2f4c5194cd8aa86c365de7';
 //   res.send('<h1>App Running</h1>')
 // })
 //homepage api calls
+
+app.use(basicAuth({
+  authorizer : dbAuthorizer,
+  authorizeAsync : true,
+  unauthorizedResponse : () => "You do not have access to this content. Please log in"
+}))
+
+async function dbAuthorizer(username, password, callback){
+  try {
+    // get matching user from db
+    const user = await User.findOne({ where: { email: username } })
+    // if username is valid compare passwords
+    let isValid = (user != null ) ? await bcrypt.compare(password, user.password) : false;
+    console.log("Username and password match? ", isValid)
+    callback(null, isValid)
+  } catch(err) {
+    //if authorize fails, log error
+    console.log("Error: No access", err)
+    callback(null, false)
+  }
+}
 
 function callAPI(url, consoleWord) {
   request({
@@ -173,14 +198,14 @@ app.get('/HTMLNutritionFacts/:recipeId', async (req, res) => {
   request({
     method: 'GET',
     uri: `https://api.spoonacular.com/recipes/${req.params.recipeId}/nutritionLabel?apiKey=${apiKey}`,
+    headers: {"content-type":"text/html"}
   }, function (error, response, body) {
     if (error) {
       console.log(error);
       return;
     }
     const data = response.body;
-    const apiData = JSON.parse(data)
-    console.log('Returned: ', apiData)
+    console.log('Returned: ', data)
     if (response.statusCode == 200) {
       console.log('success');
     }

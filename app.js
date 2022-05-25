@@ -8,11 +8,13 @@ const bcrypt = require('bcrypt');
 const { User, Recipe } = require('./db/associations');
 const { use } = require("bcrypt/promises");
 
+
 app.use(cors())
 
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+
 
 
 //api keys

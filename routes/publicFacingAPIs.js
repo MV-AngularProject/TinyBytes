@@ -53,4 +53,26 @@ router.get('/latestFavorited/:apiKey', async (req, res) => {
   }
 });
 
+//Returns the last 10 most recently favorited 
+router.get('/lastTenFavorites/:apiKey', async (req, res) => {
+  const apiKey = req.params.apiKey;
+  try {
+    const user = await User.findOne({where: {apiKey: apiKey}});
+    if (user) {
+      const query = `SELECT Recipes.recipeId, Recipes.name, Favorites.createdAt
+                      FROM Favorites
+                      JOIN Recipes on Recipes.id = Favorites.RecipeId 
+                      ORDER BY Favorites.createdAt
+                      DESC
+                      LIMIT 10`;
+      const lastTenFavorites = await db.query(query, {type: QueryTypes.SELECT});
+      res.status(200).json(lastTenFavorites);
+    } else {
+      res.status(403).send(`Unauthorized request, Api Key: ${apiKey} is NOT Valid.`);
+    }
+  } catch (error) {
+    res.status(500).send(`Server error: ${error}, could not access the server to return the last 10 favorites.`);
+  }
+});
+
 module.exports = router;

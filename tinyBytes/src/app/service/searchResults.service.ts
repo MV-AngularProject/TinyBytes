@@ -1,8 +1,9 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { tap, catchError } from "rxjs/operators";
 import { ISearchResults } from "../interface/searchResults";
+import { LocalStorageService } from '../service/local-storage.service';
 
 @Injectable({
     providedIn:'root'
@@ -10,9 +11,17 @@ import { ISearchResults } from "../interface/searchResults";
 export class SearchService{
     constructor(private http: HttpClient) { }
 
-    search(query:string): Observable<ISearchResults>{
-        return this.http.get<ISearchResults>(`http://localhost:8080/search/${query}`).pipe(
-            tap(data => console.log('All', JSON.stringify(data.results), "value", query)),
+    search(query: string): Observable<ISearchResults>{
+        console.log("This is the user", localStorage.getItem('Current User'))
+        console.log("This is the type", typeof localStorage.getItem('Current User'))
+        let thisUser = localStorage.getItem('Current User')
+        const httpHeaders = new HttpHeaders({
+            'Content-Type': 'application/json; charset=utf-8',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Authorization': `${thisUser}`
+          });
+        return this.http.get<ISearchResults>(`http://localhost:8080/search/${query}`, {headers:httpHeaders}).pipe(
+            tap(data => (console.log('All', JSON.stringify( data.results), "value", query, "total result", data.totalResults) )),
             catchError(this.handleError)
         )
     }

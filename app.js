@@ -33,10 +33,74 @@ apiKey='b989a147ccb6450e920e8fa5355c632c';
 
 app.use('/',require('./routes'))
 
+app.post('/logIn', async (req, res) => {
+
+  res.send('token')
+});
+
+app.get('/randomRecipe', async (req, res) => {
+  request({
+    method: 'GET',
+    uri: `https://api.spoonacular.com/recipes/complexSearch?sort=random&number=1&apiKey=${apiKey}`,
+  }, function (error, response, body) {
+    if (error) {
+      console.log('Error with server', error);
+      return;
+    }
+    const data = response.body;
+    const apiData = JSON.parse(data)
+    console.log('Dessert: ', apiData)
+  }).pipe(res)
+});
+
+app.get('/dessertRecipe', async (req, res) => {
+  request({
+    method: 'GET',
+    uri: `https://api.spoonacular.com/recipes/complexSearch?type=dessert&number=3&apiKey=${apiKey}`,
+  }, function (error, response, body) {
+    if (error) {
+      console.log('Error with server', error);
+      return;
+    }
+    const data = response.body;
+    const apiData = JSON.parse(data)
+    console.log('Dessert: ', apiData)
+    if (response.statusCode == 200) {
+      console.log('success');
+    }
+    else {
+      console.log("error with api call")
+    }
+  }).pipe(res)
+});
+
+app.get('/popularRecipe', async (req, res) => {
+  request({
+    method: 'GET',
+    uri:`https://api.spoonacular.com/recipes/complexSearch?sort=popularity&number=3&apiKey=${apiKey}`,
+  }, function (error, response, body) {
+    if (error) {
+      console.log('Error with server', error);
+      return;
+    }
+    const data = response.body;
+    const apiData = JSON.parse(data)
+    console.log('Popular: ', apiData)
+    if (response.statusCode == 200) {
+      console.log('success');
+    }
+    else {
+      console.log("error with api call")
+    }
+  }).pipe(res)
+});
+
 
 app.use(basicAuth({
   authorizer : dbAuthorizer,
-  authorizeAsync : true,
+  authorizeAsync: true,
+  challenge: true,
+  realm: 'foo',
   unauthorizedResponse : () => "You do not have access to this content. Please log in"
 }))
 
@@ -54,7 +118,27 @@ async function dbAuthorizer(username, password, callback){
     callback(null, false)
   }
 }
-
+//search page 
+app.get('/search/:query', async (req, res) => {
+  request({
+    method: 'GET',
+    uri: `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${req.params.query}&number=8`,
+  }, function (error, response, body) {
+    if (error) {
+      console.log(error);
+      return;
+    }
+    const data = response.body;
+    const apiData = JSON.parse(data)
+    console.log('Returned: ', apiData)
+    if (response.statusCode == 200) {
+      console.log('success');
+    }
+    else {
+      console.log("error with api call")
+    }
+    }). pipe(res)
+});
 
 function callAPI(url, consoleWord) {
   request({
@@ -81,20 +165,7 @@ function callAPI(url, consoleWord) {
 //     "Random").pipe(res)
 // });
 // homepage routes
-app.get('/randomRecipe', async (req, res) => {
-  request({
-    method: 'GET',
-    uri: `https://api.spoonacular.com/recipes/complexSearch?sort=random&number=1&apiKey=${apiKey}`,
-  }, function (error, response, body) {
-    if (error) {
-      console.log('Error with server', error);
-      return;
-    }
-    const data = response.body;
-    const apiData = JSON.parse(data)
-    console.log('Dessert: ', apiData)
-  }).pipe(res)
-});
+
 app.get('/dessertRecipe', async (req, res) => {
   request({
     method: 'GET',
@@ -134,28 +205,6 @@ app.get('/popularRecipe', async (req, res) => {
       console.log("error with api call")
     }
   }).pipe(res)
-});
-
-//search page 
-app.get('/search/:query', async (req, res) => {
-  request({
-    method: 'GET',
-    uri: `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${req.params.query}&number=8`,
-  }, function (error, response, body) {
-    if (error) {
-      console.log(error);
-      return;
-    }
-    const data = response.body;
-    const apiData = JSON.parse(data)
-    console.log('Returned: ', apiData)
-    if (response.statusCode == 200) {
-      console.log('success');
-    }
-    else {
-      console.log("error with api call")
-    }
-    }). pipe(res)
 });
   
 //single recipe page

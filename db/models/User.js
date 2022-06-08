@@ -112,7 +112,6 @@ User.prototype.correctPassword =function(currentPw){
   return bcrypt.compare(currentPw, this.password)
 }
 
-
 const hashPassword = async (user) => {
   // in case the password has been changed, we want to encrypt it with bcrypt
   if (user.changed('password')) {

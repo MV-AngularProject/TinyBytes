@@ -1,6 +1,19 @@
 const router = require('express').Router();
 const {User} = require('../db/associations');
 
+router.put('/generateApiKey',async (req,res)=>{
+  const email = req.body.email
+  try {
+    const user = await User.findOne({where: {email: email}});
+    const key = `APIKEY${user.id}`
+    user.update({apiKey:key,developer:1})
+     
+
+    res.sendStatus(200)
+  } catch (error) {
+    console.log(error)
+  }
+})
 router.get('/:userId', async (req, res) => {
   //Authorization first (will do later)
   try {

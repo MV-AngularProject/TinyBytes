@@ -3,7 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IHttpError } from '../interface/error';
 import { IProfile } from '../interface/profile';
+import { GenerateApiKeyService } from '../service/generateApiKey.service';
 import { ProfileService } from '../service/profile.service';
+
 
 @Component({
   templateUrl: './profile.component.html',
@@ -12,12 +14,15 @@ import { ProfileService } from '../service/profile.service';
 export class ProfileComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private generateApiKeyService: GenerateApiKeyService,
+
   ) {}
 
   userId!: string | null;
   profileSub!: Subscription;
   profile!: IProfile;
+  
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.paramMap.get('userId');
@@ -27,6 +32,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.profile = <IProfile>userData;
       },
     });
+  }
+  generateApiKey(){
+    this.generateApiKeyService.updateApiKey(this.profile.email).subscribe({
+      next:()=>{
+        console.log('key generated')
+      }
+    })
+    window.location.reload()
   }
 
   ngOnDestroy(): void {

@@ -42,12 +42,12 @@
       <h3>Developer Api</h3>
   <div *ngIf="profile.developer === 0; else elseBlock"class='api-content'>
       <h4>Would you like to enroll to get access to our delicious API?</h4>
-      <button>Unsubscribe</button>
+      <button type="button" (click)="generateApiKey()">Give me a key!</button>
   </div>
   <ng-template #elseBlock>
     <p>Here is your api key to get full access to our fresh home-made api: <strong>{{profile.apiKey}}</strong></p>
   </ng-template>
-    <a routerLink="documentation">Take a look at what our API can do </a>
+    <a [routerLink]="['/documentation']">Take a look at what our API can do </a>
 
   </section>
     <div class='sign-out-delete'>

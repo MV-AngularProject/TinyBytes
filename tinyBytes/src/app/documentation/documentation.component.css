@@ -30,6 +30,10 @@ section {
   margin-bottom: 10px;
 }
 
+.response-type {
+  margin: 10px 0;
+}
+
 .url-code {
   display: flex;
   background-color: #343a40;

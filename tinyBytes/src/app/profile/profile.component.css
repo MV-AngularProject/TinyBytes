@@ -86,6 +86,7 @@ button {
 }
 .newsletter-content{
   display:flex;
+  justify-content: space-between;
 
 }
 .newsletter button{
@@ -96,15 +97,10 @@ button {
 .sign-out-delete{
     display: flex;
     justify-content: space-between;
- 
-  
+    
  
 }
-.sign-out{
-    display: flex;
-    flex-direction: row;
-    justify-content: baseline;
-}
+
 .api{
     border-bottom: 1px solid gray;
     padding-top: 20px;

@@ -8,7 +8,6 @@ const bcrypt = require('bcrypt');
 const { User, Recipe } = require('./db/associations');
 const { use } = require("bcrypt/promises");
 
-
 app.use(cors())
 
 app.use(express.static('public'));
@@ -16,14 +15,13 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 
-
 //api keys
 // apiKey = 'a42bca2f8c2f4c5194cd8aa86c365de7';
-apiKey='b989a147ccb6450e920e8fa5355c632c';
+// apiKey='b989a147ccb6450e920e8fa5355c632c';
 // apiKey = 'dd0d974a8e534716a3175c56ecd0bde5';
 // apiKey = '0550322f781e49199dd00666b1933e64';
 // apiKey = 'b989a147ccb6450e920e8fa5355c632c';
-// apiKey = "f082f3f33d8e400b8898966f7fcbc069";
+apiKey = "f082f3f33d8e400b8898966f7fcbc069";
 
 //api calls
 // app.get('/', (req, res) => {
@@ -34,8 +32,16 @@ apiKey='b989a147ccb6450e920e8fa5355c632c';
 app.use('/',require('./routes'))
 
 app.post('/logIn', async (req, res) => {
+  let user = await User.findOne({
+    where: { 'email': req.body.email }
+  })
+  if (user.password = req.body.password) {
+    console.log("Req email", req.body.email);
+    console.log("Login sucessful");
 
-  res.send('token')
+  } else {
+    console.log("Cannot log in");
+  };
 });
 
 app.get('/randomRecipe', async (req, res) => {
@@ -95,29 +101,6 @@ app.get('/popularRecipe', async (req, res) => {
   }).pipe(res)
 });
 
-
-app.use(basicAuth({
-  authorizer : dbAuthorizer,
-  authorizeAsync: true,
-  challenge: true,
-  realm: 'foo',
-  unauthorizedResponse : () => "You do not have access to this content. Please log in"
-}))
-
-async function dbAuthorizer(username, password, callback){
-  try {
-    // get matching user from db
-    const user = await User.findOne({ where: { email: username } })
-    // if username is valid compare passwords
-    let isValid = (user != null ) ? await bcrypt.compare(password, user.password) : false;
-    console.log("Username and password match? ", isValid)
-    callback(null, isValid)
-  } catch(err) {
-    //if authorize fails, log error
-    console.log("Error: No access", err)
-    callback(null, false)
-  }
-}
 //search page 
 app.get('/search/:query', async (req, res) => {
   request({
@@ -270,10 +253,6 @@ app.get('/HTMLNutritionFacts/:recipeId', async (req, res) => {
     }). pipe(res)
 });
 
-
-
-
-  
   app.listen(PORT, () => {
     console.log(`Server is listening on http://localhost:${PORT}`);
   });

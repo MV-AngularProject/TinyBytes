@@ -4,4 +4,5 @@ export interface IProfile {
   email: string;
   developer: number;
   apiKey: string;
+  id: number;
 }

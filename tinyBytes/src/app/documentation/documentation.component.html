@@ -1,0 +1,16 @@
+<header>
+  <h3>Documentation</h3>
+  <p>Here you have detailed documentation of all available API functions.</p>
+</header>
+
+<div *ngFor="let endpoint of endpoints">
+  <section>
+    <h5>{{endpoint.title}}</h5>
+    <p class="description">{{endpoint.description}}</p>
+    <div class="url-code">
+      <p class="method">{{endpoint.method}}</p><p>{{endpoint.url}}</p>
+    </div>
+    <p class="response-type">Reponse format: JSON</p>
+    <img [src]="endpoint.imageUrl"/>
+  </section>
+</div>

@@ -18,7 +18,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FavoritesComponent } from './favorites/favorites.component';
-
+import { DocumentationComponent } from './documentation/documentation.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import { FavoritesComponent } from './favorites/favorites.component';
     CategoriesComponent,
     SignupComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    DocumentationComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +52,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
         { path: 'profile/:userId', component: ProfileComponent },
         { path: 'search/:query', component: SearchComponent },
         { path: 'login', component: LoginComponent},
+        { path: 'documentation', component: DocumentationComponent},
         { path: '**', redirectTo: '', pathMatch: 'full' },
       ]
     ),

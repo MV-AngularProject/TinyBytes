@@ -18,8 +18,8 @@ app.use(express.json());
 //api keys
 // apiKey = 'a42bca2f8c2f4c5194cd8aa86c365de7';
 // apiKey='b989a147ccb6450e920e8fa5355c632c';
-apiKey = 'dd0d974a8e534716a3175c56ecd0bde5';
-// apiKey = '0550322f781e49199dd00666b1933e64';
+// apiKey = 'dd0d974a8e534716a3175c56ecd0bde5';
+apiKey = '0550322f781e49199dd00666b1933e64';
 // apiKey = 'b989a147ccb6450e920e8fa5355c632c';
  //apiKey = "f082f3f33d8e400b8898966f7fcbc069";
 
@@ -33,18 +33,20 @@ app.use('/',require('./routes'))
 
 app.post('/logIn', async (req, res) => {
   let user = await User.findOne({
-    where: { 'email': req.body.email }
+    where: { email: req.body.email }
   })
+  console.log("userpassword",user.password)
+  console.log("req password",req.body.password)
   if (user.password = req.body.password) {
     console.log("Req email", req.body.email);
     console.log("Login sucessful");
-    // res.redirect('/');
+    res.json(user)
 
   } else {
     console.log("Cannot log in");
-    // res.redirect('/randomRecipe');
+    res.sendStatus(401)
   };
-  res.status(201).json(user)
+  // res.status(201).json(user)
 });
 
 
@@ -59,7 +61,6 @@ app.get('/randomRecipe', async (req, res) => {
     }
     const data = response.body;
     const apiData = JSON.parse(data)
-    console.log('Dessert: ', apiData)
   }).pipe(res)
 });
 
@@ -74,7 +75,6 @@ app.get('/dessertRecipe', async (req, res) => {
     }
     const data = response.body;
     const apiData = JSON.parse(data)
-    console.log('Dessert: ', apiData)
     if (response.statusCode == 200) {
       console.log('success');
     }
@@ -95,7 +95,6 @@ app.get('/popularRecipe', async (req, res) => {
     }
     const data = response.body;
     const apiData = JSON.parse(data)
-    console.log('Popular: ', apiData)
     if (response.statusCode == 200) {
       console.log('success');
     }
@@ -117,7 +116,6 @@ app.get('/search/:query', async (req, res) => {
     }
     const data = response.body;
     const apiData = JSON.parse(data)
-    console.log('Returned: ', apiData)
     if (response.statusCode == 200) {
       console.log('success');
     }
@@ -164,7 +162,6 @@ app.get('/dessertRecipe', async (req, res) => {
     }
     const data = response.body;
     const apiData = JSON.parse(data)
-    console.log('Dessert: ', apiData)
     if (response.statusCode == 200) {
       console.log('success');
     }
@@ -184,7 +181,6 @@ app.get('/popularRecipe', async (req, res) => {
     }
     const data = response.body;
     const apiData = JSON.parse(data)
-    console.log('Popular: ', apiData)
     if (response.statusCode == 200) {
       console.log('success');
     }
@@ -206,7 +202,6 @@ app.get('/recipeDetails/:recipeId', async (req, res) => {
     }
     const data = response.body;
     const apiData = JSON.parse(data)
-    console.log('Returned: ', apiData)
     if (response.statusCode == 200) {
       console.log('success');
     }
@@ -226,7 +221,6 @@ app.get('/recipeInstructions/:recipeId', async (req, res) => {
     }
     const data = response.body;
     const apiData = JSON.parse(data)
-    console.log('Returned: ', apiData)
     if (response.statusCode == 200) {
       console.log('success');
     }
@@ -247,7 +241,6 @@ app.get('/HTMLNutritionFacts/:recipeId', async (req, res) => {
       return;
     }
     const data = response.body;
-    console.log('Returned: ', data)
     if (response.statusCode == 200) {
       console.log('success');
     }

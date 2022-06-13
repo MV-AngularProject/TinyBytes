@@ -5,7 +5,9 @@ import { IHttpError } from '../interface/error';
 import { IProfile } from '../interface/profile';
 import { GenerateApiKeyService } from '../service/generateApiKey.service';
 import { ProfileService } from '../service/profile.service';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { LocalStorageRefService } from '../service/local-storage-ref.service';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './profile.component.html',
@@ -16,6 +18,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private profileService: ProfileService,
     private generateApiKeyService: GenerateApiKeyService,
+    private router: Router,
+    private http: HttpClient,
+    private localStorage: LocalStorageRefService
 
   ) {}
 
@@ -40,6 +45,15 @@ export class ProfileComponent implements OnInit, OnDestroy {
     })
     window.location.reload()
   }
+  
+  deleteUser() {
+    this.profileService.deleteProfile().subscribe({
+      next: () => {
+        console.log('User delete')
+      }
+    })
+    this.router.navigate(['/signup'])
+  } 
 
   ngOnDestroy(): void {
     this.profileSub.unsubscribe();

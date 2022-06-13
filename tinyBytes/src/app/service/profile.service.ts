@@ -27,6 +27,19 @@ export class ProfileService {
       .pipe(catchError(this.HttpErrorHandler));
   }
 
+  deleteProfile(): Observable<any> {
+    let thisUser = localStorage.getItem('Current User')
+    let userID = localStorage.getItem('User ID')
+    const httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    'Authorization': `${thisUser}`
+    });
+    localStorage.clear();
+    return this.http
+      .delete<any>(`http://localhost:8080/profile/${userID}`, {headers:httpHeaders});
+  }
+
   private HttpErrorHandler(err: HttpErrorResponse): Observable<IHttpError> {
     console.log(err)
     return throwError(() => err);

@@ -53,8 +53,8 @@
     <div class='sign-out-delete'>
       <div class="sign-out">
         <i class="fa-solid fa-arrow-right-from-bracket"></i>
-        <p class="sign-out-link">Sign out</p> 
+        <a [routerLink]="['/login']" class="sign-out-link">Sign out</a> 
       </div>
-      <p>Delete Account</p>
+      <a class="sign-out-link" (click)="deleteUser();">Delete Account </a>
     </div>
 </main>

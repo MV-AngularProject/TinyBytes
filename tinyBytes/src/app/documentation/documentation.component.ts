@@ -11,7 +11,7 @@ export class DocumentationComponent {
       'title': 'Top Recipies',
       'method': 'GET', 
       'url': 'http://localhost:8080/publicApi/topRecipies/:apiKey', 
-      'description': 'Returns a list containing the top favorited recipies. The list holds the spponacular recipe id, the name of the food, and how many times it has been favorited.',
+      'description': 'Returns a list containing the top favorited recipies. The list holds the spoonacular recipe id, the name of the food, and how many times it has been favorited.',
       'imageUrl': 'https://i.ibb.co/dL6yJZ1/Screenshot-2022-06-08-11-49-17-AM.png'},
     {
       'title': 'Latest Favorited',

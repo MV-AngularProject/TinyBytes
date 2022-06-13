@@ -16,22 +16,19 @@ export class RecipeService{
     apiKey ='&apiKey=db3f5aecd2e84a9ea1773b57ca6373f7'
 
     getRecipes(): Observable<Root>{
-        return this.http.get<Root>('http://localhost:8080/randomRecipe').pipe(
-            tap(data => console.log('random', JSON.stringify(data.results))),
-            catchError(this.handleError)
+        return this.http.get<Root>('http://localhost:8080/randomRecipe').pipe
+            (catchError(this.handleError)
         )
     }
 
     getDesserts(): Observable<Root>{
-        return this.http.get<Root>('http://localhost:8080/dessertRecipe').pipe(
-            tap(data => console.log('desserts', JSON.stringify(data.results))),
-            catchError(this.handleError)
+        return this.http.get<Root>('http://localhost:8080/dessertRecipe').pipe
+            (catchError(this.handleError)
         )
     }
     getMostPopular(): Observable<Root>{
-        return this.http.get<Root>('http://localhost:8080/popularRecipe').pipe(
-            tap(data => console.log('popular', JSON.stringify(data.results))),
-            catchError(this.handleError)
+        return this.http.get<Root>('http://localhost:8080/popularRecipe').pipe
+            (catchError(this.handleError)
         )
     }
 

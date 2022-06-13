@@ -1,9 +1,5 @@
 <div id="sign-up-container">
   <div id="sign-up-modal">
-    <div class="xmark-icon">
-      <i class="fa-solid fa-xmark fa-lg"></i>
-    </div>
-    <h1>Sign up</h1>
     <form [formGroup]="signupForm">
       <div id="entries">
         <div class="full-name">
@@ -27,12 +23,8 @@
       </div>
       <div class="terms">
         <input type="checkbox" value="" name="agreement" required >
-        Creating an account means you're okay with our <span>Terms of Service, Privacy Policy,</span> and our default <span>Notification Settings</span>
-      </div>
-      <div class="publicApi">
-        <input type="checkbox" value="" name="publicApi" required >
-        I am a developer that would like to have an API key to use the public facing API. 
-      </div>    
+        Creating an account means you're okay with our <span>Terms of Service, Privacy Policy,</span> and our default <span>Notification Settings</span>.
+      </div>  
       <button type="submit" (click)="onSubmit()">Create Account</button>
     </form>
     <p class="policies">

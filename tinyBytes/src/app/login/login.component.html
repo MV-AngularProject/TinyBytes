@@ -3,8 +3,9 @@
   <img src="https://spoonacular.com/recipeImages/642648-636x393.jpg">
   </div>
   <div class="loginContainer">
-    <div>
+    <div class="login-header">
         <h2>LOGIN</h2>
+        <p *ngIf='usernamePasswordError' class="username-password-error">Wrong username or password.</p>
     </div>
     <div class="input-group mb-5">
       <span class="input-group-text" id="basic-addon1">

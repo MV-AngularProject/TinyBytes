@@ -18,6 +18,5 @@ try {
     console.log(error)
     
 }
-   
 })
 module.exports= router;

@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { DocumentationComponent } from './documentation/documentation.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { DocumentationComponent } from './documentation/documentation.component'
     SignupComponent,
     LoginComponent,
     ProfileComponent,
-    DocumentationComponent
+    DocumentationComponent,
+    UnauthorizedComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +55,7 @@ import { DocumentationComponent } from './documentation/documentation.component'
         { path: 'search/:query', component: SearchComponent },
         { path: 'login', component: LoginComponent},
         { path: 'documentation', component: DocumentationComponent},
+        { path: 'unauthorized', component: UnauthorizedComponent },
         { path: '**', redirectTo: '', pathMatch: 'full' },
       ]
     ),

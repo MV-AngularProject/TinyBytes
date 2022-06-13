@@ -30,7 +30,7 @@ router.get('/topRecipies/:apiKey', async (req, res) => {
       const topRecipes = await db.query(query, {type: QueryTypes.SELECT});
       res.status(200).json(topRecipes);
     } else {
-      res.status(403).send(`Unauthorized request, Api Key: ${apiKey} is NOT Valid.`);
+      res.status(401).send(`Unauthorized request, Api Key: ${apiKey} is NOT Valid.`);
     }
   } catch (error) {
     res.status(500).send(`Server error: ${error}, could not access the server to return the top recipes.`);
@@ -56,7 +56,7 @@ router.get('/latestFavorited/:apiKey', async (req, res) => {
       const latestAndGreatest = await db.query(query, {type: QueryTypes.SELECT});
       res.status(200).json(latestAndGreatest);
     } else {
-      res.status(403).send(`Unauthorized request, Api Key: ${apiKey} is NOT Valid.`);
+      res.status(401).send(`Unauthorized request, Api Key: ${apiKey} is NOT Valid.`);
     }
   } catch (error) {
     res.status(500).send(`Server error: ${error}, could not access the server to return the latest favorites.`);
@@ -78,7 +78,7 @@ router.get('/lastTenFavorites/:apiKey', async (req, res) => {
       const lastTenFavorites = await db.query(query, {type: QueryTypes.SELECT});
       res.status(200).json(lastTenFavorites);
     } else {
-      res.status(403).send(`Unauthorized request, Api Key: ${apiKey} is NOT Valid.`);
+      res.status(401).send(`Unauthorized request, Api Key: ${apiKey} is NOT Valid.`);
     }
   } catch (error) {
     res.status(500).send(`Server error: ${error}, could not access the server to return the last 10 favorites.`);

@@ -20,8 +20,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
   profile!: IProfile;
 
   ngOnInit(): void {
-    this.userId = this.route.snapshot.paramMap.get('userId');
-    console.log("User id", this.userId)
     this.profileSub = this.profileService.getUserData(this.userId).subscribe({
       next: (userData: IProfile | IHttpError) => {
         console.log('Profile Data', userData)

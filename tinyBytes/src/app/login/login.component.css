@@ -30,3 +30,17 @@ button{
     margin-top: 2%;
     margin-right: 14%;
 }
+
+.username-password-error {
+  color: red;
+  font-weight: bold;
+  font-size: 1rem;
+  margin:0;
+  margin-bottom: 20px;
+}
+
+.login-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

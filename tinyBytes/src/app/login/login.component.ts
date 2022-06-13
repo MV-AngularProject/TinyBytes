@@ -1,9 +1,9 @@
 import { Component} from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, throwError } from "rxjs";
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
-import { LocalStorageService } from '../service/local-storage.service';
-
-
+import { LocalStorageRefService } from '../service/local-storage-ref.service';
+import { IUser } from "../interface/user";
 
 @Component({
   selector: 'Login',
@@ -14,12 +14,18 @@ export class LoginComponent {
   
   constructor(
     private router: Router,
-    private http:HttpClient) { }
+    private http: HttpClient,
+    private localStorage: LocalStorageRefService) { }
 
   email! : string;
   password!: string;
   credentials!: string;
   basic!: string;
+  userID!: string;
+
+  ngOnInit() {
+    this.localStorage.localStorage.clear();
+  }
 
   login() {
     this.email = ((document.getElementById('floatingInput') as HTMLInputElement).value);
@@ -38,9 +44,13 @@ export class LoginComponent {
     this.http.post<any>('http://localhost:8080/logIn', {
       "email": this.email,
       "password": this.password
-      }, options).subscribe(data => {
-        console.log("Here's the data", data);
+      }, options).subscribe({
+        next: user => {
+          this.userID = user.id
+          localStorage.setItem('User ID', this.userID);
+    console.log("User if from localStorage" , localStorage.getItem('User ID'))
+        }
       });
-      this.router.navigate(['http://localhost:4200'])
+    this.router.navigate(['http://localhost:4200'])
   }
 }

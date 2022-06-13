@@ -11,17 +11,19 @@ import { LocalStorageService } from '../service/local-storage.service';
   providedIn: 'root',
 })
 export class ProfileService {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient) { }
 
   getUserData(userId: string | null): Observable<IProfile | IHttpError> {
     let thisUser = localStorage.getItem('Current User')
+    let userID = localStorage.getItem('User ID')
     const httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json; charset=utf-8',
       'Access-Control-Allow-Headers': 'Content-Type',
     'Authorization': `${thisUser}`
     });
     return this.http
-      .get<IProfile>(`http://localhost:8080/profile/${userId}`, {headers:httpHeaders})
+      .get<IProfile>(`http://localhost:8080/profile/${userID}`, {headers:httpHeaders})
       .pipe(catchError(this.HttpErrorHandler));
   }
 

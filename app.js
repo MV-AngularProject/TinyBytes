@@ -38,13 +38,15 @@ app.post('/logIn', async (req, res) => {
   if (user.password = req.body.password) {
     console.log("Req email", req.body.email);
     console.log("Login sucessful");
-    localStorage.setItem("User id", user.id)
-    storage.setItem("User id", user.id) 
+    // res.redirect('/');
 
   } else {
     console.log("Cannot log in");
+    // res.redirect('/randomRecipe');
   };
+  res.status(201).json(user)
 });
+
 
 app.get('/randomRecipe', async (req, res) => {
   request({

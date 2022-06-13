@@ -1,6 +1,5 @@
 h3 {
   font-size: 1.3rem;
-  text-decoration: underline;
   color: #f4642d;
   font-weight: bold;
 }
@@ -18,11 +17,8 @@ header {
   margin-bottom: 40px;
 }
 
-header p {
-  margin-left: 20px;
-}
-
 section {
+  margin-left: 20px;
   margin-bottom: 60px;
 }
 

@@ -1,14 +1,7 @@
-const app = express();
+const { User } = require('../db/associations');
+const bcrypt = require('bcrypt');
 
-app.use(basicAuth({
-    authorizer : dbAuthorizer,
-    authorizeAsync: true,
-    challenge: true,
-    realm: 'foo',
-    unauthorizedResponse : () => "You do not have access to this content. Please log in"
-}))
-  
-async function dbAuthorizer(username, password, callback){
+const auth = async function dbAuthorizer(username, password, callback) {
     try {
       // get matching user from db
       const user = await User.findOne({ where: { email: username } })
@@ -22,3 +15,5 @@ async function dbAuthorizer(username, password, callback){
       callback(null, false)
     }
 }
+
+module.exports = auth

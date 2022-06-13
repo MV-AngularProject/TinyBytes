@@ -1,5 +1,16 @@
+const express = require('express');
 const router = require('express').Router();
-const {User, Recipe}= require('../db/associations');
+const { User, Recipe } = require('../db/associations');
+const app = express();
+const basicAuth = require('express-basic-auth');
+const dbAuthorizer = require ('../routes/auth')
+
+app.use(basicAuth({
+    authorizer : dbAuthorizer,
+    authorizeAsync: true,
+    challenge: true,
+    unauthorizedResponse : () => "You do not have access to this content. Please log in"
+}))
 
 router.get('user/:userId/favorites', async (req,res,next)=>{
     const user = await User.findByPK(req.params.userId,{

@@ -3,11 +3,11 @@ const app = express();
 const request = require('request');
 const PORT = 8080;
 const cors = require('cors')
-const basicAuth = require('express-basic-auth');
-const bcrypt = require('bcrypt');
 const { User, Recipe } = require('./db/associations');
 const { use } = require("bcrypt/promises");
 
+
+//./tinyBytes/src/app/service/local-storage.service 
 app.use(cors())
 
 app.use(express.static('public'));
@@ -18,10 +18,10 @@ app.use(express.json());
 //api keys
 // apiKey = 'a42bca2f8c2f4c5194cd8aa86c365de7';
 // apiKey='b989a147ccb6450e920e8fa5355c632c';
-// apiKey = 'dd0d974a8e534716a3175c56ecd0bde5';
+apiKey = 'dd0d974a8e534716a3175c56ecd0bde5';
 // apiKey = '0550322f781e49199dd00666b1933e64';
 // apiKey = 'b989a147ccb6450e920e8fa5355c632c';
-apiKey = "f082f3f33d8e400b8898966f7fcbc069";
+ //apiKey = "f082f3f33d8e400b8898966f7fcbc069";
 
 //api calls
 // app.get('/', (req, res) => {
@@ -38,6 +38,8 @@ app.post('/logIn', async (req, res) => {
   if (user.password = req.body.password) {
     console.log("Req email", req.body.email);
     console.log("Login sucessful");
+    localStorage.setItem("User id", user.id)
+    storage.setItem("User id", user.id) 
 
   } else {
     console.log("Cannot log in");

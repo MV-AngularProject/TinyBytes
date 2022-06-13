@@ -1,6 +1,30 @@
+const PORT = 8080;
 const router = require('express').Router();
 const {User} = require('../db/associations');
+const basicAuth = require('express-basic-auth');
+const auth = require ('../routes/auth')
 
+router.use(basicAuth({
+    authorizer : auth,
+    authorizeAsync: true,
+    challenge: true,
+    realm: 'foo',
+    unauthorizedResponse : () => "You do not have access to this content. Please log in"
+}))
+
+router.put('/generateApiKey',async (req,res)=>{
+  const email = req.body.email
+  try {
+    const user = await User.findOne({where: {email: email}});
+    const key = `APIKEY${user.id}`
+    user.update({apiKey:key,developer:1})
+     
+
+    res.sendStatus(200)
+  } catch (error) {
+    console.log(error)
+  }
+})
 router.get('/:userId', async (req, res) => {
   //Authorization first (will do later)
   try {

@@ -1,5 +1,3 @@
-
-
 #sign-up-container {
   display: flex;
   justify-content: center;
@@ -13,11 +11,6 @@
 
 #sign-up-modal span {
   color: #f4642d;
-}
-
-h1 {
-  margin: 0;
-  font-size: 35px
 }
 
 form {
@@ -60,24 +53,27 @@ input {
   border-radius: 8px;
   padding: 10px 16px;
   box-sizing: border-box;
-  height:40px;
+  height: 40px;
   width: 100%;
   border: 1px solid transparent;
   background-color: #f3f3f4;
   outline: none;
 }
 
-input:focus, input:hover {
+input:focus,
+input:hover {
   border: 1px solid #f4642d;
   background-color: white;
 }
 
-.terms, .publicApi {
+.terms,
+.publicApi {
   margin-bottom: 20px;
-  font-size: .75rem;
+  font-size: 0.75rem;
 }
 
-.terms > input, .publicApi > input {
+.terms > input,
+.publicApi > input {
   height: auto;
   width: auto;
 }
@@ -91,7 +87,17 @@ button {
   border-style: none;
 }
 
-
 .policies {
-  font-size: .75rem;
+  font-size: 0.75rem;
+}
+
+.fa-envelope,
+.fa-lock {
+  margin-right: 5px;
+}
+
+@media only screen and (max-width: 500px) {
+  #sign-up-modal {
+    padding: 0;
+  }
 }

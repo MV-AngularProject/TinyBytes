@@ -86,7 +86,7 @@ button {
 }
 .newsletter-content{
   display:flex;
-
+  justify-content: space-between;
 }
 .newsletter button{
   margin: 0 auto;
@@ -96,12 +96,23 @@ button {
 .sign-out-delete{
     display: flex;
     justify-content: space-between;
- 
-  
- 
+    padding: 10px 20px;
 }
+
 .sign-out{
     display: flex;
     flex-direction: row;
-    justify-content: baseline;
+    align-items: center;
+}
+.api{
+    border-bottom: 1px solid gray;
+    padding: 20px;
+}
+.unsub{
+    color: #f4642d;
+    text-align: right;
+}
+
+.sign-out-link {
+  margin-left: 10px;
 }

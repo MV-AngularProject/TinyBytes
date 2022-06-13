@@ -24,10 +24,25 @@ hr{
     width: 55%;
     display: flex;
     justify-content: space-between;
-    color:orange;
+    color: #f4642d;
 }
-.fs-3 .text-dark:hover{
-    color:orange;
+
+.fs-3 {
+  color: black;
+}
+
+.fs-3:hover, .login-icon:hover, .uk-navbar-toggle:hover{
+  color:#f4642d;
+}
+
+.active {
+  font-weight: bold;
+  color: #f4642d
+}
+
+.uk-search-input::placeholder{
+  color: #f4642d;
+  opacity: .5;
 }
 
 @media screen and (max-width:450px){

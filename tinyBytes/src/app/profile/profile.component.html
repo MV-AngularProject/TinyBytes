@@ -4,7 +4,7 @@
         <div id="sign-up-container">
             <div id="sign-up-modal">
               <div class="xmark-icon">
-                <i class="fa-solid fa-xmark fa-lg"></i>
+              
               </div>
               <form >
                 <div id="entries">
@@ -24,7 +24,7 @@
                   </div>
                   <div class="password">
                     <label><i class="fa-solid fa-lock"></i> Password</label>
-                    <input type="password" value="" name="password" placeholder="6+ characters"/>
+                    <input type="password" value="profile.password" name="password" placeholder="6+ characters"/>
                   </div>
                 </div>
               </form>
@@ -34,14 +34,26 @@
     <section class="newsletter">
         <h3>Newsletter</h3>
     <div class='newsletter-content'>
-        <p>You are currently subscribed to our newsletter</p>
-        <button>Unsubscribe</button>
+        <p>You are currently subscribed to our tasty newsletter.</p>
+        <a class="unsub">Unsubscribe</a>
       </div>
     </section>
+    <section class="api">
+      <h3>Developer Api</h3>
+  <div *ngIf="profile.developer === 0; else elseBlock"class='api-content'>
+      <h4>Would you like to enroll to get access to our delicious API?</h4>
+      <button type="button" (click)="generateApiKey()">Give me a key!</button>
+  </div>
+  <ng-template #elseBlock>
+    <p>Here is your api key to get full access to our fresh home-made api: <strong>{{profile.apiKey}}</strong></p>
+  </ng-template>
+    <a [routerLink]="['/documentation']">Take a look at what our API can do.</a>
+
+  </section>
     <div class='sign-out-delete'>
       <div class="sign-out">
         <i class="fa-solid fa-arrow-right-from-bracket"></i>
-        <p>Sign out</p> 
+        <p class="sign-out-link">Sign out</p> 
       </div>
       <p>Delete Account</p>
     </div>

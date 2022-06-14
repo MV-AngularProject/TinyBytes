@@ -5,6 +5,7 @@ import { IRecipeDetails, IInstructions } from '../interface/recipeDetails';
 import { IHttpError } from '../interface/error';
 import { IUserData } from '../interface/userData';
 import { RecipeDetailsService } from '../service/recipeDetails.service';
+import { RecipeService } from '../service/recipe.service';
 
 @Component({
   templateUrl: './recipe.component.html',
@@ -13,7 +14,8 @@ import { RecipeDetailsService } from '../service/recipeDetails.service';
 export class RecipeComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     private route: ActivatedRoute,
-    private recipeDetailsService: RecipeDetailsService
+    private recipeDetailsService: RecipeDetailsService,
+    private recipeService: RecipeService
   ) {}
 
   //Subscription Variables
@@ -47,7 +49,24 @@ export class RecipeComponent implements OnInit, OnDestroy, AfterViewInit {
     window.print();
   }
   bookmarkRecipe(): void {
-    this.userData.favorited = !this.userData.favorited;
+    const originalValue = this.userData.favorited;
+    this.userData.favorited = !originalValue;
+
+    const next = (response: any | IHttpError) => {
+      console.log('response Data: ', response);
+    }
+
+    const error = (error: IHttpError) => {
+      console.error(error)
+      this.userData.favorited = originalValue;
+    }
+
+    if (!originalValue) {
+      this.recipeService.addFavorite(this.recipeId!).subscribe({ next, error });
+    }
+    else {
+      this.recipeService.deleteFavorite(this.recipeId!).subscribe({ next, error });
+    }
   }
 
   //Life Cycle

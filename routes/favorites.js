@@ -69,7 +69,7 @@ const deleteFavoriteById = (req, res, next) => {
     })
 }
 
-// Route - /favorites
+// Route - /favorite
 
 const router = express.Router();
 router.get('/', findAllFavorites, sendResponse)

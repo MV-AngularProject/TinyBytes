@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { tap, catchError } from "rxjs/operators";
@@ -26,11 +26,41 @@ export class RecipeService{
             (catchError(this.handleError)
         )
     }
+
     getMostPopular(): Observable<Root>{
         return this.http.get<Root>('http://localhost:8080/popularRecipe').pipe
             (catchError(this.handleError)
         )
     }
+
+    addFavorite(recipeId: string): Observable<ArrayBuffer> {
+        let thisUser = localStorage.getItem('Current User')
+        let userId = localStorage.getItem('User ID')
+        const httpHeaders = new HttpHeaders({
+        'Content-Type': 'application/json; charset=utf-8',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Authorization': `${thisUser}`
+        });
+        const url = `http://localhost:8080/user/${userId}/favorites?userId=${userId}&recipeId=${recipeId}`;
+        return this.http.post<ArrayBuffer>(url, null).pipe
+            (catchError(this.handleError)
+        )
+    }
+
+    deleteFavorite(recipeId: string): Observable<ArrayBuffer> {
+        let thisUser = localStorage.getItem('Current User')
+        let userId = localStorage.getItem('User ID')
+        const httpHeaders = new HttpHeaders({
+        'Content-Type': 'application/json; charset=utf-8',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Authorization': `${thisUser}`
+        });
+        const url = `http://localhost:8080/user/${userId}/favorites?userId=${userId}&recipeId=${recipeId}`;
+        return this.http.delete<ArrayBuffer>(url).pipe
+            (catchError(this.handleError)
+        )
+    }
+
 
     private handleError(err:HttpErrorResponse){
         let errorMessage='';

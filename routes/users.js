@@ -16,7 +16,7 @@ try {
     
 } catch (error) {
     console.log(error)
-    
+    res.json(error)
 }
 })
 module.exports= router;

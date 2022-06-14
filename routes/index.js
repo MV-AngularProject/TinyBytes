@@ -1,7 +1,12 @@
 const router = require('express').Router();
+const userRoute = require('./users')
+const favoritesRoute = require('./favorites')
+const profileRoute = require('./profile')
+const publicApiRoute =  require('./publicFacingAPIs')
 
-router.use('/', require('./users'));
-router.use('/profile', require('./profile'));
-router.use('/publicApi', require('./publicFacingAPIs'));
+router.use('/user', userRoute)
+router.use('/user/:id/favorites', favoritesRoute)
+router.use('/profile', profileRoute)
+router.use('/publicApi', publicApiRoute);
 
 module.exports = router;

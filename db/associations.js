@@ -1,8 +1,24 @@
 const User = require('./models/User');
 const Recipe = require('./models/Recipe');
+const {Model, DataTypes} = require('sequelize');
 const db = require('./db');
 
-User.belongsToMany(Recipe, {through: 'Favorites'});
-Recipe.belongsToMany(User, {through: 'Favorites'});
+// const Favorites = db.define('Favorites', {
+//     // favorite_id: {
+//     //     primaryKey: true,
+//     //     type: DataTypes.INTEGER
+//     // }
+// })
 
-module.exports = {db, User, Recipe};
+// Favorites.belongsTo(User, {
+//     as: 'user',
+//     through: 'Favorites',
+//     foreignKey: 'favorite_id'
+// })
+
+// User.hasMany(Favorites, { as: 'Favorites' })
+
+User.belongsToMany(Recipe, { through: "Favorites"});
+Recipe.belongsToMany(User, { through: 'Favorites'});
+
+module.exports = {db, User, Recipe };

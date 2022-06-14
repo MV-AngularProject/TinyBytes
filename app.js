@@ -32,21 +32,13 @@ apiKey = '0550322f781e49199dd00666b1933e64';
 app.use('/',require('./routes'))
 
 app.post('/logIn', async (req, res) => {
-  let user = await User.findOne({
-    where: { email: req.body.email }
-  })
-  console.log("userpassword",user.password)
-  console.log("req password",req.body.password)
-  if (user.password = req.body.password) {
-    console.log("Req email", req.body.email);
-    console.log("Login sucessful");
-    res.json(user)
-
-  } else {
-    console.log("Cannot log in");
+  try {
+    console.log("in log in route")
+  res.send(await User.authenticate(req.body)) 
+  } catch (error) {
+    if(error.status === 401)
     res.sendStatus(401)
-  };
-  // res.status(201).json(user)
+  }
 });
 
 

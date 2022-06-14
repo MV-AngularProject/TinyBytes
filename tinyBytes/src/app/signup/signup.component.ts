@@ -8,10 +8,10 @@ import { User } from '../user';
 })
 export class SignupComponent{
   signupForm = this.formBuilder.group({
-    firstName:['', Validators.required],
-    lastName: ['', Validators.required],
+    firstName:['', Validators.required, Validators.pattern('[a-zA-Z]+')],
+    lastName: ['', Validators.required, Validators.pattern('[a-zA-Z]+')],
     email: ['', Validators.required, Validators.email],
-    password: ['', Validators.required]
+    password: ['', Validators.required, Validators.minLength(6)]
   })
 
 newUser = new User;

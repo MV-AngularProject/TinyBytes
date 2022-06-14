@@ -1,63 +1,80 @@
-const router = require('express').Router();
-const {User, Recipe}= require('../db/associations');
+const express = require('express')
+const path = require('path')
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database('db/db.sqlite');
 
-router.get('user/:userId/favorites', async (req,res,next)=>{
-    const user = await User.findByPK(req.params.userId,{
-        include: [{
-            model: Recipe,
-            through: { attributes: ["RecipeId"] }
-        }]
-    })
-    res.send(user)
-})
-router.post('user/:userId/favorites', async (req,res,next)=> {
+// Middleware
 
-    try {
-        const user= await User.findByPK(req.params.userId,{
-            include: [{
-                model: Recipe,
-                through: { attributes: ["RecipeId"] }
-            }]
-        })
-        const favorite = await user.create(req.body)
-        res.status(200).json(favorite)
-      } 
-      catch (error) {
-        next(error)
-      }
-
-})
-
-router.delete('user/:userId/favorites/:id', async (req,res,next)=>{
-    try {
-        const favorite = await User.findByPK(req.params.userId,{
-            include: [{
-                model: Recipe,
-                through: { attributes: ["RecipeId"] }
-            }]
-        })
-        res.send(200)
-      } catch (error) {
-        next(error)
-      }
-})
-router.put('user/:id/favorites', async (req,res,next)=>{
-    try {
-        const user = await User.findByPK(req.params.userId,{
-            include: [{
-                model: Recipe,
-                through: { attributes: ["RecipeId"] }
-            }]
-        })
-        const favorite = await user.favorite.update(req.body, {
-            where: {
-              id: req.params.id
-            }
-          })
-
-        let newFavorite = await favorite.findByPk(req.params.id);
-        res.send(newFavorite)
-    } catch (error) {
-        next(error)
+const sendResponse = (req, res) => {
+    const status = 200
+    const response = {
+        message: `Success`,
+        status, 
     }
-})
+
+    if (req.data) {
+        response.data = req.data 
+    }
+
+    res
+    .status(status)
+    .json(response)
+}
+
+const handleError = (error, req, res, next) => {
+    console.error(error)
+    const status = 500
+    const response = {
+        message: 'Oops, something went wrong',
+        error,
+        status
+    }
+
+    res
+    .status(status)
+    .json(response)
+}
+
+const findAllFavorites = (req, res, next)=> {
+    const userId = req.query.userId;
+    const query = `SELECT * FROM Favorites WHERE userId=(?);`
+    
+    db.all(query, [userId], (error, rows) => {
+        if (error) next(error)
+        req.data = rows;
+        next()
+    })
+}
+
+const addFavorites = (req, res, next) => {
+    const userId = req.query.userId;
+    const recipeId = req.query.recipeId;
+    const createdAt = (new Date()).toISOString();
+    const query = `INSERT INTO Favorites (createdAt, updatedAt, userId, RecipeId) VALUES (?,?,?,?);`
+    
+    db.run(query, [createdAt, createdAt, userId, recipeId], (error) => {
+        if (error) next(error)
+        next()
+    })
+}
+
+const deleteFavoriteById = (req, res, next) => {
+    const userId = req.query.userId;
+    const recipeId = req.query.recipeId;
+    const query = 'DELETE FROM Favorites WHERE userId=(?) AND RecipeId=(?)'
+
+    db.run(query,[userId, recipeId], (error) => {
+        if (error) next(error)
+        next()
+    })
+}
+
+// Route - /favorites
+
+const router = express.Router();
+router.get('/', findAllFavorites, sendResponse)
+router.post('/', addFavorites, sendResponse)
+router.delete('/', deleteFavoriteById, sendResponse)
+router.use(handleError)
+
+module.exports = router

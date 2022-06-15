@@ -37,19 +37,20 @@ const handleError = (error, req, res, next) => {
     .json(response)
 }
 
-const findAllFavorites = (req, res, next)=> {
-    const userId = req.query.userId;
-    const query = `SELECT * FROM Favorites WHERE userId=(?);`
-    
-    db.all(query, [userId], (error, rows) => {
-        if (error) next(error)
-        req.data = rows;
-        next()
-    })
+const findAllFavorites = async (req, res, next)=> {
+  const userId = req.params.id;
+  const query = `SELECT * FROM Favorites WHERE userId=(?);`
+  
+  db.all(query, [userId], (error, rows) => {
+      if (error) next(error)
+      req.data = rows;
+      next()
+  })
 }
 
 const addFavorites = (req, res, next) => {
-    const userId = req.query.userId;
+  console.log('query', req.query.recipeId)
+    const userId = req.params.id;
     const recipeId = req.query.recipeId;
     const createdAt = (new Date()).toISOString();
     const query = `INSERT INTO Favorites (createdAt, updatedAt, userId, RecipeId) VALUES (?,?,?,?);`
@@ -82,9 +83,9 @@ const router = express.Router();
 //     unauthorizedResponse : () => "You do not have access to this content. Please log in"
 // }))
 
-router.get('/', findAllFavorites, sendResponse)
-router.post('/', addFavorites, sendResponse)
-router.delete('/', deleteFavoriteById, sendResponse)
+router.get('/:userId/favorites', findAllFavorites, sendResponse)
+router.post('/:userId/favorites', addFavorites, sendResponse)
+router.delete('/:userId/favorites', deleteFavoriteById, sendResponse)
 router.use(handleError)
 
 module.exports = router

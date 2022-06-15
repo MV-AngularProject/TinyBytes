@@ -7,9 +7,13 @@
   <section>
     <h5>{{endpoint.title}}</h5>
     <p class="description">{{endpoint.description}}</p>
-    <div class="url-code">
-      <p class="method">{{endpoint.method}}</p><p>{{endpoint.url}}</p>
-    </div>
+      <div class="url-container">
+        <div class="url-code">
+          <p class="method">GET</p>
+          <p>{{endpoint.url}}/:apiKey</p>
+        </div>
+        <button class='api-button'*ngIf="developer" (click)="navigateToEndpoint(endpoint.url)">Click Me!</button>
+      </div>
     <p class="response-type">Reponse format: JSON</p>
     <img [src]="endpoint.imageUrl"/>
   </section>

@@ -5,14 +5,14 @@
         <div class="full-name">
           <div class="first-name">
             <label>First Name</label>
-            <input type="text" value="" name="first" min=2 pattern="[a-zA-Z]+" required formControlName="firstName"/>
+            <input type="text" name="first" min=2 pattern="[a-zA-Z]+" required formControlName="firstName"/>
             <div class="alert alert-danger" role="alert" *ngIf="signupForm.controls['firstName'].errors && signupForm.controls['firstName'].touched">              
               First Name can only contain letters
             </div>
           </div>
           <div class="last-name">
             <label>Last Name</label>
-            <input type="text" value="" name="last" min=2 pattern="[a-zA-Z]+" required formControlName="lastName"/>
+            <input type="text" name="last" min=2 pattern="[a-zA-Z]+" required formControlName="lastName"/>
             <div class="alert alert-danger" role="alert" *ngIf="signupForm.controls['lastName'].errors && signupForm.controls['lastName'].touched">              
               Last Name can only contain letters
             </div>
@@ -20,21 +20,21 @@
         </div>
         <div class="email">
           <label><i class="fa-regular fa-envelope"></i> Email</label>
-          <input type="email" value="" name="email" required formControlName="email"/>
+          <input type="email" name="email" required formControlName="email"/>
           <div class="alert alert-danger" role="alert" *ngIf="signupForm.controls['email'].errors && signupForm.controls['email'].touched">              
             Email cannot be blank and must be an email
           </div>
         </div>
         <div class="password">
           <label><i class="fa-solid fa-lock"></i> Password</label>
-          <input type="password" value="" name="password" placeholder="6+ characters" min=6 required formControlName="password" />
+          <input type="password" name="password" placeholder="6+ characters" min=6 required formControlName="password" />
           <div class="alert alert-danger" role="alert" *ngIf="signupForm.controls['password'].errors && signupForm.controls['password'].touched">              
             Password must be at least 6 chars long
           </div>
         </div>
       </div>
       <div class="terms">
-        <input type="checkbox" value="" name="agreement" required >
+        <input type="checkbox" name="agreement" required >
         Creating an account means you're okay with our <span>Terms of Service, Privacy Policy,</span> and our default <span>Notification Settings</span>.
       </div>  
       <button type="submit" (click)="onSubmit()">Create Account</button>

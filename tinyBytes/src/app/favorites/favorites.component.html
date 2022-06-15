@@ -1,9 +1,11 @@
 
 <section class="container">
-  <div id="cardContainer"*ngFor="let favorite of favorites" class="card" style="border: none;"> 
-    <a [routerLink]="['/recipe', favorite.recipeId]">
-      <img id="resultImg" class="card-img-top rounded img-fluid img-responsive" style="margin-bottom: 2%;" src="https://spoonacular.com/recipeImages/{{favorite.recipeId}}-636x393.jpg" alt="A Recipe"/>
-    </a>
-    <p [routerLink]="['/recipe', favorite.recipeId]" class="resultTitle" style="font-size: 20px; font-weight: 500;">{{favorite.name}}</p>
+  <div id="resultCard" class="row row-cols-lg-5 row-cols-md-3 row-cols-md-2 hd-grid gap-4 d-flex justify-content-around .h-100">
+    <div id="cardContainer"*ngFor="let favorite of favorites" class="card" style="border: none;"> 
+      <a [routerLink]="['/recipe', favorite.recipeId]">
+        <img id="resultImg" class="card-img-top rounded img-fluid img-responsive" style="margin-bottom: 2%;" src="https://spoonacular.com/recipeImages/{{favorite.recipeId}}-636x393.jpg" alt="A Recipe"/>
+      </a>
+      <p [routerLink]="['/recipe', favorite.recipeId]" class="resultTitle" style="font-size: 20px; font-weight: 500;">{{favorite.name}}</p>
+    </div>
   </div>
 </section>

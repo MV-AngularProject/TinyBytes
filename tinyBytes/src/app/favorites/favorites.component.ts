@@ -4,7 +4,7 @@ import { LocalStorageRefService } from '../service/local-storage-ref.service';
 
 @Component({
   templateUrl: './favorites.component.html',
-  styleUrls: ['./favorites.component.css'],
+  styleUrls: ['../search/search.component.css'],
 })
 export class FavoritesComponent implements OnInit {
   constructor(

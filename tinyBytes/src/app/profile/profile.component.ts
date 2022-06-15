@@ -3,9 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IHttpError } from '../interface/error';
 import { IProfile } from '../interface/profile';
-import { GenerateApiKeyService } from '../service/generateApiKey.service';
 import { ProfileService } from '../service/profile.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { LocalStorageRefService } from '../service/local-storage-ref.service';
 import { Router } from '@angular/router';
 
@@ -15,13 +14,8 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit, OnDestroy {
   constructor(
-    private route: ActivatedRoute,
     private profileService: ProfileService,
-    private generateApiKeyService: GenerateApiKeyService,
     private router: Router,
-    private http: HttpClient,
-    private localStorage: LocalStorageRefService
-
   ) {}
 
   userId!: string | null;
@@ -38,7 +32,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
     });
   }
   generateApiKey(){
-    this.generateApiKeyService.updateApiKey(this.profile.email).subscribe({
+    console.log('method call')
+    this.profileService.getApiKey(this.profile.email).subscribe({
       next:()=>{
         console.log('key generated')
       }

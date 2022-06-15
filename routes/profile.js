@@ -12,7 +12,7 @@ router.use(basicAuth({
     unauthorizedResponse : () => "You do not have access to this content. Please log in"
 }))
 
-router.put('/generateApiKey',async (req,res)=>{
+router.put('/generateApi',async (req,res)=>{
   const email = req.body.email
   try {
     const user = await User.findOne({where: {email: email}});
@@ -25,8 +25,8 @@ router.put('/generateApiKey',async (req,res)=>{
     console.log(error)
   }
 })
+
 router.get('/:userId', async (req, res) => {
-  //Authorization first (will do later)
   try {
     const id = req.params.userId;
     const user = await User.findByPk(id);
@@ -48,7 +48,6 @@ router.get('/:userId', async (req, res) => {
 });
 
 router.post('/:userId', async (req, res) => {
-  //Authorization first (will do later)
   try {
     const id = req.params.userId;
     const user = await User.findByPk(id);

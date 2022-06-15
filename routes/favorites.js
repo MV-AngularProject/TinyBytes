@@ -39,7 +39,10 @@ const handleError = (error, req, res, next) => {
 
 const findAllFavorites = async (req, res, next)=> {
   const userId = req.params.userId;
-  const query = `SELECT * FROM Favorites WHERE userId=(?);`
+  const query = `SELECT Recipes.recipeId, Recipes.name 
+                  FROM Favorites 
+                  JOIN Recipes on Recipes.id = Favorites.RecipeId
+                  WHERE userId=(?);`
   
   db.all(query, [userId], (error, rows) => {
       if (error) next(error)
@@ -48,16 +51,16 @@ const findAllFavorites = async (req, res, next)=> {
   })
 }
 
-const addFavorites = (req, res, next) => {
+const addFavorites = async (req, res, next) => {
     const userId = req.params.userId;
-    const recipeId = req.query.recipeId;
-    const user = User.findByPk(1)
-    user.addRecipe(recipeId)
-    
-    // db.run(query, [createdAt, createdAt, userId, recipeId], (error) => {
-    //     if (error) next(error)
-    //     next()
-    // })
+    const spoonacularId = req.query.recipeId;
+    const recipe = await Recipe.findOrCreate({where:{name: req.body.name, recipeId: spoonacularId}})
+    const user = await User.findByPk(userId)
+    if(Array.isArray(recipe)){
+      await user.addRecipe(recipe[0])
+    } else {
+      await user.addRecipe(recipe)
+    }
 }
 
 const deleteFavoriteById = (req, res, next) => {

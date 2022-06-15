@@ -62,7 +62,7 @@ export class RecipeComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     if (!originalValue) {
-      this.recipeService.addFavorite(this.recipeId!).subscribe({ next, error });
+      this.recipeService.addFavorite(this.recipeId!, this.details.title).subscribe({ next, error });
     }
     else {
       this.recipeService.deleteFavorite(this.recipeId!).subscribe({ next, error });

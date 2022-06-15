@@ -1,20 +1,9 @@
-<section class="container">
-    <div class="row">
-        <div class="col-3">Hi</div>
-        <div class="col-3">Hi</div>
-        <div class="col-3">Hi</div>
-        <div class="col-3">Hi</div>
-    </div>
-</section>
 
-<!-- 
-    <section class="container">
-    <div class="row">
-        <div class="col-3">
-            <a [routerLink]="['/recipe', recipe.id]">
-                <img [src]="recipe.image" />
-            </a>
-        </div>
-    </div>
+<section class="container">
+  <div id="cardContainer"*ngFor="let favorite of favorites" class="card" style="border: none;"> 
+    <a [routerLink]="['/recipe', favorite.recipeId]">
+      <img id="resultImg" class="card-img-top rounded img-fluid img-responsive" style="margin-bottom: 2%;" src="https://spoonacular.com/recipeImages/{{favorite.recipeId}}-636x393.jpg" alt="A Recipe"/>
+    </a>
+    <p [routerLink]="['/recipe', favorite.recipeId]" class="resultTitle" style="font-size: 20px; font-weight: 500;">{{favorite.name}}</p>
+  </div>
 </section>
- -->

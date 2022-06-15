@@ -38,7 +38,7 @@ const handleError = (error, req, res, next) => {
 }
 
 const findAllFavorites = async (req, res, next)=> {
-  const userId = req.params.id;
+  const userId = req.params.userId;
   const query = `SELECT * FROM Favorites WHERE userId=(?);`
   
   db.all(query, [userId], (error, rows) => {
@@ -49,20 +49,19 @@ const findAllFavorites = async (req, res, next)=> {
 }
 
 const addFavorites = (req, res, next) => {
-  console.log('query', req.query.recipeId)
-    const userId = req.params.id;
+    const userId = req.params.userId;
     const recipeId = req.query.recipeId;
-    const createdAt = (new Date()).toISOString();
-    const query = `INSERT INTO Favorites (createdAt, updatedAt, userId, RecipeId) VALUES (?,?,?,?);`
+    const user = User.findByPk(1)
+    user.addRecipe(recipeId)
     
-    db.run(query, [createdAt, createdAt, userId, recipeId], (error) => {
-        if (error) next(error)
-        next()
-    })
+    // db.run(query, [createdAt, createdAt, userId, recipeId], (error) => {
+    //     if (error) next(error)
+    //     next()
+    // })
 }
 
 const deleteFavoriteById = (req, res, next) => {
-    const userId = req.query.userId;
+    const userId = req.params.userId;
     const recipeId = req.query.recipeId;
     const query = 'DELETE FROM Favorites WHERE userId=(?) AND RecipeId=(?)'
 

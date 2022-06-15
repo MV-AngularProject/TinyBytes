@@ -27,6 +27,18 @@ export class ProfileService {
       .pipe(catchError(this.HttpErrorHandler));
   }
 
+  getApiKey(email: string): Observable<any> {
+    const thisUser = localStorage.getItem('Current User')
+    const httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    'Authorization': `${thisUser}`
+    });
+    return this.http
+      .put(`http://localhost:8080/profile/generateApi`, {email: email}, {headers:httpHeaders})
+      .pipe(catchError(this.HttpErrorHandler));
+  }
+
   deleteProfile(): Observable<any> {
     let thisUser = localStorage.getItem('Current User')
     let userID = localStorage.getItem('User ID')

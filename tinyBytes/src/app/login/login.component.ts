@@ -67,6 +67,7 @@ export class LoginComponent {
           } else {
             this.userID = response.id
             localStorage.setItem('User ID', this.userID);
+            localStorage.setItem('ApiKey', response.apiKey)
             console.log("User if from localStorage" , localStorage.getItem('User ID'))
             this.router.navigate(['http://localhost:4200'])
           }

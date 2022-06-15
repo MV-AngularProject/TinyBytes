@@ -13,7 +13,8 @@
       <a style="text-decoration:none" class="fs-3" routerLink="documentation">API</a>
     </div>
     <div class="nav-overlay uk-navbar-right">
-      <a class="login-icon" style="margin-right:50px;" uk-icon="icon: user; ratio: 2" routerLink= "login"></a>
+      <a *ngIf="!logout"class="login-icon" style="margin-right:50px;" uk-icon="icon: user; ratio: 2" routerLink= "login"></a>
+      <a *ngIf="logout" class="login-icon" style="margin-right:50px;" uk-icon="icon: sign-out; ratio: 2" routerLink= "login"></a>
       <a class="uk-navbar-toggle" style="margin-right:50px;" uk-search-icon="ratio:2" uk-toggle="target: .nav-overlay; animation: uk-animation-fade"></a>
     </div>
     <div class="nav-overlay uk-navbar-left uk-flex-1" hidden>

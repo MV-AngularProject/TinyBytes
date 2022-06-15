@@ -33,7 +33,7 @@ export class RecipeService{
         )
     }
 
-    addFavorite(recipeId: string): Observable<ArrayBuffer> {
+    addFavorite(recipeId: string, foodName: string): Observable<ArrayBuffer> {
         let thisUser = localStorage.getItem('Current User')
         let userId = localStorage.getItem('User ID')
         const httpHeaders = new HttpHeaders({
@@ -42,7 +42,7 @@ export class RecipeService{
         'Authorization': `${thisUser}`
         });
         const url = `http://localhost:8080/user/${userId}/favorites?userId=${userId}&recipeId=${recipeId}`;
-        return this.http.post<ArrayBuffer>(url, null).pipe
+        return this.http.post<ArrayBuffer>(url, {name: foodName}).pipe
             (catchError(this.handleError)
         )
     }

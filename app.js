@@ -30,7 +30,12 @@ app.use(express.json());
 // })
 //homepage api calls
 
-app.use('/',require('./routes'))
+app.use('/', require('./routes'))
+
+app.get('/', async (req, res) => {
+  res.send("Hello Denille")
+  console.log('Hi Denille')
+});
 
 app.post('/logIn', async (req, res) => {
   try {
@@ -77,7 +82,7 @@ app.get('/dessertRecipe', async (req, res) => {
   }).pipe(res)
 });
 
-app.get('/popularRecipe', async (req, res) => {
+app.get('c', async (req, res) => {
   request({
     method: 'GET',
     uri:`https://api.spoonacular.com/recipes/complexSearch?sort=popularity&number=3&apiKey=${apiKey}`,

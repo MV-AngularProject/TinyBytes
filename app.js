@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const request = require('request');
-const PORT = 8080;
+// const PORT = 8080;
 const cors = require('cors')
 const { User, Recipe } = require('./db/associations');
 const { use } = require("bcrypt/promises");
@@ -243,6 +243,6 @@ app.get('/HTMLNutritionFacts/:recipeId', async (req, res) => {
     }). pipe(res)
 });
 
-  app.listen(PORT, () => {
+  app.listen(process.env.PORT || 8080, () => {
     console.log(`Server is listening on http://localhost:${PORT}`);
   });

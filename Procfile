@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath tinyBytes npm start
+web: npm run frontend

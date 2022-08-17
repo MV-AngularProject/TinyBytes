@@ -6,6 +6,7 @@ const request = require('request');
 const cors = require('cors')
 const { User, Recipe } = require('./db/associations');
 const { use } = require("bcrypt/promises");
+import "./tinyBytes"
 
 //./tinyBytes/src/app/service/local-storage.service 
 app.use(cors())

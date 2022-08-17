@@ -32,9 +32,9 @@ app.use(express.json());
 
 app.use('/', require('./routes'))
 
-app.get('/', async (req, res) => {
-  res.send("Hello Denille")
-});
+// app.get('/', async (req, res) => {
+//   res.send("Hello Denille")
+// });
 
 app.post('/logIn', async (req, res) => {
   try {

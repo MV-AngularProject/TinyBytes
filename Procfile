@@ -1,1 +1,1 @@
-web: node TinyBytes/tinyBytes npm start
+web: gunicorn --pythonpath tinyBytes npm start

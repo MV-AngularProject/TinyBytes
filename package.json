@@ -4,8 +4,8 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.0",
-    "express-jwt": "^7.7.2",
     "express-basic-auth": "^1.2.1",
+    "express-jwt": "^7.7.2",
     "express-validator": "^6.14.0",
     "jest": "^28.0.2",
     "jwks-rsa": "^2.1.3",
@@ -34,5 +34,8 @@
   "bugs": {
     "url": "https://github.com/MV-AngularProject/TinyBytes/issues"
   },
-  "homepage": "https://github.com/MV-AngularProject/TinyBytes#readme"
+  "homepage": "https://github.com/MV-AngularProject/TinyBytes#readme",
+  "devDependencies": {
+    "enhanced-resolve": "^5.10.0"
+  }
 }

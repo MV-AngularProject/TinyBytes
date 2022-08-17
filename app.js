@@ -1,16 +1,16 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const request = require('request');
 // const PORT = 8080;
 const cors = require('cors')
 const { User, Recipe } = require('./db/associations');
 const { use } = require("bcrypt/promises");
 
-
 //./tinyBytes/src/app/service/local-storage.service 
 app.use(cors())
 
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/dist/tiny-bytes'));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
@@ -34,7 +34,6 @@ app.use('/', require('./routes'))
 
 app.get('/', async (req, res) => {
   res.send("Hello Denille")
-  console.log('Hi Denille')
 });
 
 app.post('/logIn', async (req, res) => {
@@ -59,7 +58,7 @@ app.get('/randomRecipe', async (req, res) => {
     }
     const data = response.body;
     const apiData = JSON.parse(data)
-  }).pipe(res)
+  }).pipe(res);
 });
 
 app.get('/dessertRecipe', async (req, res) => {
@@ -79,10 +78,10 @@ app.get('/dessertRecipe', async (req, res) => {
     else {
       console.log("error with api call")
     }
-  }).pipe(res)
+  }).pipe(res);
 });
 
-app.get('c', async (req, res) => {
+app.get('/popularRecipe', async (req, res) => {
   request({
     method: 'GET',
     uri:`https://api.spoonacular.com/recipes/complexSearch?sort=popularity&number=3&apiKey=${apiKey}`,
@@ -120,7 +119,7 @@ app.get('/search/:query', async (req, res) => {
     else {
       console.log("error with api call")
     }
-    }). pipe(res)
+  }).pipe(res)
 });
 
 function callAPI(url, consoleWord) {
@@ -206,7 +205,7 @@ app.get('/recipeDetails/:recipeId', async (req, res) => {
     else {
       console.log("error with api call")
     }
-    }). pipe(res)
+  }).pipe(res)
 });
 app.get('/recipeInstructions/:recipeId', async (req, res) => {
   request({
@@ -225,7 +224,7 @@ app.get('/recipeInstructions/:recipeId', async (req, res) => {
     else {
       console.log("error with api call")
     }
-    }). pipe(res)
+  }).pipe(res)
 });
 
 app.get('/HTMLNutritionFacts/:recipeId', async (req, res) => {
@@ -245,7 +244,7 @@ app.get('/HTMLNutritionFacts/:recipeId', async (req, res) => {
     else {
       console.log("error with api call")
     }
-    }). pipe(res)
+  }).pipe(res)
 });
 
-  app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 8080);

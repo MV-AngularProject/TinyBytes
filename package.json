@@ -24,7 +24,7 @@
     "seed": "node ./db/generateData.js",
     "start": "node app.js",
     "devstart": "nodemon app.js",
-    "frontend": "cd ./tinyBytes && npm run start"
+    "frontend": "cd ./tinyBytes && run heroku-postbuild"
   },
   "repository": {
     "type": "git",

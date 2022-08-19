@@ -23,8 +23,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node ./db/generateData.js",
     "start": "node app.js",
-    "devstart": "nodemon app.js",
-    "frontend": "cd ./tinyBytes && run heroku-postbuild"
+    "devstart": "nodemon app.js"
   },
   "repository": {
     "type": "git",

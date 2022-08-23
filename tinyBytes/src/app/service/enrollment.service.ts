@@ -7,7 +7,7 @@ import {LoginComponent} from '../login/login.component'
     providedIn:'root'
 })
 export class EnrollmentService{
-    url ="http://localhost:8080/chefs" //url to post to
+    url ="https://tinybytes.herokuapp.com/chefs" //url to post to
     constructor(private _http: HttpClient,
     private login:LoginComponent) { }
 

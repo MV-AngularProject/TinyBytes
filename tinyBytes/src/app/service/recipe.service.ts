@@ -41,7 +41,7 @@ export class RecipeService{
         'Access-Control-Allow-Headers': 'Content-Type',
         'Authorization': `${thisUser}`
         });
-        const url = `http://localhost:8080/user/${userId}/favorites?userId=${userId}&recipeId=${recipeId}`;
+        const url = `https://tinybytes.herokuapp.com/user/${userId}/favorites?userId=${userId}&recipeId=${recipeId}`;
         return this.http.post<ArrayBuffer>(url, {name: foodName}).pipe
             (catchError(this.handleError)
         )
@@ -55,7 +55,7 @@ export class RecipeService{
         'Access-Control-Allow-Headers': 'Content-Type',
         'Authorization': `${thisUser}`
         });
-        const url = `http://localhost:8080/user/${userId}/favorites?userId=${userId}&recipeId=${recipeId}`;
+        const url = `https://tinybytes.herokuapp.com/user/${userId}/favorites?userId=${userId}&recipeId=${recipeId}`;
         return this.http.delete<ArrayBuffer>(url).pipe
             (catchError(this.handleError)
         )

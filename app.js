@@ -31,9 +31,9 @@ apiKey = "b688d3dfcaec47b88ffd7cd4de8c743b";
 
 app.use("/", require("./routes"));
 
-app.get('/', async (req, res) => {
-  res.send("Hello Denille")
-});
+// app.get('/', async (req, res) => {
+//   res.send("Hello Denille")
+// });
 
 app.post("/logIn", async (req, res) => {
   try {

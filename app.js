@@ -5,7 +5,7 @@ const request = require("request");
 // const PORT = 8080;
 const cors = require("cors");
 const {User, Recipe} = require("./db/associations");
-const {use} = require("bcrypt/promises");
+const { use } = require("bcrypt/promises");
 
 //./tinyBytes/src/app/service/local-storage.service
 app.use(cors());
@@ -59,7 +59,7 @@ app.get("/randomRecipe", async (req, res) => {
       const apiData = JSON.parse(data);
     }).pipe(res);
   ///usr/local/google/home/denillec/TinyBytes/tinyBytes/dist/tiny-bytes/index.html
-  res.sendFile(path.join(__dirname + "/TinyBytes/tinyBytes/dist/tiny-bytes/index.html"));
+  // res.sendFile(path.join(__dirname + "/tinyBytes/dist/tiny-bytes/index.html"));
 });
 
 app.get("/dessertRecipe", async (req, res) => {
@@ -82,7 +82,7 @@ app.get("/dessertRecipe", async (req, res) => {
       }
     }
   ).pipe(res);
-  res.sendFile(path.join(__dirname + "/TinyBytes/tinyBytes/dist/tiny-bytes/index.html"));
+  // res.sendFile(path.join(__dirname + "/tinyBytes/dist/tiny-bytes/index.html"));
 });
 
 app.get("/popularRecipe", async (req, res) => {
@@ -105,7 +105,7 @@ app.get("/popularRecipe", async (req, res) => {
       }
     }
   ).pipe(res);
-  res.sendFile(path.join(__dirname + "/TinyBytes/tinyBytes/dist/tiny-bytes/index.html"));
+  // res.sendFile(path.join(__dirname + "/tinyBytes/dist/tiny-bytes/index.html"));
 });
 
 //search page

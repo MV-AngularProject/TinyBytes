@@ -58,7 +58,7 @@ app.get("/randomRecipe", async (req, res) => {
       const data = response.body;
       const apiData = JSON.parse(data);
     }).pipe(res);
-  res.sendFile(path.join(__dirname + "/dist/tiny-bytes/index.html"));
+  res.sendFile(path.join(__dirname + "TinyBytes/tiny-bytes/dist/index.html"));
 });
 
 app.get("/dessertRecipe", async (req, res) => {
@@ -81,7 +81,7 @@ app.get("/dessertRecipe", async (req, res) => {
       }
     }
   ).pipe(res);
-  res.sendFile(path.join(__dirname + "/dist/tiny-bytes/index.html"));
+  res.sendFile(path.join(__dirname + "TinyBytes/tiny-bytes/dist/index.html"));
 });
 
 app.get("/popularRecipe", async (req, res) => {
@@ -104,7 +104,7 @@ app.get("/popularRecipe", async (req, res) => {
       }
     }
   ).pipe(res);
-  res.sendFile(path.join(__dirname + "/dist/tiny-bytes/index.html"));
+  res.sendFile(path.join(__dirname + "TinyBytes/tiny-bytes/dist/index.html"));
 });
 
 //search page

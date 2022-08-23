@@ -22,8 +22,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node ./db/generateData.js",
-    "start": "node app.js",
-    "build:frontend":"git subtree push --prefix tinyBytes heroku master"   
+    "build:frontend":"git subtree push --prefix tinyBytes heroku master",
+    "start": "node app.js && npm run build:frontend"  
   },
   "repository": {
     "type": "git",

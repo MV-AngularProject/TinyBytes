@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { EnrollmentService } from '../service/enrollment.service';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { User } from '../user';
 import { Router } from '@angular/router';
 
@@ -19,7 +19,7 @@ export class SignupComponent{
 newUser = new User;
   constructor(
     private enrollmentService:EnrollmentService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private router: Router
     ){}
 

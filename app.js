@@ -1,19 +1,18 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const request = require('request');
-const PORT = 8080;
-const cors = require('cors')
-const { User, Recipe } = require('./db/associations');
+const path = require("path");
+const request = require("request");
+// const PORT = 8080;
+const cors = require("cors");
+const {User, Recipe} = require("./db/associations");
 const { use } = require("bcrypt/promises");
 
+//./tinyBytes/src/app/service/local-storage.service
+app.use(cors());
 
-//./tinyBytes/src/app/service/local-storage.service 
-app.use(cors())
-
-app.use(express.static('public'));
+app.use(express.static(__dirname + "/dist/tiny-bytes"));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-
 
 //api keys
 // apiKey = 'a42bca2f8c2f4c5194cd8aa86c365de7';
@@ -22,7 +21,7 @@ app.use(express.json());
 // apiKey = '0550322f781e49199dd00666b1933e64';
 // apiKey = 'b989a147ccb6450e920e8fa5355c632c';
 //  apiKey = "f082f3f33d8e400b8898966f7fcbc069";
- apiKey = 'b688d3dfcaec47b88ffd7cd4de8c743b';
+apiKey = "b688d3dfcaec47b88ffd7cd4de8c743b";
 
 //api calls
 // app.get('/', (req, res) => {
@@ -30,113 +29,129 @@ app.use(express.json());
 // })
 //homepage api calls
 
-app.use('/',require('./routes'))
+app.use("/", require("./routes"));
 
-app.post('/logIn', async (req, res) => {
+// app.get('/', async (req, res) => {
+//   res.send("Hello Denille")
+// });
+
+app.post("/logIn", async (req, res) => {
   try {
-    console.log("in log in route")
-  res.send(await User.authenticate(req.body)) 
+    console.log("in log in route");
+    res.send(await User.authenticate(req.body));
   } catch (error) {
-    if(error.status === 401)
-    res.sendStatus(401)
+    if (error.status === 401) res.sendStatus(401);
   }
 });
 
-
-app.get('/randomRecipe', async (req, res) => {
-  request({
-    method: 'GET',
-    uri: `https://api.spoonacular.com/recipes/complexSearch?sort=random&number=1&apiKey=${apiKey}`,
-  }, function (error, response, body) {
-    if (error) {
-      console.log('Error with server', error);
-      return;
-    }
-    const data = response.body;
-    const apiData = JSON.parse(data)
-  }).pipe(res)
+app.get("/randomRecipe", async (req, res) => {
+  request(
+    {
+      method: "GET",
+      uri: `https://api.spoonacular.com/recipes/complexSearch?sort=random&number=1&apiKey=${apiKey}`,
+    },
+    function (error, response, body) {
+      if (error) {
+        console.log("Error with server", error);
+        return;
+      }
+      const data = response.body;
+      const apiData = JSON.parse(data);
+    }).pipe(res);
+  ///usr/local/google/home/denillec/TinyBytes/tinyBytes/dist/tiny-bytes/index.html
+  // res.sendFile(path.join(__dirname + "/tinyBytes/dist/tiny-bytes/index.html"));
 });
 
-app.get('/dessertRecipe', async (req, res) => {
-  request({
-    method: 'GET',
-    uri: `https://api.spoonacular.com/recipes/complexSearch?type=dessert&number=3&apiKey=${apiKey}`,
-  }, function (error, response, body) {
-    if (error) {
-      console.log('Error with server', error);
-      return;
+app.get("/dessertRecipe", async (req, res) => {
+  request(
+    {
+      method: "GET",
+      uri: `https://api.spoonacular.com/recipes/complexSearch?type=dessert&number=3&apiKey=${apiKey}`,
+    },
+    function (error, response, body) {
+      if (error) {
+        console.log("Error with server", error);
+        return;
+      }
+      const data = response.body;
+      const apiData = JSON.parse(data);
+      if (response.statusCode == 200) {
+        console.log("success");
+      } else {
+        console.log("error with api call");
+      }
     }
-    const data = response.body;
-    const apiData = JSON.parse(data)
-    if (response.statusCode == 200) {
-      console.log('success');
-    }
-    else {
-      console.log("error with api call")
-    }
-  }).pipe(res)
+  ).pipe(res);
+  // res.sendFile(path.join(__dirname + "/tinyBytes/dist/tiny-bytes/index.html"));
 });
 
-app.get('/popularRecipe', async (req, res) => {
-  request({
-    method: 'GET',
-    uri:`https://api.spoonacular.com/recipes/complexSearch?sort=popularity&number=3&apiKey=${apiKey}`,
-  }, function (error, response, body) {
-    if (error) {
-      console.log('Error with server', error);
-      return;
+app.get("/popularRecipe", async (req, res) => {
+  request(
+    {
+      method: "GET",
+      uri: `https://api.spoonacular.com/recipes/complexSearch?sort=popularity&number=3&apiKey=${apiKey}`,
+    },
+    function (error, response, body) {
+      if (error) {
+        console.log("Error with server", error);
+        return;
+      }
+      const data = response.body;
+      const apiData = JSON.parse(data);
+      if (response.statusCode == 200) {
+        console.log("success");
+      } else {
+        console.log("error with api call");
+      }
     }
-    const data = response.body;
-    const apiData = JSON.parse(data)
-    if (response.statusCode == 200) {
-      console.log('success');
-    }
-    else {
-      console.log("error with api call")
-    }
-  }).pipe(res)
+  ).pipe(res);
+  // res.sendFile(path.join(__dirname + "/tinyBytes/dist/tiny-bytes/index.html"));
 });
 
-//search page 
-app.get('/search/:query', async (req, res) => {
-  request({
-    method: 'GET',
-    uri: `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${req.params.query}&number=8`,
-  }, function (error, response, body) {
-    if (error) {
-      console.log(error);
-      return;
+//search page
+app.get("/search/:query", async (req, res) => {
+  request(
+    {
+      method: "GET",
+      uri: `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${req.params.query}&number=8`,
+    },
+    function (error, response, body) {
+      if (error) {
+        console.log(error);
+        return;
+      }
+      const data = response.body;
+      const apiData = JSON.parse(data);
+      if (response.statusCode == 200) {
+        console.log("success");
+      } else {
+        console.log("error with api call");
+      }
     }
-    const data = response.body;
-    const apiData = JSON.parse(data)
-    if (response.statusCode == 200) {
-      console.log('success');
-    }
-    else {
-      console.log("error with api call")
-    }
-    }). pipe(res)
+  ).pipe(res);
 });
 
 function callAPI(url, consoleWord) {
-  request({
-    method: 'GET',
-    uri: `${url}&apiKey=${apiKey}`,
-  }, function (error, response, body) {
-    if (error) {
-      console.log('Error with server', error);
-      return;
+  request(
+    {
+      method: "GET",
+      uri: `${url}&apiKey=${apiKey}`,
+    },
+    function (error, response, body) {
+      if (error) {
+        console.log("Error with server", error);
+        return;
+      }
+      const data = response.body;
+      const apiData = JSON.parse(data);
+      console.log(`${consoleWord}`, apiData);
+      if (response.statusCode == 200) {
+        console.log("success");
+      } else {
+        console.log("error with api call");
+      }
     }
-    const data = response.body;
-    const apiData = JSON.parse(data)
-    console.log(`${consoleWord}`, apiData)
-    if (response.statusCode == 200) {
-      console.log('success');
-    }
-    else {
-      console.log("error with api call")
-    }
-  })
+  );
 }
 // app.get('/randomRecipe', async (req, res) =>{
 //   let recipe = callAPI("https://api.spoonacular.com/recipes/complexSearch?sort=random&number=1",
@@ -144,105 +159,113 @@ function callAPI(url, consoleWord) {
 // });
 // homepage routes
 
-app.get('/dessertRecipe', async (req, res) => {
-  request({
-    method: 'GET',
-    uri: `https://api.spoonacular.com/recipes/complexSearch?type=dessert&number=3&apiKey=${apiKey}`,
-  }, function (error, response, body) {
-    if (error) {
-      console.log('Error with server', error);
-      return;
+app.get("/dessertRecipe", async (req, res) => {
+  request(
+    {
+      method: "GET",
+      uri: `https://api.spoonacular.com/recipes/complexSearch?type=dessert&number=3&apiKey=${apiKey}`,
+    },
+    function (error, response, body) {
+      if (error) {
+        console.log("Error with server", error);
+        return;
+      }
+      const data = response.body;
+      const apiData = JSON.parse(data);
+      if (response.statusCode == 200) {
+        console.log("success");
+      } else {
+        console.log("error with api call");
+      }
     }
-    const data = response.body;
-    const apiData = JSON.parse(data)
-    if (response.statusCode == 200) {
-      console.log('success');
-    }
-    else {
-      console.log("error with api call")
-    }
-  }).pipe(res)
+  ).pipe(res);
 });
-app.get('/popularRecipe', async (req, res) => {
-  request({
-    method: 'GET',
-    uri:`https://api.spoonacular.com/recipes/complexSearch?sort=popularity&number=3&apiKey=${apiKey}`,
-  }, function (error, response, body) {
-    if (error) {
-      console.log('Error with server', error);
-      return;
+app.get("/popularRecipe", async (req, res) => {
+  request(
+    {
+      method: "GET",
+      uri: `https://api.spoonacular.com/recipes/complexSearch?sort=popularity&number=3&apiKey=${apiKey}`,
+    },
+    function (error, response, body) {
+      if (error) {
+        console.log("Error with server", error);
+        return;
+      }
+      const data = response.body;
+      const apiData = JSON.parse(data);
+      if (response.statusCode == 200) {
+        console.log("success");
+      } else {
+        console.log("error with api call");
+      }
     }
-    const data = response.body;
-    const apiData = JSON.parse(data)
-    if (response.statusCode == 200) {
-      console.log('success');
-    }
-    else {
-      console.log("error with api call")
-    }
-  }).pipe(res)
+  ).pipe(res);
 });
-  
+
 //single recipe page
-app.get('/recipeDetails/:recipeId', async (req, res) => {
-  request({
-    method: 'GET',
-    uri: `https://api.spoonacular.com/recipes/${req.params.recipeId}/information?apiKey=${apiKey}`,
-  }, function (error, response, body) {
-    if (error) {
-      console.log(error);
-      return;
+app.get("/recipeDetails/:recipeId", async (req, res) => {
+  request(
+    {
+      method: "GET",
+      uri: `https://api.spoonacular.com/recipes/${req.params.recipeId}/information?apiKey=${apiKey}`,
+    },
+    function (error, response, body) {
+      if (error) {
+        console.log(error);
+        return;
+      }
+      const data = response.body;
+      const apiData = JSON.parse(data);
+      if (response.statusCode == 200) {
+        console.log("success");
+      } else {
+        console.log("error with api call");
+      }
     }
-    const data = response.body;
-    const apiData = JSON.parse(data)
-    if (response.statusCode == 200) {
-      console.log('success');
-    }
-    else {
-      console.log("error with api call")
-    }
-    }). pipe(res)
+  ).pipe(res);
 });
-app.get('/recipeInstructions/:recipeId', async (req, res) => {
-  request({
-    method: 'GET',
-    uri: `https://api.spoonacular.com/recipes/${req.params.recipeId}/analyzedInstructions?apiKey=${apiKey}`,
-  }, function (error, response, body) {
-    if (error) {
-      console.log(error);
-      return;
+app.get("/recipeInstructions/:recipeId", async (req, res) => {
+  request(
+    {
+      method: "GET",
+      uri: `https://api.spoonacular.com/recipes/${req.params.recipeId}/analyzedInstructions?apiKey=${apiKey}`,
+    },
+    function (error, response, body) {
+      if (error) {
+        console.log(error);
+        return;
+      }
+      const data = response.body;
+      const apiData = JSON.parse(data);
+      if (response.statusCode == 200) {
+        console.log("success");
+      } else {
+        console.log("error with api call");
+      }
     }
-    const data = response.body;
-    const apiData = JSON.parse(data)
-    if (response.statusCode == 200) {
-      console.log('success');
-    }
-    else {
-      console.log("error with api call")
-    }
-    }). pipe(res)
-});
-
-app.get('/HTMLNutritionFacts/:recipeId', async (req, res) => {
-  request({
-    method: 'GET',
-    uri: `https://api.spoonacular.com/recipes/${req.params.recipeId}/nutritionLabel?apiKey=${apiKey}`,
-    headers: {"content-type":"text/html"}
-  }, function (error, response, body) {
-    if (error) {
-      console.log(error);
-      return;
-    }
-    const data = response.body;
-    if (response.statusCode == 200) {
-      console.log('success');
-    }
-    else {
-      console.log("error with api call")
-    }
-    }). pipe(res)
+  ).pipe(res);
 });
 
-  app.listen(PORT, () => {
-    console.log(`Server is listening on http://localhost:${PORT}`);
-  });
+app.get("/HTMLNutritionFacts/:recipeId", async (req, res) => {
+  request(
+    {
+      method: "GET",
+      uri: `https://api.spoonacular.com/recipes/${req.params.recipeId}/nutritionLabel?apiKey=${apiKey}`,
+      headers: {"content-type": "text/html"},
+    },
+    function (error, response, body) {
+      if (error) {
+        console.log(error);
+        return;
+      }
+      const data = response.body;
+      if (response.statusCode == 200) {
+        console.log("success");
+      } else {
+        console.log("error with api call");
+      }
+    }
+  ).pipe(res);
+});
+
+app.listen(process.env.PORT || 8080);

@@ -58,7 +58,7 @@ import { ReviewComponent } from './review/review.component';
         { path: 'login', component: LoginComponent},
         { path: 'documentation', component: DocumentationComponent},
         { path: 'unauthorized', component: UnauthorizedComponent },
-        { path: 'review', component: ReviewComponent },
+        { path: 'review/:recipeId', component: ReviewComponent },
         { path: '**', redirectTo: '', pathMatch: 'full' },
       ]
     ),

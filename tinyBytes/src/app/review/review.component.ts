@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ReviewService } from '../service/review.service';
 import { IReview } from '../interface/review';
 
 @Component({
@@ -8,7 +9,20 @@ import { IReview } from '../interface/review';
 })
 export class ReviewComponent  {
   constructor(
+    private reviewService: ReviewService,
   ) {}
 
-  reviews!: IReview;
+  reviews!: IReview[];
+
+  ngOnInit(): void {
+    //Get User ID trhough local storage (must be number or convert)
+    const recipeId = localStorage.getItem('recipeId');
+    //Subscriptions
+    this.reviewService.getReviews(recipeId).subscribe({
+      next: reviews => {
+        this.reviews = reviews,
+        console.log("Here are the reivews: " , this.reviews)
+      },
+    });
+  }
 }

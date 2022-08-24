@@ -1,4 +1,9 @@
 <div>
-    <h3>Here's the review</h3>
-    <h3>{{reviews.review}}</h3>
+    <h3>Here's the review</h3> 
 </div>
+<div id="reviewCard" class="row row-cols-lg-5 row-cols-md-3 row-cols-md-2 hd-grid gap-4 d-flex justify-content-around .h-100">
+    <div id="cardContainer"*ngFor="let review of reviews" class="card" style="border: none;"> 
+        <h3>{{review.userName}}</h3> 
+        <h3>{{review.review}}</h3> 
+    </div>
+  </div>

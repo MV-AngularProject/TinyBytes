@@ -24,7 +24,9 @@ Recipe.belongsToMany(User, {
     through: "Favorites"});
 // Recipe.hasMany(Review);
 // Review.belongsTo(Recipe);
-Review.belongsTo(Recipe);
+Review.belongsTo(Recipe, {
+    through: 'RecipeReview'
+});
 Recipe.belongsToMany(Review, {
     through: 'RecipeReview',
     sourceKey:'recipeId'

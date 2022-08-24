@@ -8,7 +8,7 @@ class Review extends Model {
 Review.init(
   {
     userName: DataTypes.STRING,
-    review: DataTypes.STRING   
+    review: DataTypes.STRING,
   },
   {
     sequelize: db,

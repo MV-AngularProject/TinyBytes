@@ -6,6 +6,7 @@ import { IHttpError } from '../interface/error';
 import { IUserData } from '../interface/userData';
 import { RecipeDetailsService } from '../service/recipeDetails.service';
 import { RecipeService } from '../service/recipe.service';
+import { ReviewComponent } from '../review/review.component';
 
 @Component({
   templateUrl: './recipe.component.html',

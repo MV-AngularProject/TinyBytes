@@ -20,6 +20,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { DocumentationComponent } from './documentation/documentation.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { ReviewComponent } from './review/review.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
     LoginComponent,
     ProfileComponent,
     DocumentationComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +58,7 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
         { path: 'login', component: LoginComponent},
         { path: 'documentation', component: DocumentationComponent},
         { path: 'unauthorized', component: UnauthorizedComponent },
+        { path: 'review', component: ReviewComponent },
         { path: '**', redirectTo: '', pathMatch: 'full' },
       ]
     ),

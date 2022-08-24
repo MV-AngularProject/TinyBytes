@@ -53,7 +53,7 @@ export class LoginComponent {
 
   loginService(options: any): void{
     const requestObservable: Observable<any> = this.http.post<any>(
-      'http://localhost:8080/logIn', 
+      'https://tinybytes.herokuapp.com/logIn', 
       { 
         "email": this.email, 
         "password": this.password

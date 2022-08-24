@@ -41,7 +41,7 @@ const findAllReviews = async (req, res, next)=> {
     const query = `SELECT Reviews.userName, Reviews.review
                     FROM RecipeReview
                     JOIN Reviews on Reviews.id = RecipeReview.ReviewId
-                    WHERE recipeId=(?);`
+                    WHERE RecipeRecipeId=(?);`
     
     db.all(query, [recipeId], (error, rows) => {
         if (error) next(error)

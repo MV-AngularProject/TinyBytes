@@ -1,7 +1,7 @@
 const db = require('./db');
 const fs = require('fs').promises;
 const path = require('path');
-const User = require('./models/User');
+const User = require('./models/User')
 const Recipe = require('./models/Recipe');
 const Review = require('./models/Review')
 require('./associations');

@@ -21,6 +21,7 @@ export class ReviewComponent  {
     this.reviewService.getReviews(recipeId).subscribe({
       next: reviews => {
         this.reviews = reviews,
+        console.log("RecipeId: " , recipeId)
         console.log("Here are the reivews: " , this.reviews)
       },
     });

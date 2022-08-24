@@ -14,7 +14,7 @@ export class SearchComponent implements OnInit, OnDestroy{
   
     constructor(
         private searchService: SearchService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
     ) { }
 
     results!: ISearchResults;
@@ -28,8 +28,7 @@ export class SearchComponent implements OnInit, OnDestroy{
             .search(this.query)
             .subscribe({
                 next: results => {
-                    this.results = results,
-                        console.log("Search query : ", this.query);
+                    this.results = results;
                 }
             });
         }); 

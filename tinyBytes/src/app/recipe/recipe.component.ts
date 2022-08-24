@@ -7,6 +7,7 @@ import { IUserData } from '../interface/userData';
 import { RecipeDetailsService } from '../service/recipeDetails.service';
 import { RecipeService } from '../service/recipe.service';
 import { ReviewComponent } from '../review/review.component';
+import { LocalStorageRefService } from '../service/local-storage-ref.service';
 
 @Component({
   templateUrl: './recipe.component.html',
@@ -16,7 +17,8 @@ export class RecipeComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     private route: ActivatedRoute,
     private recipeDetailsService: RecipeDetailsService,
-    private recipeService: RecipeService
+    private recipeService: RecipeService,
+    private localStorage: LocalStorageRefService
   ) {}
 
   //Subscription Variables
@@ -25,7 +27,7 @@ export class RecipeComponent implements OnInit, OnDestroy, AfterViewInit {
   nutritionSub!: Subscription;
 
   //Variables
-  recipeId!: string | null;
+  recipeId!: any;
   details!: IRecipeDetails;
   instructions!: IInstructions[];
   nutrition!: string | IHttpError;
@@ -75,6 +77,7 @@ export class RecipeComponent implements OnInit, OnDestroy, AfterViewInit {
     //Initializations
     this.recipeId = this.route.snapshot.paramMap.get('recipeId');
     this.author = this.randomize(this.team);
+    localStorage.setItem('recipeId', this.recipeId);
 
     //Subscriptions
     this.detailsSub = this.recipeDetailsService

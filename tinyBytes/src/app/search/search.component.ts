@@ -28,7 +28,8 @@ export class SearchComponent implements OnInit, OnDestroy{
             .search(this.query)
             .subscribe({
                 next: results => {
-                    this.results = results;
+                    this.results = results,
+                    console.log('Here are the results', this.results)
                 }
             });
         }); 

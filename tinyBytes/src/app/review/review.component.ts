@@ -12,7 +12,7 @@ export class ReviewComponent  {
     private reviewService: ReviewService,
   ) {}
 
-  reviews!: IReview[];
+  reviews!: IReview;
 
   ngOnInit(): void {
     //Get User ID trhough local storage (must be number or convert)

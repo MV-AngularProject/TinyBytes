@@ -1,4 +1,10 @@
 export interface IReview{
-    userName: string
-    review: string
-  }
+  message: string
+  status: number
+  data: Review[]
+}
+  
+export interface Review {
+  userName: string
+  review:string
+}

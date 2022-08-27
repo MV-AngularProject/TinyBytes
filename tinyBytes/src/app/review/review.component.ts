@@ -12,7 +12,7 @@ export class ReviewComponent  {
     private reviewService: ReviewService,
   ) {}
 
-  reviews!: IReview[];
+  reviews!: IReview;
 
   ngOnInit(): void {
     //Get User ID trhough local storage (must be number or convert)
@@ -21,6 +21,7 @@ export class ReviewComponent  {
     this.reviewService.getReviews(recipeId).subscribe({
       next: reviews => {
         this.reviews = reviews,
+        console.log("RecipeId: " , recipeId)
         console.log("Here are the reivews: " , this.reviews)
       },
     });

@@ -41,7 +41,7 @@ const findAllFavorites = async (req, res, next)=> {
   const userId = req.params.userId;
   const query = `SELECT Recipes.recipeId, Recipes.name 
                   FROM Favorites 
-                  JOIN Recipes on Recipes.id = Favorites.RecipeId
+                  JOIN Recipes on Recipes.recipeId = Favorites.RecipeRecipeId
                   WHERE userId=(?);`
   
   db.all(query, [userId], (error, rows) => {
@@ -66,7 +66,7 @@ const addFavorites = async (req, res, next) => {
 const deleteFavoriteById = (req, res, next) => {
     const userId = req.params.userId;
     const recipeId = req.query.recipeId;
-    const query = 'DELETE FROM Favorites WHERE userId=(?) AND RecipeId=(?)'
+    const query = 'DELETE FROM Favorites WHERE userId=(?) AND RecipeRecipeId=(?)'
 
     db.run(query,[userId, recipeId], (error) => {
         if (error) next(error)

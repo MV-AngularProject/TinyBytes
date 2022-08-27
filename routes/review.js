@@ -38,12 +38,12 @@ const handleError = (error, req, res, next) => {
 
 const findAllReviews = async (req, res, next)=> {
     const recipeId = req.params.recipeId;
-    const query = `SELECT Reviews.userName, Reviews.review 
-                    FROM RecipeReview 
-                    JOIN Reviews on Review.id = RecipeReview.ReviewId
-                    WHERE recipeId=(?);`
+    const query = `SELECT Reviews.userName, Reviews.review
+                    FROM RecipeReview
+                    JOIN Reviews on Reviews.id = RecipeReview.ReviewId
+                    WHERE RecipeReview.RecipeRecipeId=(?);`
     
-    db.all(query, [userId], (error, rows) => {
+    db.all(query, [recipeId], (error, rows) => {
         if (error) next(error)
         req.data = rows;
         next()

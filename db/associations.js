@@ -20,10 +20,16 @@ const Review = require("./models/Review");
 // User.hasMany(Favorites, { as: 'Favorites' })
 
 User.belongsToMany(Recipe, {through: "Favorites"});
-Recipe.belongsToMany(User, {through: "Favorites"});
+Recipe.belongsToMany(User, {
+    through: "Favorites"});
+// Recipe.hasMany(Review);
+// Review.belongsTo(Recipe);
 Review.belongsToMany(Recipe, {
-    through: "RecipeReview"});
+    through: 'RecipeReview'
+});
 Recipe.belongsToMany(Review, {
-    through: "RecipeReview"});
+    through: 'RecipeReview',
+    sourceKey:'recipeId'
+});
 
 module.exports = {db, User, Recipe, Review};
